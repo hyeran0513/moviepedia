@@ -1,0 +1,13 @@
+@use "../base/variables" as *;
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: $primary-font;
+  color: $primary-text-color;
+}
+
+main {
+  flex: 1;
+}

@@ -1,0 +1,8 @@
+/* 시각적으로 숨기고 스크린 리더에서만 노출 */
+.a11y-hidden {
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(1px, 1px, 1px, 1px);
+}
