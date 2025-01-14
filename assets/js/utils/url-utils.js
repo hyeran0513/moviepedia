@@ -10,8 +10,6 @@ export const setBaseUrl = () => {
 
     if (window.location.hostname === "hyeran0513.github.io") {
       baseUrl = "/movies/";
-    } else {
-      baseUrl = "/";
     }
 
     base.href = baseUrl;

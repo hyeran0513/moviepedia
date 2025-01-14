@@ -1,0 +1,219 @@
+@charset "UTF-8";
+/* 박스 모델을 전역적으로 border-box로 설정 */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 기본 글꼴 및 텍스트 스타일 초기화 */
+body {
+  font-family: sans-serif;
+  font-size: 100%;
+  line-height: 1.4;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* HTML 요소의 기본 스타일 제거 */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+/* form 요소 초기화 */
+input,
+button,
+textarea,
+select {
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* 필드셋과 레전드 초기화 */
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  display: none;
+}
+
+/* 테이블 초기화 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0;
+}
+
+/* 목록과 리스트 항목 초기화 */
+ul,
+ol {
+  list-style: none;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
+
+/* 기본 block-level 요소의 margin과 padding 초기화 */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre,
+blockquote,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+form,
+figure,
+hr,
+table,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+
+/* 하이퍼링크 스타일 초기화 */
+a:focus,
+a:hover {
+  text-decoration: none;
+}
+
+/* 폼 요소 스타일 초기화 */
+button,
+input,
+select,
+textarea {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* 영역의 기본 스타일을 초기화 */
+details,
+summary {
+  display: block;
+}
+
+/* 시각적으로 숨기고 스크린 리더에서만 노출 */
+.a11y-hidden {
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: sans-serif;
+  color: #111827;
+}
+
+main {
+  flex: 1;
+}
+
+.header {
+  height: 100px;
+}
+.header-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1200px;
+  height: 100%;
+}
+
+.logo {
+  width: 140px;
+  height: 50px;
+}
+.logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gnb ul {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.utility {
+  margin-left: auto;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+.footer-inner {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+  height: 100%;
+}
+
+.example-img {
+  position: relative;
+  width: 100px;
+  height: 30px;
+  border: 1px solid red;
+}
+.example-img:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../../images/icon/logo.svg") no-repeat center/cover;
+}
+
+/*# sourceMappingURL=movie.css.map */
