@@ -9,7 +9,7 @@ export const setBaseUrl = () => {
     base = document.createElement("base");
 
     if (window.location.hostname === "hyeran0513.github.io") {
-      baseUrl = "/movies/";
+      baseUrl = "/moviepedia/";
     } else {
       baseUrl = "/";
     }

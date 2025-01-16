@@ -3,7 +3,7 @@ import { loadSearchModal } from './search-modal.js';
 export const loadHeader = () => {
   const url =
     window.location.hostname === "hyeran0513.github.io"
-      ? "/movies/components/header.html"
+      ? "/moviepedia/components/header.html"
       : "/components/header.html";
 
   fetch(url)

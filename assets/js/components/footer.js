@@ -1,6 +1,6 @@
 export const loadFooter = () => {
   const url = window.location.hostname === "hyeran0513.github.io" 
-  ? "/movies/components/footer.html" 
+  ? "/moviepedia/components/footer.html" 
   : "/components/footer.html";
 
   fetch(url)

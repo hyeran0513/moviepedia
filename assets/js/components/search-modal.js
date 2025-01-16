@@ -1,7 +1,7 @@
 export const loadSearchModal = () => {
   const url =
     window.location.hostname === "hyeran0513.github.io"
-      ? "/movies/components/searchModal.html"
+      ? "/moviepedia/components/searchModal.html"
       : "/components/searchModal.html";
 
   fetch(url)
