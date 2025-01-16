@@ -1,4 +1,29 @@
 @charset "UTF-8";
+:root {
+  --primary-color: light-dark(#5254FD, #5254FD);
+  --primary-hover-color: light-dark(#767AF7, #767AF7);
+  --primary-bg-color: light-dark(#FFF, #232429);
+  --primary-text-color: light-dark(#333, #FBFFFF);
+  --primary-border-color: light-dark(#DFDFDF, #3F424B);
+  --secondary-text-color: light-dark(#70737A, #9FA1A6);
+  --warning-text-color: light-dark(#FF5E5E, #FF5E5E);
+  --form-bg-color: light-dark(#FEFEFE, #333742);
+  --form-placeholder-color: light-dark(#A1A5B0, #A1A5B0);
+  --form-border-color: light-dark(#DFDFDF, #3F424B);
+  --scroll-bar-color: light-dark(#E8E8E8, #1C1D22);
+  --header-bg-color: light-dark(#FFF, #232429);
+  --footer-bg-color: light-dark(#F8F8F8, #1C1D22);
+  --favorite-icon-color: light-dark(#FF4A29, #FF4A29);
+  --favorite-bg-color: light-dark(#FFF, #FFF);
+  --favorite-darken-bg-color: light-dark(#E8E8E8, #333742);
+  --thumbnail-default-color: light-dark(#FCFCFC, #343843);
+  --thumbnail-icon-color: light-dark(#BCBCBC, #525867);
+  --gradation-left-color: light-dark(#FF004D, #FF004D);
+  --gradation-right-color: light-dark(#1F2F98, #1F2F98);
+  --swiper-button-color: light-dark(#6E6E6E, #6E6E6E);
+  --swiper-active-button-color: light-dark(#D9D9D9, #D9D9D9);
+}
+
 /* 박스 모델을 전역적으로 border-box로 설정 */
 *,
 *::before,
@@ -10,7 +35,7 @@
 
 /* 기본 글꼴 및 텍스트 스타일 초기화 */
 body {
-  font-family: sans-serif;
+  font-family: "Pretendard", sans-serif;
   font-size: 100%;
   line-height: 1.4;
   text-rendering: optimizeLegibility;
@@ -144,24 +169,84 @@ summary {
   clip: rect(1px, 1px, 1px, 1px);
 }
 
+/* 라디오 버튼을 클릭하면 테마 변경 */
+:root:has(input[name=color-scheme][value=light]:checked) {
+  color-scheme: light;
+}
+:root:has(input[name=color-scheme][value=light]:checked) label[for=light] {
+  display: none;
+}
+:root:has(input[name=color-scheme][value=dark]:checked) {
+  color-scheme: dark;
+}
+:root:has(input[name=color-scheme][value=dark]:checked) label[for=dark] {
+  display: none;
+}
+
+/* 모달 */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.modal-content {
+  background-color: var(--primary-bg-color);
+  max-width: 800px;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  border-bottom: 1px solid var(--primary-border-color);
+}
+.modal-head .close-button {
+  cursor: pointer;
+}
+.modal-head .close-button > i {
+  font-size: 24px;
+}
+.modal-head__title {
+  font-size: 18px;
+  font-weight: bold;
+}
+.modal-body {
+  padding: 40px 30px 50px;
+}
+
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family: sans-serif;
-  color: #111827;
+  background-color: var(--primary-bg-color);
+  color: var(--primary-text-color);
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 main {
   flex: 1;
+  margin: 0 auto;
+  padding: 40px 0;
+  max-width: 1200px;
 }
 
 .header {
-  height: 100px;
+  height: 80px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
 }
 .header-inner {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   margin: 0 auto;
   max-width: 1200px;
@@ -169,8 +254,9 @@ main {
 }
 
 .logo {
-  width: 140px;
-  height: 50px;
+  width: 137px;
+  height: 26px;
+  overflow: hidden;
 }
 .logo-img {
   width: 100%;
@@ -185,17 +271,36 @@ main {
 }
 
 .utility {
+  display: flex;
+  gap: 1.5rem;
   margin-left: auto;
+}
+.utility_button {
+  width: 24px;
+  height: 24px;
+  color: var(--primary-text-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.utility_button > i {
+  font-size: 24px;
+}
+.utility_button input[type=radio] {
+  display: none;
 }
 
 .footer {
-  display: flex;
-  align-items: center;
-  height: 40px;
+  height: 120px;
+  background-color: var(--footer-bg-color);
+  color: var(--primary-text-color);
 }
 .footer-inner {
-  margin: 0 auto;
-  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
   width: 100%;
   height: 100%;
 }
@@ -204,9 +309,6 @@ main {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
-}
-.card-item {
-  border: 1px solid #C40E61;
 }
 .card-poster {
   width: 100%;

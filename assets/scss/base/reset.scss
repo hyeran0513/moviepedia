@@ -1,3 +1,5 @@
+@use "../base/variables" as *;
+
 /* 박스 모델을 전역적으로 border-box로 설정 */
 *,
 *::before,
@@ -9,7 +11,7 @@
 
 /* 기본 글꼴 및 텍스트 스타일 초기화 */
 body {
-  font-family: sans-serif;
+  font-family: $primary-font;
   font-size: 100%;
   line-height: 1.4;
   text-rendering: optimizeLegibility;

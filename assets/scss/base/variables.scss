@@ -1,17 +1,50 @@
-// 색상 변수
-$primary-color: #C40E61;
-$secondary-color: #2ecc71;
-$background-color: #f4f4f4;
-$primary-text-color: #111827;
-$secondary-text-color: #9CA3AF;
+:root {
+  // Primary Colors
+  --primary-color: light-dark(#5254FD, #5254FD);
+  --primary-hover-color: light-dark(#767AF7, #767AF7);
+  --primary-bg-color: light-dark(#FFF, #232429);
+  --primary-text-color: light-dark(#333, #FBFFFF);
+  --primary-border-color: light-dark(#DFDFDF, #3F424B);
+
+  // Secondary Colors
+  --secondary-text-color: light-dark(#70737A, #9FA1A6);
+  --warning-text-color: light-dark(#FF5E5E, #FF5E5E);
+
+  // Form Colors
+  --form-bg-color: light-dark(#FEFEFE, #333742);
+  --form-placeholder-color: light-dark(#A1A5B0, #A1A5B0);
+  --form-border-color: light-dark(#DFDFDF, #3F424B);
+
+  // UI Colors
+  --scroll-bar-color: light-dark(#E8E8E8, #1C1D22);
+  --header-bg-color: light-dark(#FFF, #232429);
+  --footer-bg-color: light-dark(#F8F8F8, #1C1D22);
+
+  // Favorite Icon Colors
+  --favorite-icon-color: light-dark(#FF4A29, #FF4A29);
+  --favorite-bg-color: light-dark(#FFF, #FFF);
+  --favorite-darken-bg-color: light-dark(#E8E8E8, #333742);
+
+  // Thumbnail Colors
+  --thumbnail-default-color: light-dark(#FCFCFC, #343843);
+  --thumbnail-icon-color: light-dark(#BCBCBC, #525867);
+
+  // Gradation Colors
+  --gradation-left-color: light-dark(#FF004D, #FF004D);
+  --gradation-right-color: light-dark(#1F2F98, #1F2F98);
+
+  // Swiper Colors
+  --swiper-button-color: light-dark(#6E6E6E, #6E6E6E);
+  --swiper-active-button-color: light-dark(#D9D9D9, #D9D9D9);
+}
 
 // 폰트 변수
-$primary-font: sans-serif;
+$primary-font: 'Pretendard', sans-serif;
 
 // 크기 변수
 $max-width: 1200px;
-$header-height: 100px;
-$footer-height: 40px;
+$header-height: 80px;
+$footer-height: 120px;
 
 // 브레이크포인트 변수
 $tablet: 768px;

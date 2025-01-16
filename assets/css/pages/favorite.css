@@ -160,4 +160,149 @@ summary {
   display: block;
 }
 
-/*# sourceMappingURL=reset.css.map */
+/* 시각적으로 숨기고 스크린 리더에서만 노출 */
+.a11y-hidden {
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+/* 라디오 버튼을 클릭하면 테마 변경 */
+:root:has(input[name=color-scheme][value=light]:checked) {
+  color-scheme: light;
+}
+:root:has(input[name=color-scheme][value=light]:checked) label[for=light] {
+  display: none;
+}
+:root:has(input[name=color-scheme][value=dark]:checked) {
+  color-scheme: dark;
+}
+:root:has(input[name=color-scheme][value=dark]:checked) label[for=dark] {
+  display: none;
+}
+
+/* 모달 */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.modal-content {
+  background-color: var(--primary-bg-color);
+  max-width: 800px;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  border-bottom: 1px solid var(--primary-border-color);
+}
+.modal-head .close-button {
+  cursor: pointer;
+}
+.modal-head .close-button > i {
+  font-size: 24px;
+}
+.modal-head__title {
+  font-size: 18px;
+  font-weight: bold;
+}
+.modal-body {
+  padding: 40px 30px 50px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--primary-bg-color);
+  color: var(--primary-text-color);
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+main {
+  flex: 1;
+  margin: 0 auto;
+  padding: 40px 0;
+  max-width: 1200px;
+}
+
+.header {
+  height: 80px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1200px;
+  height: 100%;
+}
+
+.logo {
+  width: 137px;
+  height: 26px;
+  overflow: hidden;
+}
+.logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gnb ul {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.utility {
+  display: flex;
+  gap: 1.5rem;
+  margin-left: auto;
+}
+.utility_button {
+  width: 24px;
+  height: 24px;
+  color: var(--primary-text-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.utility_button > i {
+  font-size: 24px;
+}
+.utility_button input[type=radio] {
+  display: none;
+}
+
+.footer {
+  height: 120px;
+  background-color: var(--footer-bg-color);
+  color: var(--primary-text-color);
+}
+.footer-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  width: 100%;
+  height: 100%;
+}
+
+/*# sourceMappingURL=favorite.css.map */

@@ -2,23 +2,35 @@
   <!-- 로고 -->
   <h2 class="a11y-hidden">로고</h2>
 
-  <h1 class="logo">
-    <img class="logo-img" alt="movies" src="/assets/images/icon/logo.svg" />
-  </h1>
-
-  <!-- 메뉴 -->
-  <h2 class="a11y-hidden">메뉴</h2>
-
-  <nav class="gnb">
-    <ul></ul>
-  </nav>
+  <a class="logo">
+    <img class="logo-img" alt="movies" src="/assets/images/icon/logo.svg" alt="MOVIEPEDIA" />
+  </a>
 
   <!-- 유틸리티 -->
   <h2 class="a11y-hidden">유틸리티</h2>
 
   <div class="utility">
-    <button type="button">
-      <i class='bx bx-moon'></i>
+    <button type="button" class="utility_button" id="searchButton">
+      <i class='bx bx-search'></i>
     </button>
+
+    <a href="/favorite.html" class="utility_button">
+      <i class='bx bx-heart'></i>
+    </a>
+
+    <label for="light" class="utility_button">
+      <input name="color-scheme" type="radio" value="light" id="light" />
+      <i class="bx bx-sun"></i>
+    </label>
+  
+    <label for="dark" class="utility_button">
+      <input name="color-scheme" type="radio" value="dark" id="dark" checked />
+      <i class="bx bx-moon"></i>
+    </label>      
   </div>
+
+  <!-- 모달 -->
+  <h2 class="a11y-hidden">모달</h2>
+
+  <div id="searchModal" class="modal"></div>
 </div>

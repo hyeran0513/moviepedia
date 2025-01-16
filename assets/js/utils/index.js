@@ -1,9 +1,5 @@
-import { setBaseUrl } from './url-utils.js';
-import { loadHeader } from '../components/header.js';
-import { loadFooter } from '../components/footer.js';
+import { initializeWeb } from './main.js';
 import { displayMovies } from '../components/card.js';
 
-setBaseUrl();
-loadHeader();
-loadFooter();
+initializeWeb();
 displayMovies();

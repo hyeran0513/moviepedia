@@ -1,11 +1,4 @@
-const navLinks = [
-  { href: "/", text: "Home" },
-  { href: "/explore.html", text: "Explore" },
-  { href: "/genre.html", text: "Genre" },
-  { href: "/news.html", text: "News" },
-  { href: "/movie.html", text: "Movies" },
-  { href: "/tvshow.html", text: "TV Show" },
-];
+import { loadSearchModal } from './search-modal.js';
 
 export const loadHeader = () => {
   const url =
@@ -18,25 +11,15 @@ export const loadHeader = () => {
     .then((data) => {
       document.getElementById("header").innerHTML = data;
 
-      // 로고 이미지
+      // 로고
+      const logoLink = document.querySelector(".logo");
       const logoImg = document.querySelector(".logo-img");
+
       logoImg.src = `${window.baseUrl}assets/images/icon/logo.svg`;
+      logoLink.href = `${window.baseUrl}`;
 
-      // 네비게이션
-      const nav = document.querySelector(".gnb ul");
-
-      // li 항목
-      const menuItems = navLinks.map((link) => {
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-        a.href = `${window.baseUrl}${link.href}`;
-        a.textContent = link.text;
-        li.appendChild(a);
-        return li;
-      });
-
-      // 생성된 li 항목들을 ul에 추가
-      menuItems.forEach((item) => nav.appendChild(item));
+      // 검색 모달 실행
+      loadSearchModal();
     })
     .catch((error) => console.error("헤더 fetch 오류:", error));
 };
