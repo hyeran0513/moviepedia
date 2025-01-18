@@ -19,8 +19,9 @@
   --thumbnail-icon-color: light-dark(#BCBCBC, #525867);
   --gradation-left-color: light-dark(#FF004D, #FF004D);
   --gradation-right-color: light-dark(#1F2F98, #1F2F98);
-  --swiper-button-color: light-dark(#6E6E6E, #6E6E6E);
-  --swiper-active-button-color: light-dark(#D9D9D9, #D9D9D9);
+  --swiper-button-color: light-dark(#D9D9D9, #D9D9D9);
+  --swiper-text-color: light-dark(#FBFFFF, #FBFFFF);
+  --swiper-pagination-bottom: 28px;
 }
 
 .footer {

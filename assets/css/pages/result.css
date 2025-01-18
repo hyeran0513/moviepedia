@@ -20,8 +20,9 @@
   --thumbnail-icon-color: light-dark(#BCBCBC, #525867);
   --gradation-left-color: light-dark(#FF004D, #FF004D);
   --gradation-right-color: light-dark(#1F2F98, #1F2F98);
-  --swiper-button-color: light-dark(#6E6E6E, #6E6E6E);
-  --swiper-active-button-color: light-dark(#D9D9D9, #D9D9D9);
+  --swiper-button-color: light-dark(#D9D9D9, #D9D9D9);
+  --swiper-text-color: light-dark(#FBFFFF, #FBFFFF);
+  --swiper-pagination-bottom: 28px;
 }
 
 /* 박스 모델을 전역적으로 border-box로 설정 */
@@ -224,6 +225,43 @@ summary {
   padding: 40px 30px 50px;
 }
 
+/* 버튼 */
+.btn-primary {
+  width: 100%;
+  height: 50px;
+  background-color: var(--primary-color);
+  color: #FFF;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.btn-primary:hover {
+  background-color: var(--primary-hover-color);
+}
+
+/* 셀렉트 박스 */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  cursor: pointer;
+}
+
+.select-container {
+  position: relative;
+  width: 100%;
+}
+.select-icon {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  pointer-events: none;
+  color: var(--form-placeholder-color);
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -236,13 +274,21 @@ body {
 main {
   flex: 1;
   margin: 0 auto;
-  padding: 40px 0;
+  padding: 80px 0 40px;
   max-width: 1200px;
+}
+main.--main {
+  padding: 0;
+  max-width: 100%;
 }
 
 .header {
+  position: fixed;
+  top: 0;
+  width: 100%;
   height: 80px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
 .header-inner {
   display: flex;
@@ -251,6 +297,9 @@ main {
   margin: 0 auto;
   max-width: 1200px;
   height: 100%;
+}
+.header--main {
+  box-shadow: none;
 }
 
 .logo {

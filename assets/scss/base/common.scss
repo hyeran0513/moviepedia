@@ -72,3 +72,44 @@
     padding: 40px 30px 50px;
   }
 }
+
+/* 버튼 */
+.btn-primary {
+  width: 100%;
+  height: 50px;
+  background-color: var(--primary-color);
+  color: #FFF;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color .3s ease;
+
+  &:hover {
+    background-color: var(--primary-hover-color);
+  }
+}
+
+/* 셀렉트 박스 */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  cursor: pointer;
+}
+
+.select {
+  &-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  &-icon {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 20px;
+    pointer-events: none;
+    color: var(--form-placeholder-color);
+  }
+}
