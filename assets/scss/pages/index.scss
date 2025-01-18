@@ -21,6 +21,18 @@
       }
     }
   }
+
+  &-slide {
+    .movie-btn-detail {
+      pointer-events: none; 
+    }
+
+    &-active {
+      .movie-btn-detail {
+        pointer-events: auto;
+      }
+    }
+  }
 }
 
 /* 영화 */
@@ -68,7 +80,7 @@
     max-width: 1200px;
     width: 100%;
     color: var(--swiper-text-color);
-    pointer-events: auto;
+    z-index: 111;
   }
 
   &-info {
@@ -98,10 +110,6 @@
 
   &-content {
     line-height: 1.4;
-  }
-
-  &-btn-detail {
-    pointer-events: auto;
   }
 }
 

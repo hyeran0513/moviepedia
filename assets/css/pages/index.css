@@ -380,6 +380,12 @@ main.--main {
 .swiper-pagination-bullet-active {
   background-color: var(--swiper-button-color);
 }
+.swiper-slide .movie-btn-detail {
+  pointer-events: none;
+}
+.swiper-slide-active .movie-btn-detail {
+  pointer-events: auto;
+}
 
 /* 영화 */
 .movie-poster {
@@ -420,7 +426,7 @@ main.--main {
   max-width: 1200px;
   width: 100%;
   color: var(--swiper-text-color);
-  pointer-events: auto;
+  z-index: 111;
 }
 .movie-info {
   display: flex;
@@ -444,9 +450,6 @@ main.--main {
 }
 .movie-content {
   line-height: 1.4;
-}
-.movie-btn-detail {
-  pointer-events: auto;
 }
 
 /* 폼 요소 */
