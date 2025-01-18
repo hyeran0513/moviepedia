@@ -228,7 +228,11 @@ summary {
 
 /* 버튼 */
 .btn-primary {
-  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 0 20px;
   height: 50px;
   background-color: var(--primary-color);
   color: #FFF;
@@ -289,6 +293,7 @@ main.--main {
   width: 100%;
   height: 80px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: var(--header-bg-color);
   z-index: 1000;
 }
 .header-inner {
@@ -301,6 +306,10 @@ main.--main {
 }
 .header--main {
   box-shadow: none;
+  background-color: transparent;
+}
+.header--main .utility_button > i {
+  color: var(--header-icon-color);
 }
 
 .logo {
@@ -336,7 +345,6 @@ main.--main {
 }
 .utility_button > i {
   font-size: 20px;
-  color: var(--header-icon-color);
 }
 .utility_button input[type=radio] {
   display: none;

@@ -6,6 +6,7 @@
   width: 100%;
   height: $header-height;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: var(--header-bg-color);
   z-index: 1000;
 
   &-inner {  
@@ -19,6 +20,15 @@
 
   &--main {
     box-shadow: none;
+    background-color: transparent;
+
+    .utility {
+      &_button {
+        & > i {
+          color: var(--header-icon-color);
+        }
+      }
+    }
   }
 }
 
@@ -58,7 +68,6 @@
     
     & > i {
       font-size: 20px;
-      color: var(--header-icon-color);
     }
 
     input[type="radio"] {

@@ -49,6 +49,13 @@ export const renderSwiperMovies = async () => {
                 </div>
 
                 <div class="movie-content">${movie.details.Plot !== "N/A" ? movie.details.Plot : "Description not available"}</div>
+              
+                <div class="btn-wrap">
+                  <a href="/detail.html?imdbID=${movie.imdbID}" class="btn-primary movie-btn-detail">
+                    <i class='bx bx-detail' ></i>
+                    <span>VIEW MOVIE DETAILS</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>

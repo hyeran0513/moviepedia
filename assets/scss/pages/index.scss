@@ -68,6 +68,7 @@
     max-width: 1200px;
     width: 100%;
     color: var(--swiper-text-color);
+    pointer-events: auto;
   }
 
   &-info {
@@ -98,6 +99,10 @@
   &-content {
     line-height: 1.4;
   }
+
+  &-btn-detail {
+    pointer-events: auto;
+  }
 }
 
 /* 폼 요소 */
@@ -120,6 +125,7 @@
     max-width: 1200px;
     width: 100%;
     z-index: 100;
+    pointer-events: none;
   }
 
   &-field {
@@ -149,6 +155,7 @@
       flex: 1;
       padding: 0 20px;
       height: 50px;
+      pointer-events: auto;
     }
 
     option {
@@ -170,5 +177,9 @@
      & > i {
       color: var(--form-placeholder-color);
      }
+  }
+
+  .btn-submit {
+    pointer-events: auto;
   }
 }
