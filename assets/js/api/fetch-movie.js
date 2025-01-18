@@ -57,8 +57,6 @@ const getMovies = async (title, year = "", page = 1, limit = 0, ) => {
         })
       )
 
-      console.log(JSON.stringify(moviesWithDetails));
-
       return {
         movies: moviesWithDetails,
         totalResults,

@@ -11,6 +11,7 @@
   --form-placeholder-color: light-dark(#A1A5B0, #A1A5B0);
   --form-border-color: light-dark(#DFDFDF, #3F424B);
   --scroll-bar-color: light-dark(#E8E8E8, #1C1D22);
+  --header-icon-color: light-dark(#FBFFFF, #FBFFFF);
   --header-bg-color: light-dark(#FFF, #232429);
   --footer-bg-color: light-dark(#F8F8F8, #1C1D22);
   --favorite-icon-color: light-dark(#FF4A29, #FF4A29);
@@ -325,8 +326,8 @@ main.--main {
   margin-left: auto;
 }
 .utility_button {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   color: var(--primary-text-color);
   cursor: pointer;
   display: flex;
@@ -334,14 +335,15 @@ main.--main {
   justify-content: center;
 }
 .utility_button > i {
-  font-size: 24px;
+  font-size: 20px;
+  color: var(--header-icon-color);
 }
 .utility_button input[type=radio] {
   display: none;
 }
 
 .footer {
-  height: 120px;
+  height: 80px;
   background-color: var(--footer-bg-color);
   color: var(--primary-text-color);
 }
@@ -349,7 +351,7 @@ main.--main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 120px;
+  height: 80px;
   width: 100%;
   height: 100%;
 }
