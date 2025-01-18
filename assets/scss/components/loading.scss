@@ -1,0 +1,15 @@
+@use "../base/variables" as *;
+
+.loading{
+
+  width: 300px;
+  background-color: var(--primary-bg-color);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & > div {
+    color: var(--primary-color);
+    border-radius: 50%;
+  }
+}
