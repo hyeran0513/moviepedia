@@ -1,9 +1,10 @@
 import { fetchMovie } from "../api/fetch-movie.js";
 
-export const initializeSwiper = (containerSelector, options = {}) => {
+export const initializeSwiper = (containerSelector) => {
   return new Swiper(containerSelector, {
     effect: 'fade',
     loop: true,
+    slidesPerView: 1,
     autoplay: {
       delay: 3000,
     },
@@ -11,7 +12,6 @@ export const initializeSwiper = (containerSelector, options = {}) => {
       el: '.swiper-pagination',
       clickable: true,
     },
-    ...options,
   });
 };
 

@@ -1,16 +1,11 @@
 import { initializeWeb } from './main.js';
-import { initializeSwiper, renderSwiperMovies } from '../components/swiper.js';
+import { renderSwiperMovies } from '../components/swiper.js';
 import { createYearOptions } from '../components/select.js';
 import { submitForm, deleteTitle, toggleDeleteButton  } from '../components/search-form.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // 웹 초기화 설정
   initializeWeb();
-
-  // Swiper 초기화
-  initializeSwiper('.swiper-container', {
-    slidesPerView: 1,
-  });
 
   // 스와이퍼 무비 렌더링
   renderSwiperMovies();
