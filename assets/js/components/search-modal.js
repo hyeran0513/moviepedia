@@ -24,50 +24,54 @@ export const loadSearchModal = () => {
       closeButton.addEventListener("click", () => {
         searchModal.style.display = "none";
       });
+
+      // 검색 모듈 로직 실행
+      initializeSearchModule();
     })
     .catch((error) => console.error("모달 fetch 오류:", error));
-
 };
 
+// DOM 변화를 감지하기 위한 MutationObserver
+function initializeSearchModule() {
+  const searchModal = document.getElementById("searchModal");
 
-document.addEventListener("DOMContentLoaded" , async function(){ 
-  searchModule();
-})
+  if (!searchModal) {
+    console.error("searchModal 요소를 찾을 수 없습니다.");
+    return;
+  }
 
-// 외부 모듈상태에서 DOMContentsLoad 옵션이 작동이 제대로 안됌.
-// search-modal.js가 searchModal.html보다 먼저 로딩되고있음
-async function searchModule () {
-    // const searchTarget = document.getElementsByClassName('modal-search__title');
-    const searchTarget = document.querySelector('modal-search__title');
+  const observer = new MutationObserver(() => {
+    const searchTarget = document.querySelector(".modal-search__title");
+    if (searchTarget) {
+      observer.disconnect(); // 감지 중단
+      setupSearchHandler(searchTarget);
+    }
+  });
 
-    console.log( 'searchTarget : ', searchTarget);
-
-    searchTarget.addEventListener( 'keyup' , async (e) => {
-      console.log('event : ' , e);
-      console.log( '입력한 제목 : ', searchTarget.innerHTML );
-
-      try{ 
-        if(searchTarget.value === null ){
-          console.log( '입력한 제목이 없음 ');
-          return;
-        }
-        
-        console.log( '입력한 제목 : ', searchTarget.value );
-        const result = await fetchExample(searchTarget.value);
-
-        console.log( '결과 : ', result);
-
-        /* <i class='bx bx-time' ></i> */
-
-      }catch(error){
-        throw new Error('예외 상황 발생 : ' + error );
-      }
-    });
+  observer.observe(searchModal, { childList: true, subtree: true });
 }
 
-// const searchTest = function(callback){
-//   document.readyState === "interactive" || document.readyState ==="complete" 
-//     ? callback() : document.addEventListener("DOMContentLoaded", callback);
-// }
+function setupSearchHandler(searchTarget) {
+  searchTarget.addEventListener("keyup", async (e) => {
+    console.log("event: ", e);
+    console.log("입력한 제목: ", searchTarget.innerHTML);
 
-// searchTest(searchModule);
+    try {
+      if (!searchTarget.value) {
+        console.log("입력한 제목이 없음");
+        return;
+      }
+
+      console.log("입력한 제목: ", searchTarget.value);
+      const result = await fetchExample(searchTarget.value);
+
+      console.log("결과: ", result);
+    } catch (error) {
+      console.error("예외 상황 발생: ", error);
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadSearchModal(); // DOMContentLoaded 이벤트에서 검색 모달 로드
+});
