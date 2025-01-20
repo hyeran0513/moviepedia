@@ -32,19 +32,12 @@ export const getMovieByTitle = async (title) => {
   return data;
 };
 
-export const getMovieByImdbID = async (imdbID) => {
-  const data = await getMoviesDetail(title);
-  return data;
-}
-
-const getMoviesDetail = async ( imdbID , year = "", page = 1) => {
-  const i = `&i=${encodeURIComponent(title)}`;
-  const y = `&y=${year}`;
-  const p = `&page=${page}`;
-// https://omdbapi.com/?apikey=${config.API_KEY}${i}${y}${p
+const getMoviesDetail = async ( imdbID) => {
+  const i = `&i=${encodeURIComponent(imdbID)}`;
+// https://omdbapi.com/?apikey=${config.API_KEY}${i}
   try {
     const res = await fetch(
-      `https://omdbapi.com/?apikey=${config.API_KEY}${i}${y}${p}`
+      `https://omdbapi.com/?apikey=${config.API_KEY}${i}`
     );
 
     const json = await res.json();
@@ -58,3 +51,8 @@ const getMoviesDetail = async ( imdbID , year = "", page = 1) => {
     console.log(error);
   }
 };
+
+export const getMovieByImdbID = async (imdbID) => {
+  const data = await getMoviesDetail(imdbID);
+  return data;
+}
