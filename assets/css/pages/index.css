@@ -308,10 +308,6 @@ main {
   padding: 80px 0 40px;
   max-width: 1200px;
 }
-main.--main {
-  padding: 0;
-  max-width: 100%;
-}
 
 .header {
   position: fixed;
@@ -389,20 +385,26 @@ main.--main {
   align-items: center;
   flex-direction: column;
   gap: 40px;
-  padding-top: 80px;
-  height: calc(100vh - 80px);
+  padding-top: 40px;
+  min-height: calc(100vh - 200px);
 }
 .main-section-title {
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 10px;
 }
 .main-section-title > i {
-  font-size: 40px;
+  font-size: 18px;
 }
-.main-section-title .txt {
-  font-size: 34px;
+.main-section-title .subtitle {
+  font-size: 28px;
+}
+.main-section-title .title {
+  font-size: 54px;
+  font-weight: bold;
+  background-image: linear-gradient(to right, var(--gradation-left-color), var(--gradation-right-color));
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 /* 스와이퍼 */
@@ -410,12 +412,12 @@ main.--main {
   display: flex;
   align-items: center;
   width: 900px;
-  height: 400px;
+  height: 350px;
 }
 .swiper-slide {
   background-position: center;
   background-size: cover;
-  width: 30%;
+  width: 28%;
 }
 
 /* 영화 */
@@ -452,7 +454,18 @@ main.--main {
   height: 100%;
   color: var(--swiper-text-color);
 }
+.movie-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: lnline-block;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 .movie-info {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 1rem;

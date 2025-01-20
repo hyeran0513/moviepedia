@@ -308,10 +308,6 @@ main {
   padding: 80px 0 40px;
   max-width: 1200px;
 }
-main.--main {
-  padding: 0;
-  max-width: 100%;
-}
 
 .header {
   position: fixed;
