@@ -1,3 +1,85 @@
-
+#searchModal .modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 10rem;
+  gap: 1.5rem;
+}
+#searchModal .modal-search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 1rem;
+  gap: 1rem;
+  background-color: var(--form-bg-color);
+  border: 0.1rem solid var(--form-border-color);
+  border-radius: 0.7rem;
+  color: var(--form-placeholder-color);
+}
+#searchModal .modal-search:hover {
+  cursor: text;
+}
+#searchModal .modal-search::placeholder {
+  color: var(--form-placeholder-color);
+}
+#searchModal .modal-search__delete {
+  cursor: pointer;
+}
+#searchModal .modal-search__list {
+  background-color: var(--form-bg-color);
+  width: 100%;
+  border: 0.1rem solid var(--form-border-color);
+  border-radius: 0.7rem;
+  max-height: 21rem;
+  overflow-y: scroll;
+}
+#searchModal .modal-search__alert {
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem 1.5rem;
+  border: 0.1rem solid var(--form-border-color);
+  background-color: var(--form-bg-color);
+}
+#searchModal .modal-search__ele {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem 1rem;
+  gap: 1rem;
+  border: 0.1rem solid var(--form-border-color);
+  background-color: var(--form-bg-color);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+#searchModal .modal-search__ele__img {
+  height: 6rem;
+}
+#searchModal .modal-search__ele__img > img {
+  object-fit: fit;
+  height: 100%;
+}
+#searchModal .modal-search__ele__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+#searchModal .modal-search__ele__title {
+  font-size: 1.2rem;
+  width: 20rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#searchModal .modal-search__ele__desc {
+  display: flex;
+  justify-content: start;
+  color: var(--form-placeholder-color);
+  gap: 1rem;
+}
 
 /*# sourceMappingURL=searhModal.css.map */
