@@ -82,10 +82,10 @@
   padding: 0 20px;
   height: 50px;
   background-color: var(--primary-color);
-  color: #FFF;
+  color: #fff;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color .3s ease;
+  transition: background-color 0.3s ease;
 
   &:hover {
     background-color: var(--primary-hover-color);
@@ -106,7 +106,7 @@ select {
     position: relative;
     width: 100%;
   }
-  
+
   &-icon {
     position: absolute;
     top: 50%;
@@ -116,4 +116,26 @@ select {
     pointer-events: none;
     color: var(--form-placeholder-color);
   }
+}
+
+/* 한 줄 말줄임 */
+.ellipsis {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 다중 줄 말줄임 */
+.multi-ellipsis {
+  display: block;
+  display: -webkit-box;
+  display: -ms-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  max-width: 100%;
+  word-wrap: break-word;
+  word-break: keep-all;
+  text-overflow: ellipsis;
 }

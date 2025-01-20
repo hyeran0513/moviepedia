@@ -42,13 +42,6 @@
   max-width: 1200px;
   height: 100%;
 }
-.header--main {
-  box-shadow: none;
-  background-color: transparent;
-}
-.header--main .utility_button > i {
-  color: var(--header-icon-color);
-}
 
 .logo {
   width: 137px;

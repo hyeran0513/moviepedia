@@ -2,16 +2,20 @@ import { fetchMovie } from "../api/fetch-movie.js";
 
 export const initializeSwiper = (containerSelector) => {
   return new Swiper(containerSelector, {
-    effect: 'fade',
-    loop: true,
-    slidesPerView: 1,
+    effect: "coverflow",
     autoplay: {
       delay: 3000,
     },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
+    centeredSlides: true,
+    slidesPerView: "auto",
+    coverflowEffect: {
+      rotate: 15,
+      stretch: 0,
+      depth: 300,
+      modifier: 1,
+      slideShadows: true,
     },
+    loop: true,
   });
 };
 
@@ -25,13 +29,17 @@ export const renderSwiperMovies = async () => {
         return `
           <div class="swiper-slide">
             <div class="movie-poster">
-              ${movie.details.Poster === 'N/A' ? `
+              ${
+                movie.details.Poster === "N/A"
+                  ? `
                 <div class="movie-poster--default">
                   <i class='bx bx-image-alt'></i>
                 </div>
-              ` : `
+              `
+                  : `
                 <img src="${movie.details.Poster}" alt="${movie.Title}" />
-              `}
+              `
+              }
             </div>
 
             <div class="movie-container">
@@ -40,20 +48,34 @@ export const renderSwiperMovies = async () => {
                 <div class="movie-details">
                   <p class="movie-runtime">
                     <i class='bx bx-time' ></i>
-                    <span>${movie.details.Runtime !== "N/A" ? movie.details.Runtime : "0 min"}</span>
+                    <span>${
+                      movie.details.Runtime !== "N/A"
+                        ? movie.details.Runtime
+                        : "0 min"
+                    }</span>
                   </p>
                   <p class="movie-rating">
                     <i class='bx bx-star'></i>
-                    <span>${movie.details.imdbRating !== "N/A" ? movie.details.imdbRating : 0} / 10</span>
+                    <span>${
+                      movie.details.imdbRating !== "N/A"
+                        ? movie.details.imdbRating
+                        : 0
+                    } / 10</span>
                   </p>
                 </div>
 
-                <div class="movie-content">${movie.details.Plot !== "N/A" ? movie.details.Plot : "Description not available"}</div>
+                <div class="movie-content multi-ellipsis">${
+                  movie.details.Plot !== "N/A"
+                    ? movie.details.Plot
+                    : "Description not available"
+                }</div>
               
                 <div class="btn-wrap">
-                  <a href="/detail.html?imdbID=${movie.imdbID}" class="btn-primary movie-btn-detail">
+                  <a href="/detail.html?imdbID=${
+                    movie.imdbID
+                  }" class="btn-primary movie-btn-detail">
                     <i class='bx bx-detail' ></i>
-                    <span>VIEW MOVIE DETAILS</span>
+                    <span>VIEW DETAILS</span>
                   </a>
                 </div>
               </div>

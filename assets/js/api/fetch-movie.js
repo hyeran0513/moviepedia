@@ -9,10 +9,12 @@ const getHighResImageUrl = (posterUrl) => {
 // 영화 상세 정보 조회
 const getMovieDetails = async (imdbID) => {
   try {
-    const res = await fetch(`https://omdbapi.com/?apikey=${config.API_KEY}&i=${imdbID}`);
+    const res = await fetch(
+      `https://omdbapi.com/?apikey=${config.API_KEY}&i=${imdbID}`
+    );
     const movieDetails = await res.json();
-    
-     // 영화 상세 정보를 불러올 수 없으면 에러 처리
+
+    // 영화 상세 정보를 불러올 수 없으면 에러 처리
     if (movieDetails.Response === "False") {
       throw new Error(movieDetails.Error);
     }
@@ -27,10 +29,10 @@ const getMovieDetails = async (imdbID) => {
     console.error("영화 상세정보 fetch 오류", error);
     throw error;
   }
-}
+};
 
 // 영화 검색 결과 조회
-const getMovies = async (title, year = "", page = 1, limit = 0, ) => {
+const getMovies = async (title, year = "", page = 1, limit = 0) => {
   const s = `&s=${encodeURIComponent(title)}`;
   const y = `&y=${year}`;
   const p = `&page=${page}`;
@@ -52,10 +54,10 @@ const getMovies = async (title, year = "", page = 1, limit = 0, ) => {
           const movieDetails = await getMovieDetails(movie.imdbID);
           return {
             ...movie,
-            details: movieDetails
-          }
+            details: movieDetails,
+          };
         })
-      )
+      );
 
       return {
         movies: moviesWithDetails,

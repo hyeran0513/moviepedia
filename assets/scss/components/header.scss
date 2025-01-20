@@ -9,26 +9,13 @@
   background-color: var(--header-bg-color);
   z-index: 1000;
 
-  &-inner {  
+  &-inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
     max-width: $max-width;
     height: 100%;
-  }
-
-  &--main {
-    box-shadow: none;
-    background-color: transparent;
-
-    .utility {
-      &_button {
-        & > i {
-          color: var(--header-icon-color);
-        }
-      }
-    }
   }
 }
 
@@ -65,7 +52,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     & > i {
       font-size: 20px;
     }
