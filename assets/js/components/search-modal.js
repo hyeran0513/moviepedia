@@ -1,5 +1,6 @@
 import * as movieSearch from "../api/fetch-movie.js";
 
+// 로딩시 동작내용
 export const loadSearchModal = () => {
   const url =
     window.location.hostname === "hyeran0513.github.io"
@@ -32,6 +33,7 @@ export const loadSearchModal = () => {
       if (searchTarget) {
         existSearch = true;
         setupSearchHandler(searchTarget);
+        setFocus();
       }
 
       // 검색 모듈 로직 실행전 서치 모달창 삭제버튼 등록
@@ -40,8 +42,6 @@ export const loadSearchModal = () => {
         existDelete = true;
         searchTitleInit();
       }
-
-      
     })
     .catch((error) => console.error("모달 fetch 오류:", error));
 };
@@ -53,6 +53,16 @@ let total = 10;
 let limit = 10;
 let currentPage = 1;
 
+function setFocus() {
+  const searchBar = document.querySelector('.modal-search');
+  const searchText = document.querySelector('.modal-search__title')
+
+  searchBar.addEventListener('click', () => {
+    searchText.focus();
+  });
+}
+
+// searchModal.html 로딩시 동작내용
 async function setupSearchHandler(searchTarget) {
   const modalBody = document.querySelector(".modal-body");
 
@@ -96,6 +106,7 @@ async function setupSearchHandler(searchTarget) {
   });
 }
 
+// 검색된 영화를 html요소로 반환
 async function setupMovieContents(jsonData, options = {}) {
   let element = "";
   if (!jsonData.movies) {
@@ -146,6 +157,7 @@ async function setupMovieContents(jsonData, options = {}) {
   }
 }
 
+// 삭제버튼 클릭시 영화 제목 초기화
 function searchTitleInit() {
   const deleteButton = document.querySelector(".modal-search__delete");
   const inputBox = document.querySelector(".modal-search__title");
@@ -155,6 +167,7 @@ function searchTitleInit() {
   });
 }
 
+// 검색된 영화 리스트의 스크롤 이벤트
 const handleScroll = async () => {
   // const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
 
