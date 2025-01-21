@@ -210,6 +210,7 @@ function addList(modalBody) {
   if (!modalBody.querySelector("modal-search__list")) {
     const list = document.createElement("div");
     list.classList.add("modal-search__list");
+    list.classList.add("scroll");
 
     modalBody.appendChild(list);
     list.addEventListener('scroll' , handleScroll );

@@ -483,7 +483,6 @@ main {
   border: 0.1rem solid var(--form-border-color);
   border-radius: 0.7rem;
   max-height: 21rem;
-  overflow-y: scroll;
 }
 #searchModal .modal-search__alert {
   width: 100%;
@@ -531,6 +530,25 @@ main {
   justify-content: start;
   color: var(--form-placeholder-color);
   gap: 1rem;
+}
+.scroll {
+  overflow-y: scroll;
+  overflow: overlay;
+}
+
+.modal-search__list {
+  overflow: overlay;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 0.6rem;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background-color: var(--scroll-bar-color);
+  border-radius: 999rem;
+  height: 3rem;
+  transition: 1rem 0;
 }
 
 /*# sourceMappingURL=main.css.map */
