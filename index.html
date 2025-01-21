@@ -17,11 +17,20 @@
       href="https://cdn.jsdelivr.net/npm/preset.css@1.0.0/preset.min.css"
     />
 
-    <!-- index.css -->
-    <link rel="stylesheet" href="./assets/css/pages/index.css" />
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <!-- index.js -->
     <script type="module" src="./assets/js/utils/index.js"></script>
+
+    <!-- index.css -->
+    <link rel="stylesheet" href="./assets/css/pages/index.css" />
   </head>
   <body>
     <!-- 헤더 -->
@@ -31,10 +40,64 @@
 
     <!-- 메인 -->
     <main>
-      <h2 class="a11y-hidden">스와이퍼</h2>
+      <h2 class="a11y-hidden">영화 슬라이드</h2>
 
-      <section>
-        <div class="card"></div>
+      <section class="main-section">
+        <h2 class="main-section-title">
+          <span class="subtitle">Discover the film you’re looking for</span>
+          <p class="title">Find your next movie</p>
+        </h2>
+
+        <div class="swiper-container">
+          <div class="swiper-wrapper"></div>
+
+          <!-- 페이지네이션 -->
+          <div class="swiper-pagination"></div>
+        </div>
+
+        <!-- 폼 요소 -->
+        <form class="form" id="searchForm">
+          <!-- 영화 제목 검색 -->
+          <div class="form-field">
+            <div class="form-item">
+              <input
+                type="text"
+                id="movieTitle"
+                placeholder="Seach for movies..."
+              />
+
+              <button type="button" class="form-button form-button--delete">
+                <i class="bx bx-x-circle"></i>
+              </button>
+            </div>
+
+            <span class="form-info">
+              <i class="bx bx-info-circle"></i>
+              <span>Please enter the movie title</span>
+            </span>
+          </div>
+
+          <!-- 년도 선택 -->
+          <div class="form-field">
+            <div class="form-item">
+              <div class="select-container">
+                <select id="selectYear">
+                  <option value="">Year</option>
+                </select>
+
+                <i class="bx bx-chevron-down select-icon"></i>
+              </div>
+            </div>
+
+            <span class="form-info">
+              <i class="bx bx-info-circle"></i>
+              <span>Please select the year</span>
+            </span>
+          </div>
+
+          <!-- 검색 버튼 -->
+          <button type="submit" class="btn-primary btn-submit">Search</button>
+        </form>
       </section>
     </main>
 

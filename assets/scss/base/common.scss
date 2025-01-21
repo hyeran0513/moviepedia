@@ -72,3 +72,70 @@
     padding: 40px 30px 50px;
   }
 }
+
+/* 버튼 */
+.btn-primary {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 0 20px;
+  height: 50px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--primary-hover-color);
+  }
+}
+
+/* 셀렉트 박스 */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  cursor: pointer;
+}
+
+.select {
+  &-container {
+    position: relative;
+    width: 100%;
+  }
+
+  &-icon {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 20px;
+    pointer-events: none;
+    color: var(--form-placeholder-color);
+  }
+}
+
+/* 한 줄 말줄임 */
+.ellipsis {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 다중 줄 말줄임 */
+.multi-ellipsis {
+  display: block;
+  display: -webkit-box;
+  display: -ms-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  max-width: 100%;
+  word-wrap: break-word;
+  word-break: keep-all;
+  text-overflow: ellipsis;
+}
