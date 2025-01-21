@@ -7,7 +7,6 @@
   align-items: center;
   flex-direction: column;
   gap: 40px;
-  padding-top: 40px;
   min-height: calc(100vh - 200px);
 
   &-title {
@@ -140,6 +139,12 @@
   }
 }
 
+.btn-wrap {
+  &:has(.movie-btn-detail) {
+    margin-top: 10px;
+  }
+}
+
 /* 폼 요소 */
 .form {
   position: relative;
@@ -195,6 +200,20 @@
     option {
       background-color: var(--primary-bg-color);
     }
+
+    .btn-del {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      transition: opacity 0.3s ease;
+      cursor: pointer;
+
+      & > i {
+        color: var(--form-placeholder-color);
+      }
+    }
   }
 
   &-info {
@@ -202,14 +221,5 @@
     align-items: center;
     gap: 4px;
     margin-top: 6px;
-  }
-
-  &-button {
-    padding: 0 20px;
-    cursor: pointer;
-
-    & > i {
-      color: var(--form-placeholder-color);
-    }
   }
 }

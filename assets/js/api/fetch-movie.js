@@ -77,6 +77,6 @@ export const fetchMovie = async (title) => {
     throw new Error("영화를 검색하려면 제목이 필요합니다.");
   }
 
-  const data = await getMovies(title, "", 1, 5);
+  const data = await getMovies(title, "", 1, 6);
   return data;
 };

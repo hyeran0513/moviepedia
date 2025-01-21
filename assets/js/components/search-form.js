@@ -65,12 +65,12 @@ export const deleteTitle = () => {
 
 export const toggleDeleteButton = () => {
   const titleInput = document.getElementById("movieTitle");
-  const deleteButton = document.querySelector(".form-button--delete");
+  const deleteButton = document.querySelector(".btn-del");
 
   if (titleInput.value.trim() !== "") {
-    deleteButton.style.display = "inline-block"; // 삭제 버튼 표시
+    deleteButton.style.opacity = "1"; // 삭제 버튼 표시
   } else {
-    deleteButton.style.display = "none"; // 삭제 버튼 숨기기
+    deleteButton.style.opacity = "0"; // 삭제 버튼 숨기기
   }
 };
 

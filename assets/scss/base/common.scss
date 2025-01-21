@@ -83,7 +83,7 @@
   height: 50px;
   background-color: var(--primary-color);
   color: #fff;
-  border-radius: 8px;
+  border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 
@@ -110,7 +110,12 @@ select {
   &-icon {
     position: absolute;
     top: 50%;
-    right: 20px;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
     transform: translateY(-50%);
     font-size: 20px;
     pointer-events: none;
@@ -138,4 +143,89 @@ select {
   word-wrap: break-word;
   word-break: keep-all;
   text-overflow: ellipsis;
+}
+
+/* 세션 타이틀 */
+.section {
+  &-title {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    font-size: 32px;
+    font-weight: bold;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        var(--gradation-left-color),
+        var(--gradation-right-color)
+      );
+      opacity: 0.13;
+      border-radius: 20px;
+      z-index: -1;
+    }
+  }
+}
+
+/* 버튼 */
+.btn-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+/* 노데이터 */
+.no-data {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  height: 378px;
+  border: 1px solid var(--primary-border-color);
+  border-radius: 20px;
+
+  & > i {
+    font-size: 60px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  &__description {
+    font-size: 24px;
+    color: var(--secondary-text-color);
+  }
+}
+
+/* 찜 버튼 */
+.btn-favorite {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  background-color: var(--favorite-bg-color);
+  cursor: pointer;
+  z-index: 1;
+
+  & > i {
+    color: var(--favorite-icon-color);
+  }
 }

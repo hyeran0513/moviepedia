@@ -21,24 +21,38 @@ export const initializeSwiper = (containerSelector) => {
 
 export const renderSwiperMovies = async () => {
   const swiperWrapper = document.querySelector(".swiper-wrapper");
-  const data = await fetchMovie("ironman");
+  const data = await fetchMovie("mini");
 
   if (data.movies) {
     swiperWrapper.innerHTML = data.movies
       .map((movie) => {
+        const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
+        const isFavorite = favorites.some(
+          (item) => item.imdbID === movie.imdbID
+        );
+
         return `
           <div class="swiper-slide">
+            <button type="button" class="btn-favorite" data-movie='${JSON.stringify(
+              movie
+            )
+              .replace(/'/g, "&apos;")
+              .replace(/"/g, "&quot;")}'>
+
+              <i class='bx ${isFavorite ? "bxs-heart" : "bx-heart"}'></i>
+            </button>
+
             <div class="movie-poster">
               ${
                 movie.details.Poster === "N/A"
                   ? `
-                <div class="movie-poster--default">
-                  <i class='bx bx-image-alt'></i>
-                </div>
-              `
+                  <div class="movie-poster--default">
+                    <i class='bx bx-image-alt'></i>
+                  </div>
+                `
                   : `
-                <img src="${movie.details.Poster}" alt="${movie.Title}" />
-              `
+                  <img src="${movie.details.Poster}" alt="${movie.Title}" />
+                `
               }
             </div>
 
@@ -86,6 +100,34 @@ export const renderSwiperMovies = async () => {
       .join("");
 
     initializeSwiper(".swiper-container");
+
+    const favoriteButtons = document.querySelectorAll(".btn-favorite");
+
+    favoriteButtons.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        const movieData = JSON.parse(button.dataset.movie);
+        const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
+
+        const isFavorite = favorites.some(
+          (item) => item.imdbID === movieData.imdbID
+        );
+
+        if (isFavorite) {
+          const updatedFavorites = favorites.filter(
+            (item) => item.imdbID !== movieData.imdbID
+          );
+          sessionStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+        } else {
+          favorites.push(movieData);
+          sessionStorage.setItem("favorites", JSON.stringify(favorites));
+        }
+
+        // 하트 아이콘 업데이트
+        const heartIcon = button.querySelector("i");
+        heartIcon.classList.toggle("bxs-heart", !isFavorite);
+        heartIcon.classList.toggle("bx-heart", isFavorite);
+      });
+    });
   } else {
     console.error("movies fetch 에러", data);
   }
