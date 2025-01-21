@@ -50,9 +50,6 @@ let total = 10;
 let limit = 10;
 
 
-// 사용자가 추가로 키를 입력하면 중단
-let controller = new AbortController();
-
 async function setupSearchHandler(searchTarget) {
   
   const list = document.querySelector('.modal-search__list');
@@ -64,22 +61,29 @@ async function setupSearchHandler(searchTarget) {
         return;
       }
 
-      controller.abort();
-      const result = await movieSearch.getMovieByTitle(searchTarget.value)
       
-      console.log("결과: ", result);
+      // 사용자가 추가로 키를 입력하면 중단
+      let controller = new AbortController();
+      let signal = controller.signal;
+      controller.abort();
+      const result = await movieSearch.getMovieByTitle(searchTarget.value , {signal});
+      
+      // console.log("결과: ", result);
 
-      let searchResult = await setupMovieContents(result).then();
-      console.log("결과 포맷팅 : " , searchResult );
+      let searchResult = await setupMovieContents(result , {signal} );
+      // console.log("결과 포맷팅 : " , searchResult );
       
       list.innerHTML = searchResult;
     } catch (error) {
-      console.error("예외 상황 발생: ", error , " m : " , error.message);
+      if(error.name === 'AbortError') {
+        console.log("요청 취소 확인");
+        console.error("예외 상황 발생: ", error , " m : " , error.message);
+      }
     }
   });
 }
 
-async function setupMovieContents( jsonData ){
+async function setupMovieContents( jsonData , options = {} ){
   let element = '';
   if( !jsonData.movies ){
     element = `<p class="modal-search__alert">
@@ -90,8 +94,8 @@ async function setupMovieContents( jsonData ){
 
   try{
     for( const movie of jsonData.movies){
-        console.log( movie);
-      let runTime = await ( movieSearch.getMovieByImdbID(movie.imdbID) );
+        // console.log( movie);
+      let runTime = await ( movieSearch.getMovieByImdbID(movie.imdbID , options) );
       
       element += `
           <div class="modal-search__ele">
@@ -139,15 +143,22 @@ function searchTitleInit(){
 }
 
 
-const handleScroll = () => {
+const handleScroll = async() => {
   const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
   
   // 현재 스크롤 위치와 화면 높이, 전체 문서 높이를 계산하여
   // 사용자가 페이지 하단에 도달했는가를 물어보는 조건
   if(scrollTop + clientHeight >= scrollHeight -5){
     currentPage++;
-    total +=limit;
-    loadPosts(currentPage, limit);
+    await loadPosts(currentPage);
     return;
   }
+}
+
+async function loadPosts( currentPage){
+  let movies = await movieSearch.getMovieByTitle(searchTarget.value,"",currentPage, {signal});
+  
+  const list = document.querySelector('.modal-search__list');
+  
+  
 }

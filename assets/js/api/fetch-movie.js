@@ -1,6 +1,6 @@
 import config from "../config/config.js";
 
-const getMovies = async (title, year = "", page = 1) => {
+const getMovies = async (title, year = "", page = 1 , options) => {
   const s = `&s=${encodeURIComponent(title)}`;
   const y = `&y=${year}`;
   const p = `&page=${page}`;
@@ -8,6 +8,7 @@ const getMovies = async (title, year = "", page = 1) => {
   try {
     const res = await fetch(
       `https://omdbapi.com/?apikey=${config.API_KEY}${s}${y}${p}`
+      , options
     );
 
     const json = await res.json();
@@ -27,17 +28,18 @@ const getMovies = async (title, year = "", page = 1) => {
   }
 };
 
-export const getMovieByTitle = async (title) => {
-  const data = await getMovies(title);
+export const getMovieByTitle = async (title , year = "", page = 1, options = {}) => {
+  const data = await getMovies(title, year , page, options);
   return data;
 };
 
-const getMoviesDetail = async ( imdbID) => {
+const getMoviesDetail = async ( imdbID , options = {}) => {
   const i = `&i=${encodeURIComponent(imdbID)}`;
 // https://omdbapi.com/?apikey=${config.API_KEY}${i}
   try {
     const res = await fetch(
       `https://omdbapi.com/?apikey=${config.API_KEY}${i}`
+      , options
     );
 
     const json = await res.json();
