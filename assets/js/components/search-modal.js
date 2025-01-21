@@ -77,37 +77,34 @@ async function setupSearchHandler(searchTarget) {
       // let controller = new AbortController();
       // let signal = controller.signal;
       // controller.abort();
+      
+      // 추가로 키를 입력시 시작 검색페이지 초기화
       currentPage = 1;
+      const result = await movieSearch.getMoviesByOptions( searchTarget.value , currentPage, limit );
+    
+      total = result.totalResults;
 
-      const result 
-        = await movieSearch.getMovieByTitle( searchTarget.value, "" , currentPage, {
-          // signal
-        } );
-      let searchResult 
-        = await setupMovieContents(result, { 
-          // signal
-         });
+      let searchResult = await setupMovieContents(result);
 
       if( ! modalBody.querySelector('.modal-search__list')){
         addList(modalBody);
       }
       
       const list = modalBody.querySelector('.modal-search__list');
-      console.log(list);
-      console.log(searchResult);
+      
       list.innerHTML = searchResult;
       
     } catch (error) {
       if (error.name === "AbortError") {
         console.log("요청 취소 확인");
-        console.error("예외 상황 발생: ", error, " m : ", error.message);
       }
+      console.error("예외 상황 발생: ", error, " m : ", error.message);
     }
   });
 }
 
 // 검색된 영화를 html요소로 반환
-async function setupMovieContents(jsonData, options = {}) {
+async function setupMovieContents(jsonData) {
   let element = "";
   if (!jsonData.movies) {
     element = `<p class="modal-search__alert">
@@ -118,9 +115,6 @@ async function setupMovieContents(jsonData, options = {}) {
 
   try {
     for (const movie of jsonData.movies) {
-      // console.log( movie);
-      let runTime = await movieSearch.getMovieByImdbID(movie.imdbID, options);
-
       element += `
           <div class="modal-search__ele">
             <div class="modal-search__ele__img">
@@ -141,7 +135,7 @@ async function setupMovieContents(jsonData, options = {}) {
 
                 <p class="modal-search__ele__runtime">
                   <i class='bx bx-time'></i>
-                  ${runTime.Runtime}
+                  ${movie.details.Runtime}
                 </p>
               </div>
 
@@ -169,66 +163,21 @@ function searchTitleInit() {
 
 // 검색된 영화 리스트의 스크롤 이벤트
 const handleScroll = async () => {
-  // const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-
-  // console.log( " scrollTop " , scrollTop);
-
-  // // 현재 스크롤 위치와 화면 높이, 전체 문서 높이를 계산하여
-  // // 사용자가 페이지 하단에 도달했는가를 물어보는 조건
-  // // 검색모달의 스크롤 바가 아니라 창의 스클롤바를 검색함
-  // if (scrollTop + clientHeight >= scrollHeight - 5) {
-  //   console.log("검색창의 스크롤의 최하단에 도착함");
-  //   currentPage++;
-  //   await loadPosts(currentPage);
-  //   return;
-  // }
-
   const list = document.querySelector('.modal-search__list');
 
-  // let y = list.scrollTop; // 현재 스크롤 위치
-  
-  console.log( "list.scrollTop : " , list.scrollTop );
-  //스크롤 높이인데 이게 요소의 스크롤 높이는 아닌 것 같음.
-  // 요소의 스크롤이 맨 아래에 닿아도 더이상 닿을수 없는 값임.
-  //  스크롤 최하위치 : 806
-  //  스크롤 높이 : 1140
-  // 아마도 모달차의 높이로 예상됨.
-  console.log( "list.scrollHeight : " , list.scrollHeight ); 
-  // console.log( "list.clientTop : " , list.clientTop ); // 모달창 modal-search__list 요소의 부모요소의 위치에서 시작위치로 예상됨
-  // console.log( "list.clientHeight : " , list.clientHeight );  // 모달창 modal-search__list 요소의 높이로 예상됨
-
-  if( list.scrollHeight - list.scrollTop <  500  ){
-    console.log( 
-      "list.scrollHeight - list.scrollTop <  list.clientHeight : ",list.scrollHeight - list.scrollTop
-    );
-    loadPosts(currentPage++ );
-    console.log("loadPosts 동작");
+  if( list.scrollHeight - list.scrollTop <  500 && (total > currentPage*limit) ){
+    await loadPosts();
   }
-  /*
-  scrollHeight
-https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight
-scrollHeight은 padding 영역까지 포함한 element의 높이입니다.
-
-  clientHeight
-https://developer.mozilla.org/en-US/docs/Web/API/Element/clientHeight
-박스 모델에서 padding + content 를 포함한 높이이나, 최댓값은 현재 사용자에게 보여지는 부분의 높이로 한정됩니다.
-  */
 };
 
-async function loadPosts(currentPage) {
+async function loadPosts() {
+  currentPage++;
   const searchTarget = document.querySelector(".modal-search__title");
 
   const list = document.querySelector(".modal-search__list");
 
-  let movies = await movieSearch.getMovieByTitle(
-    searchTarget.value,
-    "",
-    currentPage,
-    {}
-  );
-
-  let result = movies;
-  let searchResult = await setupMovieContents(result, {} );
+  let result = await movieSearch.getMoviesByOptions( searchTarget.value, currentPage , limit);
+  let searchResult = await setupMovieContents(result);
 
   list.innerHTML += searchResult;
 }
@@ -256,6 +205,7 @@ function removeLoader(HTMLElement) {
   HTMLElement.removeChild(loader);
 }
 
+// 모달창에 검색결과 추가
 function addList(modalBody) {
   if (!modalBody.querySelector("modal-search__list")) {
     const list = document.createElement("div");
@@ -263,17 +213,14 @@ function addList(modalBody) {
 
     modalBody.appendChild(list);
     list.addEventListener('scroll' , handleScroll );
-
-    console.log("모달 바디에 리스트 추가");
   }
 }
 
+// 모달창에 검색결과 삭제
 function removeList(modalBody) {
   if (modalBody.querySelector(".modal-search__list")) {
     const list = modalBody.querySelector(".modal-search__list");
 
     modalBody.removeChild(list);
-
-    console.log("모달 바디에 리스트 삭제");
   }
 }

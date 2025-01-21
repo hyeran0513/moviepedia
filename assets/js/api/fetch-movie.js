@@ -81,3 +81,15 @@ export const fetchMovie = async (title) => {
   const data = await getMovies(title, "", 1, 5);
   return data;
 };
+
+export const getMoviesByOptions = async (title, page, limit) => {
+  if (!title) {
+    throw new Error("영화를 검색하려면 제목이 필요합니다.");
+  }
+  else{
+    title = title.replace( " " , "+");
+  }
+
+  const data = await getMovies(title,"", page, limit);
+  return data;
+}
