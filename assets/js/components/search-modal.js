@@ -40,26 +40,24 @@ export const loadSearchModal = () => {
         existDelete = true;
         searchTitleInit();
       }
+
+      
     })
     .catch((error) => console.error("모달 fetch 오류:", error));
 };
-
 
 
 // 서치모달 스크롤시 추가 검색용도의 프로퍼티
 let now = 10;
 let total = 10;
 let limit = 10;
+let currentPage = 1;
 
 async function setupSearchHandler(searchTarget) {
   const modalBody = document.querySelector(".modal-body");
 
-  // const list = document.querySelector('.modal-search__list');
-  // list.innerHTML = '';
-
   searchTarget.addEventListener("keyup", async (e) => {
     try {
-      addLoader(modalBody);
       // addLoader(modalBody);
       if (!searchTarget.value) {
         return;
@@ -69,18 +67,24 @@ async function setupSearchHandler(searchTarget) {
       // let controller = new AbortController();
       // let signal = controller.signal;
       // controller.abort();
+      currentPage = 1;
 
       const result 
-        = await movieSearch.getMovieByTitle( searchTarget.value, {signal} );
+        = await movieSearch.getMovieByTitle( searchTarget.value, "" , currentPage, {
+          // signal
+        } );
       let searchResult 
-        = await setupMovieContents(result, { signal }).then(
-        () => {
-          removeLoader(modalBody);
-        }
-      );
+        = await setupMovieContents(result, { 
+          // signal
+         });
 
-      addList(modalBody);
-
+      if( ! modalBody.querySelector('.modal-search__list')){
+        addList(modalBody);
+      }
+      
+      const list = modalBody.querySelector('.modal-search__list');
+      console.log(list);
+      console.log(searchResult);
       list.innerHTML = searchResult;
       
     } catch (error) {
@@ -152,26 +156,68 @@ function searchTitleInit() {
 }
 
 const handleScroll = async () => {
-  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+  // const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
 
-  // 현재 스크롤 위치와 화면 높이, 전체 문서 높이를 계산하여
-  // 사용자가 페이지 하단에 도달했는가를 물어보는 조건
-  if (scrollTop + clientHeight >= scrollHeight - 5) {
-    currentPage++;
-    await loadPosts(currentPage);
-    return;
+  // console.log( " scrollTop " , scrollTop);
+
+  // // 현재 스크롤 위치와 화면 높이, 전체 문서 높이를 계산하여
+  // // 사용자가 페이지 하단에 도달했는가를 물어보는 조건
+  // // 검색모달의 스크롤 바가 아니라 창의 스클롤바를 검색함
+  // if (scrollTop + clientHeight >= scrollHeight - 5) {
+  //   console.log("검색창의 스크롤의 최하단에 도착함");
+  //   currentPage++;
+  //   await loadPosts(currentPage);
+  //   return;
+  // }
+
+  const list = document.querySelector('.modal-search__list');
+
+  // let y = list.scrollTop; // 현재 스크롤 위치
+  
+  console.log( "list.scrollTop : " , list.scrollTop );
+  //스크롤 높이인데 이게 요소의 스크롤 높이는 아닌 것 같음.
+  // 요소의 스크롤이 맨 아래에 닿아도 더이상 닿을수 없는 값임.
+  //  스크롤 최하위치 : 806
+  //  스크롤 높이 : 1140
+  // 아마도 모달차의 높이로 예상됨.
+  console.log( "list.scrollHeight : " , list.scrollHeight ); 
+  // console.log( "list.clientTop : " , list.clientTop ); // 모달창 modal-search__list 요소의 부모요소의 위치에서 시작위치로 예상됨
+  // console.log( "list.clientHeight : " , list.clientHeight );  // 모달창 modal-search__list 요소의 높이로 예상됨
+
+  if( list.scrollHeight - list.scrollTop <  500  ){
+    console.log( 
+      "list.scrollHeight - list.scrollTop <  list.clientHeight : ",list.scrollHeight - list.scrollTop
+    );
+    loadPosts(currentPage++ );
+    console.log("loadPosts 동작");
   }
+  /*
+  scrollHeight
+https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight
+scrollHeight은 padding 영역까지 포함한 element의 높이입니다.
+
+  clientHeight
+https://developer.mozilla.org/en-US/docs/Web/API/Element/clientHeight
+박스 모델에서 padding + content 를 포함한 높이이나, 최댓값은 현재 사용자에게 보여지는 부분의 높이로 한정됩니다.
+  */
 };
 
 async function loadPosts(currentPage) {
+  const searchTarget = document.querySelector(".modal-search__title");
+
+  const list = document.querySelector(".modal-search__list");
+
   let movies = await movieSearch.getMovieByTitle(
     searchTarget.value,
     "",
     currentPage,
-    { signal }
+    {}
   );
 
-  const list = document.querySelector(".modal-search__list");
+  let result = movies;
+  let searchResult = await setupMovieContents(result, {} );
+
+  list.innerHTML += searchResult;
 }
 
 // 로딩 애니메이션이 적용될 요소에 사용
@@ -203,6 +249,7 @@ function addList(modalBody) {
     list.classList.add("modal-search__list");
 
     modalBody.appendChild(list);
+    list.addEventListener('scroll' , handleScroll );
 
     console.log("모달 바디에 리스트 추가");
   }
