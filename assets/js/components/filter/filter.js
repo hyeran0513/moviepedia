@@ -1,4 +1,4 @@
-import { createCard } from "../components/card.js";
+import { createCard } from "../card/card.js";
 
 export const submitForm = (data, e) => {
   e.preventDefault();

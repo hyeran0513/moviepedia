@@ -1,10 +1,10 @@
 import { initializeWeb } from "./main.js";
-import { createCard } from "../components/card.js";
+import { createCard } from "../components/card/card.js";
 import {
   submitForm,
   deleteTitle,
   toggleDeleteButton,
-} from "../components/filter.js";
+} from "../components/filter/filter.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   initializeWeb();

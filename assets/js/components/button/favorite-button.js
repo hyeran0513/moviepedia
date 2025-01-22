@@ -1,4 +1,6 @@
-export const handleFavoriteButton = (button, updateCardsCallback) => {
+import { createCard } from "../card/card.js";
+
+export const handleFavoriteButton = (button) => {
   button.addEventListener("click", () => {
     const movieData = JSON.parse(button.dataset.movie);
     // 세션 스토리지에서의 찜한 영화 목록
@@ -14,7 +16,6 @@ export const handleFavoriteButton = (button, updateCardsCallback) => {
       const updatedFavorites = favorites.filter(
         (item) => item.imdbID !== movieData.imdbID
       );
-
       sessionStorage.setItem("favorites", JSON.stringify(updatedFavorites));
     } else {
       // 찜 목록에 없는 경우, 해당 영화 추가
@@ -22,12 +23,9 @@ export const handleFavoriteButton = (button, updateCardsCallback) => {
       sessionStorage.setItem("favorites", JSON.stringify(favorites));
     }
 
-    const updatedFavoritesList =
-      JSON.parse(sessionStorage.getItem("favorites")) || [];
-
-    // 업데이트된 찜 목록 카드 렌더링
-    if (updateCardsCallback) {
-      updateCardsCallback(updatedFavoritesList);
-    }
+    // 하트 아이콘 업데이트
+    const heartIcon = button.querySelector("i");
+    heartIcon.classList.toggle("bxs-heart", !isFavorite);
+    heartIcon.classList.toggle("bx-heart", isFavorite);
   });
 };

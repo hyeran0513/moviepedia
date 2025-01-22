@@ -1,4 +1,4 @@
-import { loadSearchModal } from "./search-modal.js";
+import { loadSearchModal } from "../search/search-modal.js";
 import { handleTheme } from "./theme.js";
 
 export const loadHeader = () => {

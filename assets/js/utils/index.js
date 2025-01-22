@@ -1,11 +1,11 @@
 import { initializeWeb } from "./main.js";
-import { renderSwiperMovies } from "../components/swiper.js";
-import { createYearOptions } from "../components/select.js";
+import { renderSwiperMovies } from "../components/main/swiper.js";
+import { createYearOptions } from "../components/common/select.js";
 import {
   submitForm,
   deleteTitle,
   toggleDeleteButton,
-} from "../components/search-form.js";
+} from "../components/main/search-form.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   // 웹 초기화 설정

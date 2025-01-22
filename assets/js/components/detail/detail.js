@@ -1,4 +1,4 @@
-import { getMovieDetails } from "../api/fetch-movie.js";
+import { getMovieDetails } from "../../api/movie.js";
 
 // 영화 정보 렌더링
 const renderMovieInfo = (movieData) => {

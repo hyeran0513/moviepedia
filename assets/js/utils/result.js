@@ -1,6 +1,6 @@
 import { initializeWeb } from "./main.js";
-import { createCard } from "../components/card.js";
-import { getMovies } from "../api/fetch-movie.js";
+import { createCard } from "../components/card/card.js";
+import { getMovies } from "../api/movie.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   initializeWeb();

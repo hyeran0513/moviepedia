@@ -1,4 +1,4 @@
-import * as movieSearch from "../api/fetch-movie.js";
+import * as movieSearch from "../../api/movie.js";
 
 // 로딩시 동작내용
 export const loadSearchModal = () => {
