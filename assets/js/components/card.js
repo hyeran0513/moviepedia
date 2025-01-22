@@ -1,4 +1,4 @@
-import { handleFavoriteButton } from "./favoriteButton.js";
+import { handleFavoriteButton } from "./favorite-button.js";
 
 export const itemsPerPage = 10;
 export let currentIndex = 0;

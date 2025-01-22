@@ -1,4 +1,5 @@
-import { loadSearchModal } from './search-modal.js';
+import { loadSearchModal } from "./search-modal.js";
+import { handleTheme } from "./theme.js";
 
 export const loadHeader = () => {
   const url =
@@ -20,6 +21,9 @@ export const loadHeader = () => {
 
       // 검색 모달 실행
       loadSearchModal();
+
+      // 테마 변경
+      handleTheme();
     })
     .catch((error) => console.error("헤더 fetch 오류:", error));
 };

@@ -113,6 +113,7 @@
   height: 50px;
   background-color: var(--form-bg-color);
   border-radius: 10px;
+  border: 1px solid var(--primary-border-color);
 }
 .search-container .btn-del {
   padding: 0 30px;
