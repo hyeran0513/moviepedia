@@ -9,6 +9,10 @@
   --form-bg-color: light-dark(#fefefe, #333742);
   --form-placeholder-color: light-dark(#a1a5b0, #a1a5b0);
   --form-border-color: light-dark(#dfdfdf, #3f424b);
+  --form-main-bg-color: light-dark(
+    rgba(0, 0, 0, 0.5),
+    rgba(255, 255, 255, 0.5)
+  );
   --scroll-bar-color: light-dark(#e8e8e8, #1c1d22);
   --header-icon-color: light-dark(#fbffff, #fbffff);
   --header-bg-color: light-dark(#fff, #232429);

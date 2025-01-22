@@ -34,7 +34,54 @@
       <h2 class="a11y-hidden">찜 목록</h2>
 
       <section>
-        <p>찜 목록</p>
+        <div class="section-title">Favorite</div>
+
+        <div class="filter">
+          <div class="filter-field">
+            <div class="filter-item">
+              <input
+                type="text"
+                id="movieTitle"
+                placeholder="Seach for movies..."
+              />
+
+              <button type="button" class="btn-del">
+                <i class="bx bx-x-circle"></i>
+              </button>
+            </div>
+
+            <span class="filter-info">
+              <i class="bx bx-info-circle"></i>
+              <span>Please enter the movie title</span>
+            </span>
+          </div>
+
+          <!-- 검색 버튼 -->
+          <button
+            type="button"
+            id="searchForm"
+            class="btn-primary filter-button"
+          >
+            Search
+          </button>
+        </div>
+
+        <!-- 카드 목록 -->
+        <div class="card"></div>
+
+        <!-- 노데이터 -->
+        <div class="no-data">
+          <i class="bx bx-data"></i>
+          <p class="no-data__title">No results found.</p>
+          <span class="no-data__description"
+            >We can’t find any item matching your search.</span
+          >
+        </div>
+
+        <!-- 더 보기 -->
+        <div class="btn-wrap">
+          <button type="button" class="btn-primary btn-more">More</button>
+        </div>
       </section>
     </main>
 
