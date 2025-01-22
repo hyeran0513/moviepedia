@@ -1,9 +1,5 @@
 import { getMovieDetails } from "../../api/movie.js";
-import {
-  updateButtonState,
-  updateHeartIcon,
-  handleFavoriteButton,
-} from "../button/favorite-button.js";
+import { handleFavoriteButton } from "../button/favorite-button.js";
 
 // 영화 정보 렌더링
 const renderMovieInfo = (movieData) => {
@@ -72,15 +68,16 @@ export const createDetail = async () => {
     const isFavorite = favorites.some((favorite) => favorite.imdbID === imdbID);
 
     favoriteBtnWrap.innerHTML = `
-    <button type="button" class="btn-favorite--lg ${
-      isFavorite ? "--active" : ""
-    }"
-    }'" data-movie='${JSON.stringify(movieData)
-      .replace(/'/g, "&apos;")
-      .replace(/"/g, "&quot;")}' >
-      <i class='bx ${isFavorite ? "bxs-heart" : "bx-heart"}'></i>
-      <span>favorite</span>
-    </button>`;
+      <button type="button" class="btn-favorite--lg ${
+        isFavorite ? "--active" : ""
+      }"
+      }'" data-movie='${JSON.stringify(movieData)
+        .replace(/'/g, "&apos;")
+        .replace(/"/g, "&quot;")}' >
+        <i class='bx ${isFavorite ? "bxs-heart" : "bx-heart"}'></i>
+        <span>favorite</span>
+      </button>
+    `;
 
     const favoriteButton = document.querySelector(".btn-favorite--lg");
 

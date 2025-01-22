@@ -33,8 +33,8 @@ export const getMovieDetails = async (imdbID) => {
 
 // 영화 검색 결과 조회
 export const getMovies = async (title, year = "", page = 1, limit = 0) => {
-  const s = `&s=${encodeURIComponent(title)}`;
-  const y = `&y=${year}`;
+  const s = title ? `&s=${encodeURIComponent(title)}` : "";
+  const y = year ? `&y=${year}` : "";
   const p = `&page=${page}`;
 
   try {
@@ -71,13 +71,14 @@ export const getMovies = async (title, year = "", page = 1, limit = 0) => {
   }
 };
 
-export const getMoviesByOptions = async (title, page, limit) => {
-  if (!title) {
-    throw new Error("영화를 검색하려면 제목이 필요합니다.");
-  } else {
-    title = title.replace(" ", "+");
-  }
+// export const getMoviesByOptions = async (title, page, limit) => {
+//   if (!title) {
+//     throw new Error("영화를 검색하려면 제목이 필요합니다.");
+//   }
+//   else{
+//     title = title.replace( " " , "+");
+//   }
 
-  const data = await getMovies(title, "", page, limit);
-  return data;
-};
+//   const data = await getMovies(title,"", page, limit);
+//   return data;
+// }
