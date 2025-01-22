@@ -47,7 +47,6 @@ const getMovies = async (title, year = "", page = 1, limit = 0) => {
     if (json.Response === "True") {
       const { Search: movies, totalResults } = json;
 
-
       const limitedMovies = limit > 0 ? movies.slice(0, limit) : movies;
 
       const moviesWithDetails = await Promise.all(
@@ -85,11 +84,10 @@ export const fetchMovie = async (title) => {
 export const getMoviesByOptions = async (title, page, limit) => {
   if (!title) {
     throw new Error("영화를 검색하려면 제목이 필요합니다.");
-  }
-  else{
-    title = title.replace( " " , "+");
+  } else {
+    title = title.replace(" ", "+");
   }
 
-  const data = await getMovies(title,"", page, limit);
+  const data = await getMovies(title, "", page, limit);
   return data;
-}
+};

@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MOVIEPEDIA</title>
 
+    <script
+      src="https://kit.fontawesome.com/60ab63ffec.js"
+      crossorigin="anonymous"
+    ></script>
     <!-- boxicons -->
     <link
       href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
@@ -30,11 +34,64 @@
     <header id="header" class="header"></header>
 
     <!-- 메인 -->
-    <main>
+    <main class="main">
       <h2 class="a11y-hidden">영화 상세 정보</h2>
 
-      <section>
+      <section class="moviePoster">
         <p>영화 상세 정보</p>
+        <div class="poster-img">
+          <img class="img_card" src="" alt="" />
+        </div>
+
+        <div class="poster-fav">
+          <button class="fav_btn" type="submit">
+            <i id="heart" class="fa-regular fa-heart"></i>
+            <span>favorite</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="movieDesc">
+        <div class="title">
+          <h2 class="title_name"></h2>
+        </div>
+
+        <div class="storyline">
+          <h3>storyline</h3>
+          <p class="storyline_name"></p>
+        </div>
+
+        <div class="desc">
+          <div class="desc_title">
+            <h4 class="rating">Rating</h4>
+            <p class="rating_name"></p>
+          </div>
+
+          <div class="desc_title">
+            <h4 class="releaseDate">Release Date</h4>
+            <p class="releaseDate_name"></p>
+          </div>
+
+          <div class="desc_title">
+            <h4 class="genres">Genres</h4>
+            <p class="genres_name"></p>
+          </div>
+
+          <div class="desc_title">
+            <h4 class="duration">Duration</h4>
+            <p class="duration_name"></p>
+          </div>
+
+          <div class="desc_title">
+            <h4 class="cast">Cast</h4>
+            <p class="cast_name"></p>
+          </div>
+
+          <div class="desc_title">
+            <h4 class="director">Director</h4>
+            <p class="director_name"></p>
+          </div>
+        </div>
       </section>
     </main>
 
