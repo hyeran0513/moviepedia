@@ -229,6 +229,9 @@ summary {
 .modal-body {
   padding: 40px 30px 50px;
 }
+.modal-container {
+  margin: 0 auto;
+}
 
 /* 버튼 */
 .btn-primary {
@@ -349,7 +352,7 @@ select {
   font-weight: bold;
 }
 .no-data__description {
-  font-size: 24px;
+  font-size: 18px;
   color: var(--secondary-text-color);
 }
 
@@ -370,6 +373,25 @@ select {
 }
 .btn-favorite > i {
   color: var(--favorite-icon-color);
+}
+
+/* 스크롤 */
+.scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scroll::-webkit-scrollbar-thumb {
+  background: var(--scroll-bar-color);
+  border-radius: 50px;
+}
+.scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--scroll-bar-color);
+}
+.scroll::-webkit-scrollbar-button {
+  display: none;
 }
 
 body {
@@ -461,26 +483,26 @@ main {
 }
 
 .loading {
-  width: 300px;
-  background-color: var(--primary-bg-color);
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  width: 300px;
+  background-color: var(--primary-bg-color);
 }
-.loading > div {
+.loading .dot {
   width: 1rem;
   aspect-ratio: 1;
   background-color: var(--primary-color);
   border-radius: 50%;
 }
-.loading > div:nth-child(1) {
+.loading .dot:nth-child(1) {
   animation: loadingBubble 3s -1s infinite;
 }
-.loading > div:nth-child(2) {
+.loading .dot:nth-child(2) {
   animation: loadingBubble 3s -0.5s infinite;
 }
-.loading > div:nth-child(3) {
+.loading .dot:nth-child(3) {
   animation: loadingBubble 3s 0s infinite;
 }
 
@@ -530,106 +552,100 @@ main {
     scale: 0;
   }
 }
-#searchModal .modal-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 3rem 10rem;
-  gap: 1.5rem;
+#searchModal .modal-container {
+  max-width: 500px;
 }
-#searchModal .modal-search {
+
+/* 검색 영역 */
+.search-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 1rem 1rem;
-  gap: 1rem;
+  margin-bottom: 20px;
+  padding-left: 30px;
+  height: 50px;
   background-color: var(--form-bg-color);
-  border: 0.1rem solid var(--form-border-color);
-  border-radius: 0.7rem;
-  color: var(--form-placeholder-color);
+  border-radius: 10px;
 }
-#searchModal .modal-search:hover {
-  cursor: text;
-}
-#searchModal .modal-search::placeholder {
-  color: var(--form-placeholder-color);
-}
-#searchModal .modal-search__delete {
-  cursor: pointer;
-}
-#searchModal .modal-search__list {
-  background-color: var(--form-bg-color);
-  width: 100%;
-  border: 0.1rem solid var(--form-border-color);
-  border-radius: 0.7rem;
-  max-height: 21rem;
-}
-#searchModal .modal-search__alert {
-  width: 100%;
-  height: 100%;
-  padding: 1.5rem 1.5rem;
-  border: 0.1rem solid var(--form-border-color);
-  background-color: var(--form-bg-color);
-}
-#searchModal .modal-search__ele {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  width: 100%;
-  height: 100%;
-  padding: 0.5rem 1rem;
-  gap: 1rem;
-  border: 0.1rem solid var(--form-border-color);
-  background-color: var(--form-bg-color);
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  cursor: pointer;
-}
-#searchModal .modal-search__ele__img {
-  height: 6rem;
-}
-#searchModal .modal-search__ele__img > img {
-  object-fit: fit;
-  height: 100%;
-}
-#searchModal .modal-search__ele__info {
+.search-container .btn-del {
+  padding: 0 30px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  gap: 0.5rem;
+  align-items: center;
+  margin-left: auto;
+  cursor: pointer;
 }
-#searchModal .modal-search__ele__title {
-  font-size: 1.2rem;
-  width: 20rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-#searchModal .modal-search__ele__desc {
-  display: flex;
-  justify-content: start;
+.search-container .btn-del > i {
   color: var(--form-placeholder-color);
-  gap: 1rem;
 }
-.scroll {
-  overflow-y: scroll;
-  overflow: overlay;
+.search-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+.search-input {
+  width: 100%;
+}
+.search-input::placeholder {
+  color: var(--form-placeholder-color);
+}
+.search-icon {
+  color: var(--form-placeholder-color);
 }
 
-.modal-search__list {
-  overflow: overlay;
+/* 영화 목록 */
+.movie__list {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--form-bg-color);
+  border-radius: 10px;
+  overflow: hidden;
+  overflow-y: auto;
+  height: 347.01px;
 }
-
-.scroll::-webkit-scrollbar {
-  width: 0.6rem;
+.movie__item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 30px;
+  cursor: pointer;
 }
-
-.scroll::-webkit-scrollbar-thumb {
-  background-color: var(--scroll-bar-color);
-  border-radius: 999rem;
-  height: 3rem;
-  transition: 1rem 0;
+.movie__item:not(:last-child) {
+  border-bottom: 1px solid var(--primary-border-color);
+}
+.movie__poster {
+  width: 50px;
+  min-width: 50px;
+  height: 75px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.movie__poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.movie__info {
+  flex: 1;
+  overflow: hidden;
+}
+.movie__info-title {
+  margin-bottom: 4px;
+}
+.movie__info-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--secondary-text-color);
+}
+.movie__info-year {
+  font-size: 14px;
+}
+.movie__info-runtime {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
 }
 
 /*# sourceMappingURL=main.css.map */
