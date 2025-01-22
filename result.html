@@ -1,80 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MOVIEPEDIA</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MOVIEPEDIA</title>
+    <!-- boxicons -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
 
-  <!-- boxicons -->
-  <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
+    <!-- Pretendard -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/preset.css@1.0.0/preset.min.css"
+    />
 
-  <!-- Pretendard -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/preset.css@1.0.0/preset.min.css" />
+    <!-- index.css -->
+    <link rel="stylesheet" href="./assets/css/pages/result.css" />
 
-  <!-- index.css -->
-  <link rel="stylesheet" href="./assets/css/pages/result.css" />
+    <!-- index.js -->
 
-  <!-- index.js -->
+    <script type="module" src="./assets/js/utils/result.js"></script>
+  </head>
 
-  <script type="module" src="./assets/js/utils/result.js"></script>
-</head>
+  <body>
+    <!-- 헤더 -->
+    <h2 class="a11y-hidden">헤더</h2>
 
-<body>
-  <!-- 헤더 -->
-  <h2 class="a11y-hidden">헤더</h2>
+    <header id="header" class="header"></header>
 
-  <header id="header" class="header"></header>
+    <!-- 메인 -->
+    <main>
+      <h2 class="a11y-hidden">검색 결과</h2>
 
-  <!-- 메인 -->
-  <main>
-    <h2>검색 결과</h2>
+      <section>
+        <div class="section-title">Search result</div>
 
-    <section>
-      <div class="result">
-        <!-- result list 를 담은 ul  -->
-        <ul class="result-list">
+        <!-- 카드 목록 -->
+        <div class="card"></div>
 
-          <!-- <li class="result__item">           
-            <a href="">
-              <div class="result-card">
-                <div class="card__thumbnail">                  
-                  <div class="movie-poster--default">
-                    <i class='bx bx-image-alt'></i>
-                  </div>
-                </div>               
-                <div class="card__information">
+        <!-- 노데이터 -->
+        <div class="no-data">
+          <i class="bx bx-data"></i>
+          <p class="no-data__title">No results found.</p>
+          <span class="no-data__description"
+            >We can’t find any item matching your search.</span
+          >
+        </div>
 
-                  <h3 class="card__title">
-                    Those Magnificent Men in their Flying Machines; Or, How I Flew from London to Paris in 25 Hours 11
-                    Minutes
-                  </h3>
+        <!-- 더 보기 -->
+        <div class="btn-wrap">
+          <button type="button" class="btn-primary btn-more">More</button>
+        </div>
+      </section>
+    </main>
 
-                  <div class="card__sub-info">                  
-                    <span class="year">2023</span>                   
-                    <i class='bx bx-time'></i>                   
-                    <span class="runtime">104min</span>
-                  </div>
-                </div>    
+    <!-- 푸터 -->
+    <h2 class="a11y-hidden">푸터</h2>
 
-                <div class="favorit">
-                  <i class='bx bx-heart'></i>                   
-                </div>
-              </div>
-            </a>
-          </li> -->
-        </ul>
-      </div>
-
-      <button class="btn-more">More</button>
-
-    </section>
-  </main>
-
-  <!-- 푸터 -->
-  <h2 class="a11y-hidden">푸터</h2>
-
-  <footer id="footer" class="footer"></footer>
-</body>
-
+    <footer id="footer" class="footer"></footer>
+  </body>
 </html>
