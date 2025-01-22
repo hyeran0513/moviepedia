@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     submitForm(favorites, e);
   });
 
-  createCard(favorites);
+  createCard(favorites, "favorite");
 
   // 타이틀 검색 삭제 버튼
   document.querySelector(".btn-del").addEventListener("click", deleteTitle);
