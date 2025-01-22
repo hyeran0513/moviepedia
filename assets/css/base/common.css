@@ -167,7 +167,8 @@ select {
 }
 
 /* 노데이터 */
-.no-data {
+.no-data,
+.no-search-data {
   display: none;
   justify-content: center;
   align-items: center;
@@ -178,14 +179,17 @@ select {
   border: 1px solid var(--primary-border-color);
   border-radius: 20px;
 }
-.no-data > i {
+.no-data > i,
+.no-search-data > i {
   font-size: 60px;
 }
-.no-data__title {
+.no-data__title,
+.no-search-data__title {
   font-size: 32px;
   font-weight: bold;
 }
-.no-data__description {
+.no-data__description,
+.no-search-data__description {
   font-size: 18px;
   color: var(--secondary-text-color);
 }

@@ -24,7 +24,7 @@ export const submitForm = (data, e) => {
   );
 
   // 필터링된 결과를 createCard에 전달
-  createCard(filteredData);
+  createCard(filteredData, "favorite");
 };
 
 export const deleteTitle = () => {

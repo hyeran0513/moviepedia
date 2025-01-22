@@ -189,7 +189,8 @@ select {
 }
 
 /* 노데이터 */
-.no-data {
+.no-data,
+.no-search-data {
   display: none;
   justify-content: center;
   align-items: center;

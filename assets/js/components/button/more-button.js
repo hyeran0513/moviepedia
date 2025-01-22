@@ -1,5 +1,5 @@
 import { displayCards } from "../card/card-display.js";
-import { currentIndex, itemsPerPage } from "../card/card.js";
+import { currentIndex, itemsPerPage, setCurrentIndex } from "../card/card.js";
 
 export const handleMoreButton = (data, type) => {
   const btnMore = document.querySelector(".btn-more");
@@ -11,7 +11,7 @@ export const handleMoreButton = (data, type) => {
         : "block";
 
     btnMore.addEventListener("click", () => {
-      currentIndex += itemsPerPage;
+      setCurrentIndex(currentIndex + itemsPerPage);
       displayCards(data, type);
 
       if (currentIndex >= data.length) {

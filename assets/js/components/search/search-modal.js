@@ -66,7 +66,7 @@ const setFocus = () => {
 // searchModal.html 로딩시 동작내용
 const setupSearchHandler = async (searchTarget) => {
   const modalBody = document.querySelector(".modal-container");
-  const noData = document.querySelector(".no-data");
+  const noData = document.querySelector(".no-search-data");
 
   searchTarget.addEventListener("keyup", async (e) => {
     try {

@@ -1,4 +1,4 @@
-import { fetchMovie } from "../../api/movie.js";
+import { getMovies } from "../../api/movie.js";
 import { handleFavoriteButton } from "../button/favorite-button.js";
 
 export const initializeSwiper = (containerSelector) => {
@@ -22,7 +22,7 @@ export const initializeSwiper = (containerSelector) => {
 
 export const renderSwiperMovies = async () => {
   const swiperWrapper = document.querySelector(".swiper-wrapper");
-  const data = await fetchMovie("mini");
+  const data = await getMovies("mini", "", 1, 6);
 
   if (data.movies) {
     swiperWrapper.innerHTML = data.movies

@@ -71,16 +71,6 @@ export const getMovies = async (title, year = "", page = 1, limit = 0) => {
   }
 };
 
-// 영화 제목으로 영화 목록 조회
-export const fetchMovie = async (title) => {
-  if (!title) {
-    throw new Error("영화를 검색하려면 제목이 필요합니다.");
-  }
-
-  const data = await getMovies(title, "", 1, 6);
-  return data;
-};
-
 export const getMoviesByOptions = async (title, page, limit) => {
   if (!title) {
     throw new Error("영화를 검색하려면 제목이 필요합니다.");

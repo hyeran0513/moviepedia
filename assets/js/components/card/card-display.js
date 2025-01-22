@@ -14,6 +14,7 @@ export const displayCards = (data, type) => {
       currentIndex,
       currentIndex + itemsPerPage
     );
+
     cardHTML = cardsToDisplay
       .map((item) => createCardHTML(item, favorites))
       .join("");
