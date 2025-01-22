@@ -1,13 +1,140 @@
 <div class="modal-content">
   <div class="modal-head">
-    <p class="modal-head__title">모달 제목</p>
-    
+    <p class="modal-head__title" aria-describedby="">Search for the movie</p>
+
     <button type="button" id="closeButton" class="close-button">
-      <i class='bx bx-x' ></i>
+      <i class='bx bx-x'></i>
     </button>
   </div>
 
   <div class="modal-body">
-    <p>검색 모달</p>
+    <div class="modal-search">
+      <label for="searchMovie">
+      <i class='bx bx-search-alt-2'></i>
+      <input class="modal-search__title" 
+             type="text" 
+             name="searchMovie" 
+             id="searchMovie"
+             placeholder="Search for movie"
+             aria-description="Enter the movie title you want to search for.">
+      </label>
+      <button class='bx bx-x-circle modal-search__delete' 
+              aria-description= "Delete the movie title you entered">
+      </button>
+    </div>
+    
+    <!-- <div class="loading">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div> -->
+
+    <!-- <div class="modal-search__list"> -->
+
+      <!-- <div class="modal-search__ele">
+        <div class="modal-search__ele__img">
+          <img
+            src="https://m.media-amazon.com/images/M/MV5BNGE0YTVjNzUtNzJjOS00NGNlLTgxMzctZTY4YTE1Y2Y1ZTU4XkEyXkFqcGc@._V1_SX300.jpg"
+            alt="">
+        </div>
+
+        <div class="modal-search__ele__info">
+          <div class="modal-search__ele__title">
+            The Avengers
+          </div>
+
+          <div class="modal-search__ele__desc">
+            <div class="modal-search__ele__year">
+              2012
+            </div>
+
+            <div class="modal-search__ele__runtime">
+              <i class='bx bx-time'></i>
+              111m
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal-search__ele">
+        <div class="modal-search__ele__img">
+          <img
+            src="https://m.media-amazon.com/images/M/MV5BNGE0YTVjNzUtNzJjOS00NGNlLTgxMzctZTY4YTE1Y2Y1ZTU4XkEyXkFqcGc@._V1_SX300.jpg"
+            alt="">
+        </div>
+
+        <div class="modal-search__ele__info">
+          <div class="modal-search__ele__title">
+            The Avengers
+          </div>
+
+          <div class="modal-search__ele__desc">
+            <div class="modal-search__ele__year">
+              2012
+            </div>
+
+            <div class="modal-search__ele__runtime">
+              <i class='bx bx-time'></i>
+              111m
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal-search__ele">
+        <div class="modal-search__ele__img">
+          <img
+            src="https://m.media-amazon.com/images/M/MV5BNGE0YTVjNzUtNzJjOS00NGNlLTgxMzctZTY4YTE1Y2Y1ZTU4XkEyXkFqcGc@._V1_SX300.jpg"
+            alt="">
+        </div>
+
+        <div class="modal-search__ele__info">
+          <div class="modal-search__ele__title">
+            The Avengers
+          </div>
+
+          <div class="modal-search__ele__desc">
+            <div class="modal-search__ele__year">
+              2012
+            </div>
+
+            <div class="modal-search__ele__runtime">
+              <i class='bx bx-time'></i>
+              111m
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal-search__ele">
+        <div class="modal-search__ele__img">
+          <img
+            src="https://m.media-amazon.com/images/M/MV5BNGE0YTVjNzUtNzJjOS00NGNlLTgxMzctZTY4YTE1Y2Y1ZTU4XkEyXkFqcGc@._V1_SX300.jpg"
+            alt="">
+        </div>
+
+        <div class="modal-search__ele__info">
+          <div class="modal-search__ele__title">
+            The Avengers
+          </div>
+
+          <div class="modal-search__ele__desc">
+            <div class="modal-search__ele__year">
+              2012
+            </div>
+
+            <div class="modal-search__ele__runtime">
+              <i class='bx bx-time'></i>
+              111m
+            </div>
+          </div>
+        </div>
+      </div>
+      -->
+    <!-- </div> -->
   </div>
+
 </div>
