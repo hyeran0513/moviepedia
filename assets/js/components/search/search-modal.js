@@ -129,6 +129,7 @@ const setupMovieContents = async (jsonData) => {
   try {
     for (const movie of jsonData.movies) {
       element += `
+        <a href="/detail.html?imdbID=${movie.imdbID}">
           <div class="movie__item">
             <div class="movie__poster">
               <img src="${movie.Poster}" alt="" />
@@ -151,6 +152,7 @@ const setupMovieContents = async (jsonData) => {
               </div>
             </div>
           </div>
+        </a>
       `;
     }
 

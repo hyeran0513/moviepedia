@@ -1,31 +1,48 @@
-import { createCard } from "../card/card.js";
+// 영화 데이터를 찜 목록에 추가하거나 제거
+export const toggleFavorite = (movieData) => {
+  const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
 
+  const isFavorite = favorites.some((item) => item.imdbID === movieData.imdbID);
+
+  if (isFavorite) {
+    // 찜 목록에 이미 있는 영화는 제거
+    const updatedFavorites = favorites.filter(
+      (item) => item.imdbID !== movieData.imdbID
+    );
+    sessionStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+  } else {
+    // 찜 목록에 없는 영화는 추가
+    favorites.push(movieData);
+    sessionStorage.setItem("favorites", JSON.stringify(favorites));
+  }
+
+  return isFavorite;
+};
+
+// 버튼의 상태를 찜 여부에 맞게 업데이트
+export const updateButtonState = (button, isFavorite) => {
+  button.classList.toggle("--active", !isFavorite);
+};
+
+// 하트 아이콘을 찜 여부에 맞게 업데이트
+export const updateHeartIcon = (button, isFavorite) => {
+  const heartIcon = button.querySelector("i");
+  heartIcon.classList.toggle("bxs-heart", !isFavorite);
+  heartIcon.classList.toggle("bx-heart", isFavorite);
+};
+
+// 찜 버튼 클릭 시 실행되는 메인 함수
 export const handleFavoriteButton = (button) => {
   button.addEventListener("click", () => {
     const movieData = JSON.parse(button.dataset.movie);
-    // 세션 스토리지에서의 찜한 영화 목록
-    const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
 
-    // 현재 영화가 찜 목록에 있는지 확인
-    const isFavorite = favorites.some(
-      (item) => item.imdbID === movieData.imdbID
-    );
+    // 찜 상태를 토글하고, 해당 상태를 반환
+    const isFavorite = toggleFavorite(movieData);
 
-    if (isFavorite) {
-      // 이미 찜 목록에 있는 경우, 해당 영화 제거
-      const updatedFavorites = favorites.filter(
-        (item) => item.imdbID !== movieData.imdbID
-      );
-      sessionStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-    } else {
-      // 찜 목록에 없는 경우, 해당 영화 추가
-      favorites.push(movieData);
-      sessionStorage.setItem("favorites", JSON.stringify(favorites));
-    }
+    // 버튼의 상태를 찜 여부에 맞게 업데이트
+    updateButtonState(button, isFavorite);
 
-    // 하트 아이콘 업데이트
-    const heartIcon = button.querySelector("i");
-    heartIcon.classList.toggle("bxs-heart", !isFavorite);
-    heartIcon.classList.toggle("bx-heart", isFavorite);
+    // 하트 아이콘을 찜 여부에 맞게 업데이트
+    updateHeartIcon(button, isFavorite);
   });
 };

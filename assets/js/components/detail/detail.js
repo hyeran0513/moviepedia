@@ -1,4 +1,9 @@
 import { getMovieDetails } from "../../api/movie.js";
+import {
+  updateButtonState,
+  updateHeartIcon,
+  handleFavoriteButton,
+} from "../button/favorite-button.js";
 
 // 영화 정보 렌더링
 const renderMovieInfo = (movieData) => {
@@ -60,6 +65,27 @@ export const createDetail = async () => {
 
     movieTitle.textContent = movieData.Title;
     storyline.textContent = movieData.Plot;
+
+    // 찜 버튼
+    const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
+    const favoriteBtnWrap = document.querySelector(".favorite-btn-wrap");
+    const isFavorite = favorites.some((favorite) => favorite.imdbID === imdbID);
+
+    favoriteBtnWrap.innerHTML = `
+    <button type="button" class="btn-favorite--lg ${
+      isFavorite ? "--active" : ""
+    }"
+    }'" data-movie='${JSON.stringify(movieData)
+      .replace(/'/g, "&apos;")
+      .replace(/"/g, "&quot;")}' >
+      <i class='bx ${isFavorite ? "bxs-heart" : "bx-heart"}'></i>
+      <span>favorite</span>
+    </button>`;
+
+    const favoriteButton = document.querySelector(".btn-favorite--lg");
+
+    // 찜 버튼 클릭 이벤트 처리
+    handleFavoriteButton(favoriteButton);
 
     // 영화 상세 정보 출력
     renderMovieInfo(movieData);

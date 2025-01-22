@@ -21,7 +21,8 @@
   --favorite-icon-color: light-dark(#ff4a29, #ff4a29);
   --favorite-bg-color: light-dark(#fff, #fff);
   --favorite-darken-bg-color: light-dark(#e8e8e8, #333742);
-  --thumbnail-default-color: light-dark(#fcfcfc, #343843);
+  --favorite-active-text-color: light-dark(#191919, #191919);
+  --thumbnail-default-color: light-dark(#e8e8e8, #343843);
   --thumbnail-icon-color: light-dark(#bcbcbc, #525867);
   --gradation-left-color: light-dark(#ff004d, #ff004d);
   --gradation-right-color: light-dark(#1f2f98, #1f2f98);
@@ -483,11 +484,12 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: border-color 0.6s ease, box-shadow 0.6s ease;
+  transition: color 0.6s ease, border-color 0.6s ease, box-shadow 0.6s ease;
 }
 .utility__button:hover {
   border-color: var(--primary-color);
   box-shadow: 0 0 8px var(--primary-color);
+  color: var(--primary-color);
 }
 .utility__button > i {
   font-size: 20px;
@@ -788,6 +790,7 @@ main {
 .movie-btn-detail {
   padding: 10px;
   height: auto;
+  font-size: 14px;
 }
 
 .btn-wrap:has(.movie-btn-detail) {
