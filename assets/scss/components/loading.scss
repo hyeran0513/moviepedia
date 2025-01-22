@@ -1,0 +1,92 @@
+@use "../base/variables" as *;
+
+@mixin animationSet($lodingAniName, $animationDuringSec, $startSec) {
+  animation: #{$lodingAniName} #{$animationDuringSec}s #{-$startSec}s infinite;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  width: 300px;
+  background-color: var(--primary-bg-color);
+
+  .dot {
+    width: 1rem;
+    aspect-ratio: 1;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+
+    &:nth-child(1) {
+      // @include animationSet( loadingDrop , 2, 1);
+      @include animationSet(loadingBubble, 3, 1);
+    }
+
+    &:nth-child(2) {
+      // @include animationSet( loadingDrop , 2, 0.5);
+      @include animationSet(loadingBubble, 3, 0.5);
+    }
+
+    &:nth-child(3) {
+      // @include animationSet( loadingDrop , 2, 0);
+      @include animationSet(loadingBubble, 3, 0);
+    }
+  }
+}
+
+@keyframes loadingDrop {
+  0% {
+    translate: 0 -100%;
+    opacity: 0;
+  }
+
+  20% {
+    translate: 0 50%;
+    opacity: 1;
+  }
+
+  40% {
+    translate: 0 -10%;
+    opacity: 1;
+    scale: 1;
+  }
+
+  50% {
+    translate: 0 0;
+    opacity: 1;
+    scale: 1;
+  }
+
+  100% {
+    scale: 1.5;
+    opacity: 0;
+  }
+}
+
+@keyframes loadingBubble {
+  0% {
+    opacity: 0;
+    scale: 0;
+  }
+
+  35% {
+    opacity: 1.1;
+    scale: 1;
+  }
+
+  55% {
+    opacity: 1.1;
+    scale: 1;
+  }
+
+  90% {
+    opacity: 0;
+    scale: 0;
+  }
+
+  100% {
+    opacity: 0;
+    scale: 0;
+  }
+}
