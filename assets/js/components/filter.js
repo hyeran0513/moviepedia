@@ -1,4 +1,4 @@
-import { createCard } from "../card/card-favorite.js";
+import { createCard } from "../components/card.js";
 
 export const submitForm = (data, e) => {
   e.preventDefault();
@@ -24,7 +24,7 @@ export const submitForm = (data, e) => {
   );
 
   // 필터링된 결과를 createCard에 전달
-  createCard(filteredData, "favorite");
+  createCard(filteredData);
 };
 
 export const deleteTitle = () => {

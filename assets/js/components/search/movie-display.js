@@ -8,7 +8,7 @@ export const setupMovieContents = async (jsonData) => {
   try {
     for (const movie of jsonData.movies) {
       element += `
-        <a href="/detail.html?imdbID=${movie.imdbID}">
+        <a href="detail.html?imdbID=${movie.imdbID}">
           <div class="movie__item">
           <div class="movie__poster">
               ${movie.Poster.indexOf('N/A') > -1 

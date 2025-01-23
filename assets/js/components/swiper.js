@@ -1,5 +1,4 @@
-import { getMovies } from "../../api/movie.js";
-import { handleFavoriteButton } from "../button/favorite-button.js";
+import { fetchMovie } from "../api/fetch-movie.js";
 
 export const initializeSwiper = (containerSelector) => {
   return new Swiper(containerSelector, {
@@ -22,19 +21,23 @@ export const initializeSwiper = (containerSelector) => {
 
 export const renderSwiperMovies = async () => {
   const swiperWrapper = document.querySelector(".swiper-wrapper");
-  const data = await getMovies("mini", "", 1, 6);
+  const data = await fetchMovie("mini");
 
   if (data.movies) {
     swiperWrapper.innerHTML = data.movies
       .map((movie) => {
         const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
-        const isFavorite = favorites.some((id) => id === movie.imdbID);
+        const isFavorite = favorites.some(
+          (item) => item.imdbID === movie.imdbID
+        );
 
         return `
           <div class="swiper-slide">
-            <button type="button" class="btn-favorite" data-imdb-id='${
-              movie.imdbID
-            }'>
+            <button type="button" class="btn-favorite" data-movie='${JSON.stringify(
+              movie
+            )
+              .replace(/'/g, "&apos;")
+              .replace(/"/g, "&quot;")}'>
 
               <i class='bx ${isFavorite ? "bxs-heart" : "bx-heart"}'></i>
             </button>
@@ -82,7 +85,7 @@ export const renderSwiperMovies = async () => {
                 }</div>
               
                 <div class="btn-wrap">
-                  <a href="detail.html?imdbID=${
+                  <a href="/detail.html?imdbID=${
                     movie.imdbID
                   }" class="btn-primary movie-btn-detail">
                     <i class='bx bx-detail' ></i>
@@ -98,11 +101,32 @@ export const renderSwiperMovies = async () => {
 
     initializeSwiper(".swiper-container");
 
-    // 좋아요 버튼
     const favoriteButtons = document.querySelectorAll(".btn-favorite");
 
     favoriteButtons.forEach((button) => {
-      handleFavoriteButton(button);
+      button.addEventListener("click", (event) => {
+        const movieData = JSON.parse(button.dataset.movie);
+        const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
+
+        const isFavorite = favorites.some(
+          (item) => item.imdbID === movieData.imdbID
+        );
+
+        if (isFavorite) {
+          const updatedFavorites = favorites.filter(
+            (item) => item.imdbID !== movieData.imdbID
+          );
+          sessionStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+        } else {
+          favorites.push(movieData);
+          sessionStorage.setItem("favorites", JSON.stringify(favorites));
+        }
+
+        // 하트 아이콘 업데이트
+        const heartIcon = button.querySelector("i");
+        heartIcon.classList.toggle("bxs-heart", !isFavorite);
+        heartIcon.classList.toggle("bx-heart", isFavorite);
+      });
     });
   } else {
     console.error("movies fetch 에러", data);

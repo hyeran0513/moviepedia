@@ -1,4 +1,4 @@
-import config from "../config/config.js";
+import config from "../config/config.1.js";
 
 // 고해상도 이미지 URL로 변경
 const getHighResImageUrl = (posterUrl) => {
@@ -7,7 +7,7 @@ const getHighResImageUrl = (posterUrl) => {
 };
 
 // 영화 상세 정보 조회
-export const getMovieDetails = async (imdbID) => {
+const getMovieDetails = async (imdbID) => {
   try {
     const res = await fetch(
       `https://omdbapi.com/?apikey=${config.API_KEY}&i=${imdbID}`
@@ -32,9 +32,9 @@ export const getMovieDetails = async (imdbID) => {
 };
 
 // 영화 검색 결과 조회
-export const getMovies = async (title, year = "", page = 1, limit = 0) => {
-  const s = title ? `&s=${encodeURIComponent(title)}` : "";
-  const y = year ? `&y=${year}` : "";
+const getMovies = async (title, year = "", page = 1, limit = 0) => {
+  const s = `&s=${encodeURIComponent(title)}`;
+  const y = `&y=${year}`;
   const p = `&page=${page}`;
 
   try {
@@ -46,6 +46,7 @@ export const getMovies = async (title, year = "", page = 1, limit = 0) => {
 
     if (json.Response === "True") {
       const { Search: movies, totalResults } = json;
+
 
       const limitedMovies = limit > 0 ? movies.slice(0, limit) : movies;
 
@@ -71,31 +72,24 @@ export const getMovies = async (title, year = "", page = 1, limit = 0) => {
   }
 };
 
-// 여러 IMDb ID에 대해 상세 정보 조회
-export const getMoviesByImdbIDs = async (imdbIDs) => {
-  try {
-    // IMDb ID 배열을 돌면서 상세 정보를 가져오기
-    const moviesWithDetails = await Promise.all(
-      imdbIDs.map(async (id) => {
-        const movieDetails = await getMovieDetails(id);
-        return { imdbID: id, details: movieDetails };
-      })
-    );
-    return moviesWithDetails;
-  } catch (error) {
-    console.error("영화 상세정보 fetch 오류", error);
-    throw error;
+// 영화 제목으로 영화 목록 조회
+export const fetchMovie = async (title) => {
+  if (!title) {
+    throw new Error("영화를 검색하려면 제목이 필요합니다.");
   }
+
+  const data = await getMovies(title, "", 1, 6);
+  return data;
 };
 
-// export const getMoviesByOptions = async (title, page, limit) => {
-//   if (!title) {
-//     throw new Error("영화를 검색하려면 제목이 필요합니다.");
-//   }
-//   else{
-//     title = title.replace( " " , "+");
-//   }
+export const getMoviesByOptions = async (title, page, limit) => {
+  if (!title) {
+    throw new Error("영화를 검색하려면 제목이 필요합니다.");
+  }
+  else{
+    title = title.replace( " " , "+");
+  }
 
-//   const data = await getMovies(title,"", page, limit);
-//   return data;
-// }
+  const data = await getMovies(title,"", page, limit);
+  return data;
+}

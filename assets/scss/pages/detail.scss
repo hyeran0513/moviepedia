@@ -47,7 +47,7 @@
   &__storyline {
     margin-bottom: 66px;
 
-    & > dt {
+    & > h3 {
       margin-bottom: 22px;
       font-weight: bold;
     }
@@ -65,11 +65,11 @@
       align-items: center;
       gap: 68px;
 
-      & > dt {
+      & > h4{
         min-width: 94px;
       }
 
-      & > dd {
+      & > div {
         flex: 1;
       }
     }

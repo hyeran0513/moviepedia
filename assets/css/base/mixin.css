@@ -1,0 +1,21 @@
+/* Error: Only 2 arguments allowed, but 3 were passed.
+ *     ,
+ * 14  | @mixin btn-size-type($width, $height) {
+ *     |        ============================== declaration
+ * ... |
+ * 20  | @include btn-size-type("sm", 250px, 54px);
+ *     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ invocation
+ *     '
+ *   assets\scss\base\mixin.scss 20:1  btn-size-type()
+ *   assets\scss\base\mixin.scss 20:1  root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: Only 2 arguments allowed, but 3 were passed.\a     \2577 \a 14  \2502  @mixin btn-size-type($width, $height) {\d\a     \2502         \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501 \2501  declaration\a... \2502 \a 20  \2502  @include btn-size-type("sm", 250px, 54px);\d\a     \2502  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ invocation\a     \2575 \a   assets\\scss\\base\\mixin.scss 20:1  btn-size-type()\a   assets\\scss\\base\\mixin.scss 20:1  root stylesheet';
+}
