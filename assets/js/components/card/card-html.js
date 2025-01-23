@@ -12,7 +12,7 @@ export const createCardHTML = (item) => {
 
   return `
     <div class="card__item">
-      <button type="button" class="btn-favorite" data-imdb-id='${imdbID}' >
+      <button type="button" class="favorite-button" data-imdb-id='${imdbID}' >
         <i class='bx ${isFavorite ? "bxs-heart" : "bx-heart"}'></i>
       </button>
 

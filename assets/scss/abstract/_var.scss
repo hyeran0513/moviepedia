@@ -1,0 +1,46 @@
+// Primary Colors
+$primary-color: light-dark(#5254fd, #5254fd);
+$primary-hover-color: light-dark(#767af7, #767af7);
+$primary-bg-color: light-dark(#fff, #232429);
+$primary-text-color: light-dark(#333, #fbffff);
+$primary-border-color: light-dark(#dfdfdf, #3f424b);
+
+// Secondary Colors
+$secondary-text-color: light-dark(#70737a, #9fa1a6);
+$warning-text-color: light-dark(#ff5e5e, #ff5e5e);
+
+// Form Colors
+$form-bg-color: light-dark(#fefefe, #333742);
+$form-placeholder-color: light-dark(#a1a5b0, #a1a5b0);
+$form-border-color: light-dark(#dfdfdf, #3f424b);
+$form-main-bg-color: light-dark(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.5));
+
+// UI Colors
+$scroll-bar-color: light-dark(#e8e8e8, #1c1d22);
+$header-icon-color: light-dark(#fbffff, #fbffff);
+$header-bg-color: light-dark(#fff, #232429);
+$footer-bg-color: light-dark(#f8f8f8, #1c1d22);
+
+// Favorite Icon Colors
+$favorite-icon-color: light-dark(#ff4a29, #ff4a29);
+$favorite-bg-color: light-dark(#fff, #fff);
+$favorite-darken-bg-color: light-dark(#e8e8e8, #333742);
+$favorite-active-text-color: light-dark(#191919, #191919);
+
+// Thumbnail Colors
+$thumbnail-default-color: light-dark(#e8e8e8, #343843);
+$thumbnail-icon-color: light-dark(#bcbcbc, #525867);
+
+// Gradation Colors
+$gradation-left-color: light-dark(#ff004d, #ff004d);
+$gradation-right-color: light-dark(#1f2f98, #1f2f98);
+
+// Swiper Colors
+$swiper-button-color: light-dark(#d9d9d9, #d9d9d9);
+$swiper-text-color: light-dark(#fbffff, #fbffff);
+$swiper-pagination-bottom: 28px;
+
+// 크기 변수
+$max-width: 1200px;
+$header-height: 80px;
+$footer-height: 80px;

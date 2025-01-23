@@ -10,7 +10,7 @@ export const displayCards = (data) => {
 
   cardContainer.innerHTML = cardHTML;
 
-  const favoriteButtons = document.querySelectorAll(".btn-favorite");
+  const favoriteButtons = document.querySelectorAll(".favorite-button");
 
   favoriteButtons.forEach((button) => {
     handleFavoriteButton(button, "result");

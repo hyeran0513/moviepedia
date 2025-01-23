@@ -27,7 +27,7 @@ export const displayCards = async (data, type) => {
 
   cardContainer.innerHTML = cardHTML;
 
-  const favoriteButtons = document.querySelectorAll(".btn-favorite");
+  const favoriteButtons = document.querySelectorAll(".favorite-button");
 
   favoriteButtons.forEach((button) => {
     handleFavoriteButton(button, "favorite");

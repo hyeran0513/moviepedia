@@ -1,0 +1,28 @@
+@use "../var" as *;
+
+@mixin section-title(
+  $bg-color-left: $gradation-left-color,
+  $bg-color-right: $gradation-right-color
+) {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+  height: 150px;
+  font-size: 32px;
+  font-weight: bold;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, $bg-color-left, $bg-color-right);
+    opacity: 0.13;
+    border-radius: 20px;
+    z-index: -1;
+  }
+}

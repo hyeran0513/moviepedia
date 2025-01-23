@@ -1,0 +1,16 @@
+@use "../abstract/var" as *;
+
+.footer {
+  height: $footer-height;
+  background-color: $footer-bg-color;
+  color: $secondary-text-color;
+
+  &-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: $footer-height;
+    width: 100%;
+    height: 100%;
+  }
+}

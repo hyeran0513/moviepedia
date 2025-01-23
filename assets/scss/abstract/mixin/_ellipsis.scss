@@ -1,0 +1,16 @@
+@mixin ellipsis($max-width: 100%, $lines: 1) {
+  display: block;
+  max-width: $max-width;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @if $lines == 1 {
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    display: -ms-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $lines;
+    white-space: normal;
+  }
+}

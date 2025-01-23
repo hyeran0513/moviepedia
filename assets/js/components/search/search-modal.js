@@ -22,12 +22,12 @@ export const loadSearchModal = () => {
 
       // 검색 모달 열기
       searchButton.addEventListener("click", () => {
-        searchModal.style.display = "flex";
+        searchModal.classList.add("--active");
       });
 
       // 검색 모달 닫기
       closeButton.addEventListener("click", () => {
-        searchModal.style.display = "none";
+        searchModal.classList.remove("--active");
       });
 
       // 검색창 설정 및 포커스

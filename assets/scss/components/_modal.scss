@@ -1,0 +1,5 @@
+@use "../abstract/mixin" as *;
+
+.modal {
+  @include modal();
+}

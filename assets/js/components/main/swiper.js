@@ -32,7 +32,7 @@ export const renderSwiperMovies = async () => {
 
         return `
           <div class="swiper-slide">
-            <button type="button" class="btn-favorite" data-imdb-id='${
+            <button type="button" class="favorite-button" data-imdb-id='${
               movie.imdbID
             }'>
 
@@ -99,7 +99,7 @@ export const renderSwiperMovies = async () => {
     initializeSwiper(".swiper-container");
 
     // 좋아요 버튼
-    const favoriteButtons = document.querySelectorAll(".btn-favorite");
+    const favoriteButtons = document.querySelectorAll(".favorite-button");
 
     favoriteButtons.forEach((button) => {
       handleFavoriteButton(button);

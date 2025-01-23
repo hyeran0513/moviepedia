@@ -1,0 +1,124 @@
+@use "../var" as *;
+
+// 버튼 베이스
+@mixin button-base(
+  $bg-color: $primary-color,
+  $text-color: #333,
+  $border-radius: 4px
+) {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  color: $text-color;
+  background-color: $bg-color;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $primary-hover-color;
+  }
+
+  &:disabled {
+    background-color: #333;
+    cursor: not-allowed;
+    opacity: 0.65;
+  }
+}
+
+// 버튼 사이즈
+@mixin button-size($padding: 0.5rem, $font-size: 1rem) {
+  padding: $padding;
+  font-size: $font-size;
+}
+
+// 버튼 유형
+@mixin button-variant($bg-color, $text-color, $border-radius: 4px) {
+  background-color: $bg-color;
+  color: $text-color;
+  border-radius: $border-radius;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $primary-hover-color;
+  }
+}
+
+// 버튼 아이콘
+@mixin button-icon($icon-size: 1.25rem) {
+  & > i {
+    display: inline-block;
+    width: $icon-size;
+    height: $icon-size;
+    font-size: $icon-size;
+  }
+}
+
+// 버튼 감싸기
+@mixin btn-wrap($margin-top) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: $margin-top;
+}
+
+// 좋아요 버튼
+@mixin favorite-button(
+  $size: sm,
+  $is-rounded: false,
+  $bg-color: $favorite-bg-color,
+  $text-color: $favorite-active-text-color
+) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: border-color 0.6s ease, box-shadow 0.6s ease;
+  border-radius: if($is-rounded, 30px, 8px);
+  background-color: $favorite-bg-color;
+
+  // 크기별 스타일
+  @if $size == sm {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 32px;
+    aspect-ratio: 1 / 1;
+    z-index: 1;
+  } @else if $size == lg {
+    gap: 10px;
+    margin-top: 30px;
+    width: 100%;
+    height: 54px;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  // Hover 상태
+  &:hover {
+    border-color: $favorite-icon-color;
+    box-shadow: 0 0 8px $favorite-icon-color;
+
+    & > i {
+      animation: heart 0.6s linear infinite;
+    }
+  }
+
+  // 아이콘 색상
+  & > i {
+    color: $favorite-icon-color;
+  }
+
+  // 사이즈가 large일 경우, 활성화 상태
+  @if $size == lg {
+    &.--active {
+      background-color: $favorite-bg-color;
+      color: $favorite-active-text-color;
+    }
+  }
+}

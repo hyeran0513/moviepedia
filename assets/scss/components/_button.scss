@@ -1,0 +1,34 @@
+@use "../abstract/mixin" as *;
+@use "../abstract/var" as *;
+
+.btn {
+  @include button-base();
+}
+
+.btn-small {
+  @include button-size(0.25rem, 0.875rem);
+}
+
+.btn-large {
+  @include button-size(0.75rem, 1.25rem);
+}
+
+.btn-primary {
+  @include button-variant($primary-color, #fff);
+}
+
+.btn-warning {
+  @include button-variant($warning-text-color, #fff);
+}
+
+.btn-wrap {
+  @include btn-wrap(50px);
+}
+
+.favorite-button {
+  @include favorite-button(sm, false); // 기본 모서리
+}
+
+.favorite-button--lg {
+  @include favorite-button(lg, true); // 둥근 버튼
+}

@@ -1,0 +1,11 @@
+@use "../abstract/mixin" as *;
+
+// 한 줄 말줄임
+.single-ellipsis {
+  @include ellipsis();
+}
+
+// 다중 말줄임
+.multi-ellipsis {
+  @include ellipsis(100%, 2);
+}

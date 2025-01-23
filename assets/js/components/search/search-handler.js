@@ -1,16 +1,9 @@
 import { setupMovieContents } from "./movie-display.js";
 import { getMovies } from "../../api/movie.js";
 
-import { 
-  removeLoader,
-  addLoaderEle,
- } from "../common/loader.js";
+import { removeLoader, addLoaderEle } from "../common/loader.js";
 
-import {
-  initCurrentPage,
-  handleScroll,
-  setTotal,
-} from "./search-scroll.js"
+import { initCurrentPage, handleScroll, setTotal } from "./search-scroll.js";
 
 // 검색 결과 없을 때 처리
 const handleNoData = (modalBody, noData) => {
@@ -54,24 +47,23 @@ const searchMovies = async (query) => {
 // 검색 입력 처리
 export const setupSearchHandler = async (searchTarget) => {
   const modalBody = document.querySelector(".modal-container"); // 모달 컨테이너 선택
-  const noData = document.querySelector(".no-search-data"); // 데이터 없음 메시지 선택
+  const noData = document.getElementById("searchNoData"); // 데이터 없음 메시지 선택
 
   // 키 입력 이벤트 리스너 추가
   searchTarget.addEventListener("keyup", async (e) => {
     initCurrentPage();
 
-// 초기 검색시에만 로딩 애니메이션이 적용됨.
-// 검색어를 변경할경우 애니메이션 미적용.
-    if(!modalBody.querySelector('movie__list') && !isMovieListExist ){
+    // 초기 검색시에만 로딩 애니메이션이 적용됨.
+    // 검색어를 변경할경우 애니메이션 미적용.
+    if (!modalBody.querySelector("movie__list") && !isMovieListExist) {
       isMovieListExist = true;
-      let listEle = document.createElement('div');
-      listEle.classList.add('movie__list');
-      listEle.classList.add('scroll');
+      let listEle = document.createElement("div");
+      listEle.classList.add("movie__list");
+      listEle.classList.add("scroll");
       modalBody.appendChild(listEle);
-      listEle.addEventListener("scroll" , handleScroll );
+      listEle.addEventListener("scroll", handleScroll);
       addLoaderEle(listEle);
     }
-  
 
     const searchValue = searchTarget.value.trim(); // 입력값의 공백을 제거한 값
 
@@ -91,7 +83,7 @@ export const setupSearchHandler = async (searchTarget) => {
     }
     console.log(result);
 
-    setTotal( result.totalResults );
+    setTotal(result.totalResults);
 
     // 영화 리스트를 추가하고 데이터 없음 메시지를 숨김
     addMovieList(modalBody);
@@ -134,9 +126,8 @@ const addList = (modalBody) => {
 
     modalBody.appendChild(list);
 
-    list.addEventListener("scroll" , handleScroll );
+    list.addEventListener("scroll", handleScroll);
   }
-
 };
 
 // 검색 결과 리스트를 모달에서 제거하는 함수

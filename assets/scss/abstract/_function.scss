@@ -1,0 +1,9 @@
+// 픽셀을 rem으로 변환
+@function px-to-rem($px, $base: 16px) {
+  @return $px / $base * 1rem;
+}
+
+// 투명도 조절
+@function set-opacity($color, $opacity) {
+  @return rgba($color, $opacity);
+}

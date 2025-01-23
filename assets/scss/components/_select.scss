@@ -1,0 +1,5 @@
+@use "../abstract/mixin" as *;
+
+.select-box {
+  @include select-box();
+}

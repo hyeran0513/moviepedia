@@ -1,0 +1,49 @@
+@use "../var" as *;
+
+// 로딩 레이어 기본 스타일
+@mixin loading-layer($z-index: 100, $bg-color: rgba(0, 0, 0, 0.5)) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $bg-color;
+  z-index: $z-index;
+}
+
+// 로딩 점 애니메이션
+@mixin loading-dot($dot-size: 1rem, $dot-color: $primary-color) {
+  width: $dot-size;
+  aspect-ratio: 1;
+  background-color: $dot-color;
+  border-radius: 50%;
+  z-index: 200;
+
+  // 애니메이션 설정
+  &:nth-child(1) {
+    // @include loadingBubble(3, 1);
+  }
+
+  &:nth-child(2) {
+    // @include loadingBubble(3, 0.5);
+  }
+
+  &:nth-child(3) {
+    // @include loadingBubble(3, 0);
+  }
+}
+
+// 여러개의 점 애니메이션
+@mixin loading-multi-dots($dot-size: 1rem, $dot-color: $primary-color) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  .dot {
+    @include loading-dot($dot-size, $dot-color);
+  }
+}

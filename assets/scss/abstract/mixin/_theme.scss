@@ -1,0 +1,19 @@
+@mixin theme-switcher() {
+  :root {
+    &:has(input[name="color-scheme"][value="light"]:checked) {
+      color-scheme: light;
+
+      label[for="light"] {
+        display: none;
+      }
+    }
+
+    &:has(input[name="color-scheme"][value="dark"]:checked) {
+      color-scheme: dark;
+
+      label[for="dark"] {
+        display: none;
+      }
+    }
+  }
+}

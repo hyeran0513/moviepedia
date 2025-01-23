@@ -1,0 +1,23 @@
+@use "../var" as *;
+
+@mixin custom-scrollbar(
+  $thumb-color: $scroll-bar-color,
+  $track-color: transparent
+) {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $track-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $thumb-color;
+    border-radius: 50px;
+  }
+
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+}

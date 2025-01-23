@@ -69,7 +69,7 @@ export const createDetail = async () => {
     const isFavorite = favorites.some((id) => id === imdbID);
 
     favoriteBtnWrap.innerHTML = `
-      <button type="button" class="btn-favorite--lg ${
+      <button type="button" class=favorite-button--lg ${
         isFavorite ? "--active" : ""
       }"
       }'" data-imdb-id='${imdbID}' >
@@ -78,7 +78,7 @@ export const createDetail = async () => {
       </button>
     `;
 
-    const favoriteButton = document.querySelector(".btn-favorite--lg");
+    const favoriteButton = document.querySelector(".favorite-button--lg");
 
     // 찜 버튼 클릭 이벤트 처리
     handleFavoriteButton(favoriteButton);
