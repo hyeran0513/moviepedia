@@ -65,15 +65,14 @@ export const createDetail = async () => {
     // 찜 버튼
     const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
     const favoriteBtnWrap = document.querySelector(".favorite-btn-wrap");
-    const isFavorite = favorites.some((favorite) => favorite.imdbID === imdbID);
+
+    const isFavorite = favorites.some((id) => id === imdbID);
 
     favoriteBtnWrap.innerHTML = `
       <button type="button" class="btn-favorite--lg ${
         isFavorite ? "--active" : ""
       }"
-      }'" data-movie='${JSON.stringify(movieData)
-        .replace(/'/g, "&apos;")
-        .replace(/"/g, "&quot;")}' >
+      }'" data-imdb-id='${imdbID}' >
         <i class='bx ${isFavorite ? "bxs-heart" : "bx-heart"}'></i>
         <span>favorite</span>
       </button>

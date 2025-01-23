@@ -50,6 +50,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
+  z-index: -1;
 }
 
 .movie-poster--default {
@@ -82,6 +83,7 @@
   width: 100%;
   height: 100%;
   color: var(--swiper-text-color);
+  z-index: -1;
 }
 
 .movie-container::before {
