@@ -8,13 +8,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
   gap: 2rem;
-  width: 300px;
+  // width: 300px;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
   background-color: var(--primary-bg-color);
 
   .dot {
     width: 1rem;
     aspect-ratio: 1;
+    z-index: 200;
     background-color: var(--primary-color);
     border-radius: 50%;
 
