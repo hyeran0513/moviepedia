@@ -33,8 +33,8 @@ export const getMovieDetails = async (imdbID) => {
 
 // 영화 검색 결과 조회
 export const getMovies = async (title, year = "", page = 1, limit = 0) => {
-  const s = title ? `&s=${encodeURIComponent(title)}` : "";
-  const y = year ? `&y=${year}` : "";
+  const s = `&s=${encodeURIComponent(title)}`;
+  const y = `&y=${year}`;
   const p = `&page=${page}`;
 
   try {
