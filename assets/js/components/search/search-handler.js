@@ -1,6 +1,12 @@
 import { setupMovieContents } from "./movie-display.js";
 import { getMovies } from "../../api/movie.js";
 
+import {
+  initCurrentPage,
+  handleScroll,
+  setTotal,
+} from "./search-scroll.js"
+
 // 검색 결과 없을 때 처리
 const handleNoData = (modalBody, noData) => {
   noData.style.display = "flex";
@@ -21,11 +27,6 @@ const searchMovies = async (query) => {
   try {
     // 기존 타이머를 취소
     clearTimeout(debounceTimer);
-
-    /* hrkim: 3초 후에 함수 실행: 실시간으로 데이터를 불러오다 보니, 
-      너무 많은 api 요청으로 인해 무료 버전이 감당하기 힘들어서 넣어놓았어요
-      → 이 메시지를 확인하셨으면, 주석 삭제 부탁드립니다
-    */
     return new Promise((resolve, reject) => {
       debounceTimer = setTimeout(async () => {
         try {
@@ -34,7 +35,7 @@ const searchMovies = async (query) => {
         } catch (error) {
           reject(error);
         }
-      }, 5000); // 3초 뒤 실행
+      }, 3000); // 3초 뒤 실행
     });
   } catch (error) {
     console.error("예외 상황 발생: ", error);
@@ -49,6 +50,7 @@ export const setupSearchHandler = async (searchTarget) => {
 
   // 키 입력 이벤트 리스너 추가
   searchTarget.addEventListener("keyup", async (e) => {
+    initCurrentPage();
     const searchValue = searchTarget.value.trim(); // 입력값의 공백을 제거한 값
 
     // 입력값이 비어있으면 데이터 없음 메시지 처리
@@ -65,6 +67,9 @@ export const setupSearchHandler = async (searchTarget) => {
       handleNoData(modalBody, noData);
       return;
     }
+    console.log(result);
+
+    setTotal( result.totalResults );
 
     // 영화 리스트를 추가하고 데이터 없음 메시지를 숨김
     addMovieList(modalBody);
@@ -105,7 +110,10 @@ const addList = (modalBody) => {
     list.classList.add("scroll");
 
     modalBody.appendChild(list);
+
+    list.addEventListener("scroll" , handleScroll );
   }
+  
 };
 
 // 검색 결과 리스트를 모달에서 제거하는 함수
