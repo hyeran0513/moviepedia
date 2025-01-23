@@ -1,4 +1,4 @@
-export const createCardHTML = (item, favorites) => {
+export const createCardHTML = (item) => {
   const {
     Title,
     Year,
@@ -7,13 +7,13 @@ export const createCardHTML = (item, favorites) => {
     details: { Runtime = "N/A" } = {},
   } = item;
 
-  const isFavorite = favorites.some((favorite) => favorite.imdbID === imdbID);
+  console.log("hello" + JSON.stringify(item));
+  const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
+  const isFavorite = favorites.some((id) => id === imdbID);
 
   return `
     <div class="card__item">
-      <button type="button" class="btn-favorite" data-movie='${JSON.stringify(
-        item
-      )}' >
+      <button type="button" class="btn-favorite" data-imdb-id='${imdbID}' >
         <i class='bx ${isFavorite ? "bxs-heart" : "bx-heart"}'></i>
       </button>
 

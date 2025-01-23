@@ -1,5 +1,5 @@
 import { initializeWeb } from "./main.js";
-import { createCard } from "../components/card/card.js";
+import { createCard } from "../components/card/card-favorite.js";
 import {
   submitForm,
   deleteTitle,
@@ -15,7 +15,7 @@ document.getElementById("searchForm").addEventListener("click", (e) => {
   submitForm(favorites, e);
 });
 
-createCard(favorites, "favorite");
+createCard(favorites);
 
 // 타이틀 검색 삭제 버튼
 document.querySelector(".btn-del").addEventListener("click", deleteTitle);

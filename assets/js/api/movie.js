@@ -71,6 +71,23 @@ export const getMovies = async (title, year = "", page = 1, limit = 0) => {
   }
 };
 
+// 여러 IMDb ID에 대해 상세 정보 조회
+export const getMoviesByImdbIDs = async (imdbIDs) => {
+  try {
+    // IMDb ID 배열을 돌면서 상세 정보를 가져오기
+    const moviesWithDetails = await Promise.all(
+      imdbIDs.map(async (id) => {
+        const movieDetails = await getMovieDetails(id);
+        return { imdbID: id, details: movieDetails };
+      })
+    );
+    return moviesWithDetails;
+  } catch (error) {
+    console.error("영화 상세정보 fetch 오류", error);
+    throw error;
+  }
+};
+
 // export const getMoviesByOptions = async (title, page, limit) => {
 //   if (!title) {
 //     throw new Error("영화를 검색하려면 제목이 필요합니다.");

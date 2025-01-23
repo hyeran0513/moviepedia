@@ -28,15 +28,13 @@ export const renderSwiperMovies = async () => {
     swiperWrapper.innerHTML = data.movies
       .map((movie) => {
         const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
-        const isFavorite = favorites.some(
-          (item) => item.imdbID === movie.imdbID
-        );
+        const isFavorite = favorites.some((id) => id === movie.imdbID);
 
         return `
           <div class="swiper-slide">
-            <button type="button" class="btn-favorite" data-movie='${JSON.stringify(
-              movie
-            )}'>
+            <button type="button" class="btn-favorite" data-imdb-id='${
+              movie.imdbID
+            }'>
 
               <i class='bx ${isFavorite ? "bxs-heart" : "bx-heart"}'></i>
             </button>
