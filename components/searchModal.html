@@ -1,13 +1,142 @@
 <div class="modal-content">
+  <!-- 모달 헤드-->
   <div class="modal-head">
-    <p class="modal-head__title">모달 제목</p>
-    
+    <p class="modal-head__title" aria-describedby="">Search for the movie</p>
+
     <button type="button" id="closeButton" class="close-button">
-      <i class='bx bx-x' ></i>
+      <i class="bx bx-x"></i>
     </button>
   </div>
 
+  <!-- 모달 바디 -->
   <div class="modal-body">
-    <p>검색 모달</p>
+    <div class="modal-container">
+      <!-- 검색 영역 -->
+      <div class="search-container">
+        <label for="searchMovie" class="search-label">
+          <i class="bx bx-search search-icon"></i>
+
+          <input
+            class="search-input"
+            type="text"
+            name="searchMovie"
+            id="searchMovie"
+            placeholder="Search for movie"
+          />
+        </label>
+
+        <button class="btn-del"><i class="bx bx-x-circle"></i></button>
+      </div>
+
+      <!-- 노데이터 -->
+      <div class="no-search-data">
+        <i class="bx bx-data"></i>
+        <p class="no-data__title">No results found.</p>
+        <span class="no-data__description"
+          >We can’t find any item matching your search.</span
+        >
+      </div>
+
+      <!-- 로딩 -->
+      <!--
+      <div class="loading">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      -->
+
+      <!-- 영화 목록 -->
+      <!--
+      <div class="movie__list scroll">
+        <div class="movie__item">
+          <div class="movie__poster">
+            <img
+              src="https://m.media-amazon.com/images/M/MV5BNGE0YTVjNzUtNzJjOS00NGNlLTgxMzctZTY4YTE1Y2Y1ZTU4XkEyXkFqcGc@._V1_SX300.jpg"
+              alt=""
+            />
+          </div>
+
+          <div class="movie__info">
+            <div class="movie__info-title ellipsis">The Avengers</div>
+
+            <div class="movie__info-details">
+              <div class="movie__info-year">2012</div>
+
+              <div class="movie__info-runtime">
+                <i class="bx bx-time"></i>
+                111m
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie__item">
+          <div class="movie__poster">
+            <img
+              src="https://m.media-amazon.com/images/M/MV5BNGE0YTVjNzUtNzJjOS00NGNlLTgxMzctZTY4YTE1Y2Y1ZTU4XkEyXkFqcGc@._V1_SX300.jpg"
+              alt=""
+            />
+          </div>
+
+          <div class="movie__info">
+            <div class="movie__info-title ellipsis">The Avengers</div>
+
+            <div class="movie__info-details">
+              <div class="movie__info-year">2012</div>
+
+              <div class="movie__info-runtime">
+                <i class="bx bx-time"></i>
+                111m
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie__item">
+          <div class="movie__poster">
+            <img
+              src="https://m.media-amazon.com/images/M/MV5BNGE0YTVjNzUtNzJjOS00NGNlLTgxMzctZTY4YTE1Y2Y1ZTU4XkEyXkFqcGc@._V1_SX300.jpg"
+              alt=""
+            />
+          </div>
+
+          <div class="movie__info">
+            <div class="movie__info-title ellipsis">The Avengers</div>
+
+            <div class="movie__info-details">
+              <div class="movie__info-year">2012</div>
+
+              <div class="movie__info-runtime">
+                <i class="bx bx-time"></i>
+                111m
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="movie__item">
+          <div class="movie__poster">
+            <img
+              src="https://m.media-amazon.com/images/M/MV5BNGE0YTVjNzUtNzJjOS00NGNlLTgxMzctZTY4YTE1Y2Y1ZTU4XkEyXkFqcGc@._V1_SX300.jpg"
+              alt=""
+            />
+          </div>
+
+          <div class="movie__info">
+            <div class="movie__info-title ellipsis">The Avengers</div>
+
+            <div class="movie__info-details">
+              <div class="movie__info-year">2012</div>
+
+              <div class="movie__info-runtime">
+                <i class="bx bx-time"></i>
+                111m
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    --></div>
   </div>
 </div>

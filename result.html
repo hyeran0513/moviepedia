@@ -21,8 +21,10 @@
     <link rel="stylesheet" href="./assets/css/pages/result.css" />
 
     <!-- index.js -->
+
     <script type="module" src="./assets/js/utils/result.js"></script>
   </head>
+
   <body>
     <!-- 헤더 -->
     <h2 class="a11y-hidden">헤더</h2>
@@ -31,10 +33,27 @@
 
     <!-- 메인 -->
     <main>
-      <h2 class="a11y-hidden">걷색 결과</h2>
+      <h2 class="a11y-hidden">검색 결과</h2>
 
       <section>
-        <p>검색 결과</p>
+        <div class="section-title">Search result</div>
+
+        <!-- 카드 목록 -->
+        <div class="card"></div>
+
+        <!-- 노데이터 -->
+        <div class="no-data">
+          <i class="bx bx-data"></i>
+          <p class="no-data__title">No results found.</p>
+          <span class="no-data__description"
+            >We can’t find any item matching your search.</span
+          >
+        </div>
+
+        <!-- 더 보기 -->
+        <div class="btn-wrap">
+          <button type="button" class="btn-primary btn-more">More</button>
+        </div>
       </section>
     </main>
 

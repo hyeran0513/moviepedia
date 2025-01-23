@@ -1,26 +1,33 @@
 :root {
-  --primary-color: light-dark(#5254FD, #5254FD);
-  --primary-hover-color: light-dark(#767AF7, #767AF7);
-  --primary-bg-color: light-dark(#FFF, #232429);
-  --primary-text-color: light-dark(#333, #FBFFFF);
-  --primary-border-color: light-dark(#DFDFDF, #3F424B);
-  --secondary-text-color: light-dark(#70737A, #9FA1A6);
-  --warning-text-color: light-dark(#FF5E5E, #FF5E5E);
-  --form-bg-color: light-dark(#FEFEFE, #333742);
-  --form-placeholder-color: light-dark(#A1A5B0, #A1A5B0);
-  --form-border-color: light-dark(#DFDFDF, #3F424B);
-  --scroll-bar-color: light-dark(#E8E8E8, #1C1D22);
-  --header-bg-color: light-dark(#FFF, #232429);
-  --footer-bg-color: light-dark(#F8F8F8, #1C1D22);
-  --favorite-icon-color: light-dark(#FF4A29, #FF4A29);
-  --favorite-bg-color: light-dark(#FFF, #FFF);
-  --favorite-darken-bg-color: light-dark(#E8E8E8, #333742);
-  --thumbnail-default-color: light-dark(#FCFCFC, #343843);
-  --thumbnail-icon-color: light-dark(#BCBCBC, #525867);
-  --gradation-left-color: light-dark(#FF004D, #FF004D);
-  --gradation-right-color: light-dark(#1F2F98, #1F2F98);
-  --swiper-button-color: light-dark(#6E6E6E, #6E6E6E);
-  --swiper-active-button-color: light-dark(#D9D9D9, #D9D9D9);
+  --primary-color: light-dark(#5254fd, #5254fd);
+  --primary-hover-color: light-dark(#767af7, #767af7);
+  --primary-bg-color: light-dark(#fff, #232429);
+  --primary-text-color: light-dark(#333, #fbffff);
+  --primary-border-color: light-dark(#dfdfdf, #3f424b);
+  --secondary-text-color: light-dark(#70737a, #9fa1a6);
+  --warning-text-color: light-dark(#ff5e5e, #ff5e5e);
+  --form-bg-color: light-dark(#fefefe, #333742);
+  --form-placeholder-color: light-dark(#a1a5b0, #a1a5b0);
+  --form-border-color: light-dark(#dfdfdf, #3f424b);
+  --form-main-bg-color: light-dark(
+    rgba(0, 0, 0, 0.5),
+    rgba(255, 255, 255, 0.5)
+  );
+  --scroll-bar-color: light-dark(#e8e8e8, #1c1d22);
+  --header-icon-color: light-dark(#fbffff, #fbffff);
+  --header-bg-color: light-dark(#fff, #232429);
+  --footer-bg-color: light-dark(#f8f8f8, #1c1d22);
+  --favorite-icon-color: light-dark(#ff4a29, #ff4a29);
+  --favorite-bg-color: light-dark(#fff, #fff);
+  --favorite-darken-bg-color: light-dark(#e8e8e8, #333742);
+  --favorite-active-text-color: light-dark(#191919, #191919);
+  --thumbnail-default-color: light-dark(#e8e8e8, #343843);
+  --thumbnail-icon-color: light-dark(#bcbcbc, #525867);
+  --gradation-left-color: light-dark(#ff004d, #ff004d);
+  --gradation-right-color: light-dark(#1f2f98, #1f2f98);
+  --swiper-button-color: light-dark(#d9d9d9, #d9d9d9);
+  --swiper-text-color: light-dark(#fbffff, #fbffff);
+  --swiper-pagination-bottom: 28px;
 }
 
 body {
@@ -35,8 +42,10 @@ body {
 main {
   flex: 1;
   margin: 0 auto;
+  margin-top: 80px;
   padding: 40px 0;
   max-width: 1200px;
+  width: 100%;
 }
 
 /*# sourceMappingURL=layout.css.map */

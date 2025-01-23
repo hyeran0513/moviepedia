@@ -1,4 +1,4 @@
-import config from "../config/config.js";
+import config from "../config/config.1.js";
 
 // 고해상도 이미지 URL로 변경
 const getHighResImageUrl = (posterUrl) => {
