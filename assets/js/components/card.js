@@ -22,7 +22,7 @@ export const createCardHTML = (item) => {
         <i class='bx bxs-heart'></i>
       </button>
 
-      <a href="/detail.html?imdbID=${item.imdbID}">
+      <a href="detail.html?imdbID=${item.imdbID}">
         <div class="card__poster">
           ${
             item.Poster === "N/A"

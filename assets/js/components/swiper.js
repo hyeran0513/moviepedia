@@ -85,7 +85,7 @@ export const renderSwiperMovies = async () => {
                 }</div>
               
                 <div class="btn-wrap">
-                  <a href="/detail.html?imdbID=${
+                  <a href="detail.html?imdbID=${
                     movie.imdbID
                   }" class="btn-primary movie-btn-detail">
                     <i class='bx bx-detail' ></i>
