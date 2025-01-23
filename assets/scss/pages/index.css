@@ -50,7 +50,6 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: -1;
 }
 
 .movie-poster--default {
@@ -72,7 +71,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  -webkit-box-reflect: below 1px linear-gradient(transparent, transparent, rgba(0, 0, 0, 0.1333333333), rgba(0, 0, 0, 0.2666666667));
+  -webkit-box-reflect: below 1px linear-gradient(transparent, transparent, #0002, #0004);
 }
 
 .movie-container {
@@ -83,7 +82,6 @@
   width: 100%;
   height: 100%;
   color: var(--swiper-text-color);
-  z-index: -1;
 }
 
 .movie-container::before {
@@ -207,7 +205,5 @@
   gap: 4px;
   margin-top: 6px;
 }
-
-
 
 /*# sourceMappingURL=index.css.map */

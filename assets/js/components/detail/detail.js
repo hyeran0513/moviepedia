@@ -28,14 +28,14 @@ const renderMovieInfo = (movieData) => {
   movieDetailInfoList.innerHTML = movieInfoItems
     .map(
       (item) => `
-        <dl class="movie-detail__info-item">
-          <dt class="movie-detail__term">${item.term}</dt>
-          <dd class="movie-detail__definition">${
+        <div class="movie-detail__info-item">
+          <h4 class="movie-detail__term">${item.term}</h4>
+          <div class="movie-detail__definition">${
             item.term === "Genres"
               ? `<ul class="movie-detail__genre-list">${item.definition}</ul>`
               : item.definition
-          }</dd>
-        </dl>
+          }</div>
+        </div>
       `
     )
     .join("");
