@@ -11,11 +11,17 @@ export const setCurrentIndex = (newIndex) => {
   currentIndex = newIndex;
 };
 
-export const displayCards = async (data) => {
+export const displayCards = async (data, type) => {
   const cardContainer = document.querySelector(".card");
+  let favorites;
 
-  const imdbIDs = JSON.parse(sessionStorage.getItem("favorites")) || [];
-  const favorites = await getMoviesByImdbIDs(imdbIDs);
+  if (type === "filter") {
+    favorites = data;
+    console.log("test: " + JSON.stringify(favorites));
+  } else {
+    const imdbIDs = JSON.parse(sessionStorage.getItem("favorites")) || [];
+    favorites = await getMoviesByImdbIDs(imdbIDs);
+  }
 
   let cardHTML = favorites.map((item) => createCardHTML(item.details)).join("");
 
@@ -28,7 +34,7 @@ export const displayCards = async (data) => {
   });
 };
 
-export const createCard = (data) => {
+export const createCard = (data, type) => {
   const cardContainer = document.querySelector(".card");
 
   // 카드 컨테이너 초기화
@@ -38,6 +44,6 @@ export const createCard = (data) => {
 
   // 데이터 처리
   handleNoData(data);
-  displayCards(data);
+  displayCards(data, type);
   handleMoreButton(data);
 };

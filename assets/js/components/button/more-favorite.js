@@ -15,6 +15,7 @@ export const handleMoreButton = (data) => {
 
   btnMore.addEventListener("click", () => {
     setCurrentIndex(currentIndex + itemsPerPage);
+
     displayCards(data);
 
     if (currentIndex >= data.length) {

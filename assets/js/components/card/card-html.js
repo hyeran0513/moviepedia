@@ -7,7 +7,6 @@ export const createCardHTML = (item) => {
     details: { Runtime = "N/A" } = {},
   } = item;
 
-  console.log("hello" + JSON.stringify(item));
   const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
   const isFavorite = favorites.some((id) => id === imdbID);
 

@@ -1,6 +1,7 @@
 import { createCard } from "../card/card-favorite.js";
+import { getMoviesByImdbIDs } from "../../api/movie.js";
 
-export const submitForm = (data, e) => {
+export const submitForm = async (data, e) => {
   e.preventDefault();
 
   const titleInput = document.getElementById("movieTitle");
@@ -18,13 +19,17 @@ export const submitForm = (data, e) => {
       .querySelector(".filter-info").style.display = "none"; // 메시지 숨기기
   }
 
+  const imdbIDs = JSON.parse(sessionStorage.getItem("favorites")) || [];
+
+  const favorites = await getMoviesByImdbIDs(imdbIDs);
+
   // 입력된 제목을 포함하는 항목 필터링
-  const filteredData = data.filter((item) =>
-    item.Title.toLowerCase().includes(title)
-  );
+  const filteredData = favorites.filter((item) => {
+    return item.details.Title.toLowerCase().includes(title);
+  });
 
   // 필터링된 결과를 createCard에 전달
-  createCard(filteredData, "favorite");
+  createCard(filteredData, "filter");
 };
 
 export const deleteTitle = () => {
