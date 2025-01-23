@@ -109,7 +109,7 @@ export const setFocus = () => {
 
 // 삭제버튼 클릭 시 영화 제목 초기화
 export const searchTitleInit = () => {
-  const deleteButton = document.querySelector(".btn-del");
+  const deleteButton = document.querySelector(".btn-delete");
   const inputBox = document.querySelector(".search-input");
 
   deleteButton.addEventListener("click", () => {

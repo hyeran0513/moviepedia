@@ -1,4 +1,5 @@
 @use "../var" as *;
+@use "../mixin/animation" as *;
 
 // 로딩 레이어 기본 스타일
 @mixin loading-layer($z-index: 100, $bg-color: rgba(0, 0, 0, 0.5)) {
@@ -24,15 +25,15 @@
 
   // 애니메이션 설정
   &:nth-child(1) {
-    // @include loadingBubble(3, 1);
+    @include loadingBubble(3s, 0s);
   }
 
   &:nth-child(2) {
-    // @include loadingBubble(3, 0.5);
+    @include loadingBubble(3s, 0.5s);
   }
 
   &:nth-child(3) {
-    // @include loadingBubble(3, 0);
+    @include loadingBubble(3s, 1s);
   }
 }
 

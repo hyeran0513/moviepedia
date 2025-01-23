@@ -38,7 +38,7 @@ export const loadSearchModal = () => {
       }
 
       // 삭제버튼 초기화
-      const deleteButton = document.querySelector(".btn-del");
+      const deleteButton = document.querySelector(".btn-delete");
       if (deleteButton) {
         searchTitleInit();
       }

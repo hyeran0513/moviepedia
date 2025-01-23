@@ -46,6 +46,11 @@ select {
   line-height: inherit;
 }
 
+/* 버튼 */
+button {
+  cursor: pointer;
+}
+
 /* 필드셋과 레전드 초기화 */
 fieldset {
   border: none;

@@ -1,24 +1,20 @@
 @use "../abstract/mixin" as *;
 @use "../abstract/var" as *;
 
-.btn {
-  @include button-base();
-}
-
 .btn-small {
   @include button-size(0.25rem, 0.875rem);
 }
 
 .btn-large {
-  @include button-size(0.75rem, 1.25rem);
+  @include button-size(50px);
 }
 
 .btn-primary {
-  @include button-variant($primary-color, #fff);
+  @include button-base();
 }
 
 .btn-warning {
-  @include button-variant($warning-text-color, #fff);
+  @include button-base($warning-text-color);
 }
 
 .btn-wrap {

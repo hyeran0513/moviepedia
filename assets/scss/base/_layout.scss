@@ -1,4 +1,5 @@
 @use "../abstract/var" as *;
+@use "../abstract//mixin/" as *;
 
 body {
   display: flex;
@@ -18,3 +19,5 @@ main {
   max-width: 1200px;
   width: 100%;
 }
+
+@include theme-switcher();

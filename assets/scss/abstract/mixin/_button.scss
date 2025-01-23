@@ -3,13 +3,12 @@
 // 버튼 베이스
 @mixin button-base(
   $bg-color: $primary-color,
-  $text-color: #333,
+  $text-color: #fff,
   $border-radius: 4px
 ) {
   display: inline-block;
-  padding: 0.5rem 1rem;
+  padding: 0 1rem;
   font-size: 1rem;
-  font-weight: 600;
   text-align: center;
   text-decoration: none;
   color: $text-color;
@@ -31,21 +30,10 @@
 }
 
 // 버튼 사이즈
-@mixin button-size($padding: 0.5rem, $font-size: 1rem) {
-  padding: $padding;
+@mixin button-size($height: 34px, $font-size: 1rem) {
+  height: $height;
+  line-height: $height - 2;
   font-size: $font-size;
-}
-
-// 버튼 유형
-@mixin button-variant($bg-color, $text-color, $border-radius: 4px) {
-  background-color: $bg-color;
-  color: $text-color;
-  border-radius: $border-radius;
-  transition: background-color 0.2s ease-in-out;
-
-  &:hover {
-    background-color: $primary-hover-color;
-  }
 }
 
 // 버튼 아이콘
@@ -80,6 +68,7 @@
   transition: border-color 0.6s ease, box-shadow 0.6s ease;
   border-radius: if($is-rounded, 30px, 8px);
   background-color: $favorite-bg-color;
+  color: #333;
 
   // 크기별 스타일
   @if $size == sm {

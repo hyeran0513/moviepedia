@@ -70,6 +70,7 @@ export const toggleDeleteButton = () => {
   const titleInput = document.getElementById("movieTitle");
   const deleteButton = document.querySelector(".btn-del");
 
+  console.log("???" + JSON.stringify(deleteButton));
   if (titleInput.value.trim() !== "") {
     deleteButton.style.opacity = "1"; // 삭제 버튼 표시
   } else {
