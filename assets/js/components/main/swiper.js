@@ -4,7 +4,9 @@ import { handleFavoriteButton } from "../button/favorite-button.js";
 export const initializeSwiper = (containerSelector) => {
   return new Swiper(containerSelector, {
     effect: "coverflow",
-    autoplay: false,
+    autoplay: {
+      delay: 3000,
+    },
     centeredSlides: true,
     slidesPerView: "auto",
     coverflowEffect: {
