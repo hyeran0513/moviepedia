@@ -1,6 +1,11 @@
 import { setupMovieContents } from "./movie-display.js";
 import { getMovies } from "../../api/movie.js";
 
+import { 
+  removeLoader,
+  addLoaderEle,
+ } from "../common/loader.js";
+ 
 import {
   initCurrentPage,
   handleScroll,
@@ -113,7 +118,7 @@ const addList = (modalBody) => {
 
     list.addEventListener("scroll" , handleScroll );
   }
-  
+
 };
 
 // 검색 결과 리스트를 모달에서 제거하는 함수

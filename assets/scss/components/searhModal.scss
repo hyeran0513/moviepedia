@@ -73,9 +73,10 @@
     gap: 20px;
     padding: 20px 30px;
     cursor: pointer;
-
-    &:not(:last-child) {
+    
+    &:not(:last-of-type) {
       border-bottom: 1px solid var(--primary-border-color);
+      // border-bottom:none;
     }
   }
 
@@ -91,6 +92,13 @@
       height: 100%;
       object-fit: cover;
     }
+
+    i {
+      font-size:3rem;
+      text-align: center;
+      line-height:75px;
+    }
+    
   }
 
   &__info {
