@@ -1,3 +1,5 @@
+import { createCard } from "../card/card.js";
+
 // 영화 데이터를 찜 목록에 추가하거나 제거
 export const toggleFavorite = (movieData) => {
   const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
@@ -32,7 +34,7 @@ export const updateHeartIcon = (button, isFavorite) => {
 };
 
 // 찜 버튼 클릭 시 실행되는 메인 함수
-export const handleFavoriteButton = (button) => {
+export const handleFavoriteButton = (button, type) => {
   button.addEventListener("click", () => {
     const movieData = JSON.parse(button.dataset.movie);
 
@@ -44,5 +46,11 @@ export const handleFavoriteButton = (button) => {
 
     // 하트 아이콘을 찜 여부에 맞게 업데이트
     updateHeartIcon(button, isFavorite);
+
+    // 찜 목록 페이지에서만 카드 재생성
+    if (type === "favorite") {
+      const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
+      createCard(favorites, "favorite");
+    }
   });
 };

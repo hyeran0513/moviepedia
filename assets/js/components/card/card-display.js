@@ -34,6 +34,6 @@ export const displayCards = (data, type) => {
   const favoriteButtons = document.querySelectorAll(".btn-favorite");
 
   favoriteButtons.forEach((button) => {
-    handleFavoriteButton(button);
+    handleFavoriteButton(button, type);
   });
 };
