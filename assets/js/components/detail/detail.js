@@ -71,9 +71,7 @@ export const createDetail = async () => {
       <button type="button" class="btn-favorite--lg ${
         isFavorite ? "--active" : ""
       }"
-      }'" data-movie='${JSON.stringify(movieData)
-        .replace(/'/g, "&apos;")
-        .replace(/"/g, "&quot;")}' >
+      }'" data-movie='${JSON.stringify(movieData)}' >
         <i class='bx ${isFavorite ? "bxs-heart" : "bx-heart"}'></i>
         <span>favorite</span>
       </button>

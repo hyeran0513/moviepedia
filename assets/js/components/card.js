@@ -15,9 +15,7 @@ export const createCardHTML = (item) => {
     <div class="card__item">
       <button type="button" class="btn-favorite" data-movie='${JSON.stringify(
         item
-      )
-        .replace(/'/g, "&apos;")
-        .replace(/"/g, "&quot;")}'>
+      )}'>
 
         <i class='bx bxs-heart'></i>
       </button>

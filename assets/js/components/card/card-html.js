@@ -13,13 +13,11 @@ export const createCardHTML = (item, favorites) => {
     <div class="card__item">
       <button type="button" class="btn-favorite" data-movie='${JSON.stringify(
         item
-      )
-        .replace(/'/g, "&apos;")
-        .replace(/"/g, "&quot;")}' >
+      )}' >
         <i class='bx ${isFavorite ? "bxs-heart" : "bx-heart"}'></i>
       </button>
 
-      <a href="/detail.html?imdbID=${imdbID}">
+      <a href="detail.html?imdbID=${imdbID}">
         <div class="card__poster">
           ${
             Poster === "N/A" || !Poster
