@@ -140,6 +140,7 @@ select {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 40px;
   height: 150px;
   font-size: 32px;
   font-weight: bold;
@@ -166,7 +167,8 @@ select {
 }
 
 /* 노데이터 */
-.no-data {
+.no-data,
+.no-search-data {
   display: none;
   justify-content: center;
   align-items: center;
@@ -177,19 +179,33 @@ select {
   border: 1px solid var(--primary-border-color);
   border-radius: 20px;
 }
-.no-data > i {
+.no-data > i,
+.no-search-data > i {
   font-size: 60px;
 }
-.no-data__title {
+.no-data__title,
+.no-search-data__title {
   font-size: 32px;
   font-weight: bold;
 }
-.no-data__description {
+.no-data__description,
+.no-search-data__description {
   font-size: 18px;
   color: var(--secondary-text-color);
 }
 
 /* 찜 버튼 */
+@keyframes heart {
+  0% {
+    transform: scale(1.07);
+  }
+  80% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}
 .btn-favorite {
   position: absolute;
   top: 20px;
@@ -201,8 +217,17 @@ select {
   aspect-ratio: 1/1;
   border-radius: 8px;
   background-color: var(--favorite-bg-color);
+  border: 1px solid var(--favorite-bg-color);
   cursor: pointer;
   z-index: 1;
+  transition: border-color 0.6s ease, box-shadow 0.6s ease;
+}
+.btn-favorite:hover {
+  border-color: var(--favorite-icon-color);
+  box-shadow: 0 0 8px var(--favorite-icon-color);
+}
+.btn-favorite:hover > i {
+  animation: heart 0.6s linear infinite;
 }
 .btn-favorite > i {
   color: var(--favorite-icon-color);

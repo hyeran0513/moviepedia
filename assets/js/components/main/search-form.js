@@ -41,6 +41,9 @@ export const submitForm = (e) => {
 
   // 유효성 검사 후, title 또는 year 값이 있으면 결과 페이지로 이동
   if (isValid) {
+    titleInput.closest(".form-field").classList.remove("warning");
+    yearSelect.closest(".form-field").classList.remove("warning");
+
     if (title) {
       url += `title=${encodeURIComponent(title)}&`;
     }

@@ -1,4 +1,5 @@
-import { fetchMovie } from "../api/fetch-movie.js";
+import { getMovies } from "../../api/movie.js";
+import { handleFavoriteButton } from "../button/favorite-button.js";
 
 export const initializeSwiper = (containerSelector) => {
   return new Swiper(containerSelector, {
@@ -21,7 +22,7 @@ export const initializeSwiper = (containerSelector) => {
 
 export const renderSwiperMovies = async () => {
   const swiperWrapper = document.querySelector(".swiper-wrapper");
-  const data = await fetchMovie("mini");
+  const data = await getMovies("mini", "", 1, 6);
 
   if (data.movies) {
     swiperWrapper.innerHTML = data.movies
@@ -101,32 +102,11 @@ export const renderSwiperMovies = async () => {
 
     initializeSwiper(".swiper-container");
 
+    // 좋아요 버튼
     const favoriteButtons = document.querySelectorAll(".btn-favorite");
 
     favoriteButtons.forEach((button) => {
-      button.addEventListener("click", (event) => {
-        const movieData = JSON.parse(button.dataset.movie);
-        const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
-
-        const isFavorite = favorites.some(
-          (item) => item.imdbID === movieData.imdbID
-        );
-
-        if (isFavorite) {
-          const updatedFavorites = favorites.filter(
-            (item) => item.imdbID !== movieData.imdbID
-          );
-          sessionStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-        } else {
-          favorites.push(movieData);
-          sessionStorage.setItem("favorites", JSON.stringify(favorites));
-        }
-
-        // 하트 아이콘 업데이트
-        const heartIcon = button.querySelector("i");
-        heartIcon.classList.toggle("bxs-heart", !isFavorite);
-        heartIcon.classList.toggle("bx-heart", isFavorite);
-      });
+      handleFavoriteButton(button);
     });
   } else {
     console.error("movies fetch 에러", data);

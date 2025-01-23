@@ -1,4 +1,4 @@
-import * as movieSearch from "../api/fetch-movie.js";
+import * as movieSearch from "../api/movie.js";
 
 // 로딩시 동작내용
 export const loadSearchModal = () => {
@@ -27,10 +27,9 @@ export const loadSearchModal = () => {
       });
 
       // 검색 모듈 로직 실행전 서치 모달창 입력창 등록
-      const searchTarget = document.querySelector(".search-input");
-      let existSearch = false;
-      let existDelete = false;
-
+      const searchTarget = document.querySelector(".modal-search__title");
+      let existSearch = false,
+        existDelete = false;
       if (searchTarget) {
         existSearch = true;
         setupSearchHandler(searchTarget);
@@ -38,8 +37,7 @@ export const loadSearchModal = () => {
       }
 
       // 검색 모듈 로직 실행전 서치 모달창 삭제버튼 등록
-      const deleteButton = document.querySelector(".btn-del");
-
+      const deleteButton = document.querySelector(".modal-search__delete");
       if (deleteButton) {
         existDelete = true;
         searchTitleInit();
@@ -54,26 +52,23 @@ let total = 10;
 let limit = 10;
 let currentPage = 1;
 
-const setFocus = () => {
-  const searchBar = document.querySelector(".search-container");
-  const searchText = document.querySelector(".search-input");
+function setFocus() {
+  const searchBar = document.querySelector(".modal-search");
+  const searchText = document.querySelector(".modal-search__title");
 
   searchBar.addEventListener("click", () => {
     searchText.focus();
   });
-};
+}
 
 // searchModal.html 로딩시 동작내용
-const setupSearchHandler = async (searchTarget) => {
-  const modalBody = document.querySelector(".modal-container");
-  const noData = document.querySelector(".no-data");
+async function setupSearchHandler(searchTarget) {
+  const modalBody = document.querySelector(".modal-body");
 
   searchTarget.addEventListener("keyup", async (e) => {
     try {
       // addLoader(modalBody);
-      if (!searchTarget.value.trim()) {
-        noData.style.display = "flex";
-        removeList(modalBody);
+      if (!searchTarget.value) {
         return;
       }
 
@@ -84,7 +79,6 @@ const setupSearchHandler = async (searchTarget) => {
 
       // 추가로 키를 입력시 시작 검색페이지 초기화
       currentPage = 1;
-
       const result = await movieSearch.getMoviesByOptions(
         searchTarget.value,
         currentPage,
@@ -93,20 +87,13 @@ const setupSearchHandler = async (searchTarget) => {
 
       total = result.totalResults;
 
-      // 데이터가 없을 경우 no-data 표시, 리스트 제거
-      if (!result.movies || result.movies.length === 0) {
-        noData.style.display = "flex";
-        removeList(modalBody);
-        return;
-      }
+      let searchResult = await setupMovieContents(result);
 
-      if (!modalBody.querySelector(".movie__list")) {
+      if (!modalBody.querySelector(".modal-search__list")) {
         addList(modalBody);
       }
 
-      noData.style.display = "none";
-      const list = modalBody.querySelector(".movie__list");
-      const searchResult = await setupMovieContents(result);
+      const list = modalBody.querySelector(".modal-search__list");
 
       list.innerHTML = searchResult;
     } catch (error) {
@@ -116,40 +103,46 @@ const setupSearchHandler = async (searchTarget) => {
       console.error("예외 상황 발생: ", error, " m : ", error.message);
     }
   });
-};
+}
 
 // 검색된 영화를 html요소로 반환
-const setupMovieContents = async (jsonData) => {
-  if (!jsonData.movies || jsonData.movies.length === 0) {
-    return "";
-  }
-
+async function setupMovieContents(jsonData) {
   let element = "";
+  if (!jsonData.movies) {
+    element = `<p class="modal-search__alert">
+                  Movie not founded.
+               </p>`;
+    return element;
+  }
 
   try {
     for (const movie of jsonData.movies) {
       element += `
-          <div class="movie__item">
-            <div class="movie__poster">
-              <img src="${movie.Poster}" alt="" />
+          <div class="modal-search__ele">
+            <div class="modal-search__ele__img">
+              <img
+                src="${movie.Poster}"
+                alt="">
             </div>
 
-            <div class="movie__info">
-              <p class="movie__info-title">
+            <div class="modal-search__ele__info">
+              <p class="modal-search__ele__title">
                 ${movie.Title}
               </p>
 
-              <div class="movie__info-details">
-                <p class="movie__info-year">
+              <div class="modal-search__ele__desc">
+                <p class="modal-search__ele__year">
                   ${movie.Year}
                 </p>
 
-                <p class="movie__info-runtime">
+                <p class="modal-search__ele__runtime">
                   <i class='bx bx-time'></i>
                   ${movie.details.Runtime}
                 </p>
               </div>
+
             </div>
+
           </div>
       `;
     }
@@ -158,84 +151,83 @@ const setupMovieContents = async (jsonData) => {
   } catch (error) {
     console.error("상세정보 출력 중 오류 발생 : " + error);
   }
-};
+}
 
 // 삭제버튼 클릭시 영화 제목 초기화
-const searchTitleInit = () => {
-  const deleteButton = document.querySelector(".btn-del");
-  const inputBox = document.querySelector(".search-input");
+function searchTitleInit() {
+  const deleteButton = document.querySelector(".modal-search__delete");
+  const inputBox = document.querySelector(".modal-search__title");
 
   deleteButton.addEventListener("click", () => {
     inputBox.value = "";
   });
-};
+}
 
 // 검색된 영화 리스트의 스크롤 이벤트
 const handleScroll = async () => {
-  const list = document.querySelector(".movie__list");
+  const list = document.querySelector(".modal-search__list");
 
   if (list.scrollHeight - list.scrollTop < 500 && total > currentPage * limit) {
     await loadPosts();
   }
 };
 
-const loadPosts = async () => {
+async function loadPosts() {
   currentPage++;
+  const searchTarget = document.querySelector(".modal-search__title");
 
-  const searchTarget = document.querySelector(".search-input");
-
-  const list = document.querySelector(".movie__list");
+  const list = document.querySelector(".modal-search__list");
 
   let result = await movieSearch.getMoviesByOptions(
     searchTarget.value,
     currentPage,
     limit
   );
-
   let searchResult = await setupMovieContents(result);
 
   list.innerHTML += searchResult;
-};
+}
 
 // 로딩 애니메이션이 적용될 요소에 사용
 // 로딩 애니메이션은 입력된 html 요소의 자식으로 등록됨
-const addLoader = (HTMLElement) => {
+function addLoader(HTMLElement) {
   if (!HTMLElement.querySelector(".loading")) {
     let context = `
-      <div class='loading'>
-        <div class='dot'></div>
-        <div class='dot'></div>
-        <div class='dot'></div>
-      </div>
+    <div class='loading'>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
     `;
 
     HTMLElement.innerHTML += context;
   }
-};
+}
 
 // 로딩 애니메이션이 삭제될 요소에 사용
 // 로딩 애니메이션은 요소의 자식에서 삭제됨
-const removeLoader = (HTMLElement) => {
+function removeLoader(HTMLElement) {
   const loader = HTMLElement.querySelector(".loading");
   HTMLElement.removeChild(loader);
-};
+}
 
 // 모달창에 검색결과 추가
-const addList = (modalBody) => {
-  if (!modalBody.querySelector(".movie__list")) {
+function addList(modalBody) {
+  if (!modalBody.querySelector("modal-search__list")) {
     const list = document.createElement("div");
-    list.classList.add("movie__list");
+    list.classList.add("modal-search__list");
     list.classList.add("scroll");
 
     modalBody.appendChild(list);
+    list.addEventListener("scroll", handleScroll);
   }
-};
+}
 
 // 모달창에 검색결과 삭제
-const removeList = (modalBody) => {
-  if (modalBody.querySelector(".movie__list")) {
-    const list = modalBody.querySelector(".movie__list");
+function removeList(modalBody) {
+  if (modalBody.querySelector(".modal-search__list")) {
+    const list = modalBody.querySelector(".modal-search__list");
 
     modalBody.removeChild(list);
   }
-};
+}

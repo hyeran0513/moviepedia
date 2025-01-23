@@ -7,7 +7,7 @@ const getHighResImageUrl = (posterUrl) => {
 };
 
 // 영화 상세 정보 조회
-const getMovieDetails = async (imdbID) => {
+export const getMovieDetails = async (imdbID) => {
   try {
     const res = await fetch(
       `https://omdbapi.com/?apikey=${config.API_KEY}&i=${imdbID}`
@@ -32,9 +32,9 @@ const getMovieDetails = async (imdbID) => {
 };
 
 // 영화 검색 결과 조회
-const getMovies = async (title, year = "", page = 1, limit = 0) => {
-  const s = `&s=${encodeURIComponent(title)}`;
-  const y = `&y=${year}`;
+export const getMovies = async (title, year = "", page = 1, limit = 0) => {
+  const s = title ? `&s=${encodeURIComponent(title)}` : "";
+  const y = year ? `&y=${year}` : "";
   const p = `&page=${page}`;
 
   try {
@@ -46,7 +46,6 @@ const getMovies = async (title, year = "", page = 1, limit = 0) => {
 
     if (json.Response === "True") {
       const { Search: movies, totalResults } = json;
-
 
       const limitedMovies = limit > 0 ? movies.slice(0, limit) : movies;
 
@@ -72,24 +71,14 @@ const getMovies = async (title, year = "", page = 1, limit = 0) => {
   }
 };
 
-// 영화 제목으로 영화 목록 조회
-export const fetchMovie = async (title) => {
-  if (!title) {
-    throw new Error("영화를 검색하려면 제목이 필요합니다.");
-  }
+// export const getMoviesByOptions = async (title, page, limit) => {
+//   if (!title) {
+//     throw new Error("영화를 검색하려면 제목이 필요합니다.");
+//   }
+//   else{
+//     title = title.replace( " " , "+");
+//   }
 
-  const data = await getMovies(title, "", 1, 6);
-  return data;
-};
-
-export const getMoviesByOptions = async (title, page, limit) => {
-  if (!title) {
-    throw new Error("영화를 검색하려면 제목이 필요합니다.");
-  }
-  else{
-    title = title.replace( " " , "+");
-  }
-
-  const data = await getMovies(title,"", page, limit);
-  return data;
-}
+//   const data = await getMovies(title,"", page, limit);
+//   return data;
+// }

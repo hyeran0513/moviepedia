@@ -1,10 +1,10 @@
 import { initializeWeb } from "./main.js";
-import { createCard } from "../components/card.js";
+import { createCard } from "../components/card/card.js";
 import {
   submitForm,
   deleteTitle,
   toggleDeleteButton,
-} from "../components/filter.js";
+} from "../components/filter/filter.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   initializeWeb();
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     submitForm(favorites, e);
   });
 
-  createCard(favorites);
+  createCard(favorites, "favorite");
 
   // 타이틀 검색 삭제 버튼
   document.querySelector(".btn-del").addEventListener("click", deleteTitle);

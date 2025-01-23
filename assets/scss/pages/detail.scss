@@ -1,1 +1,120 @@
 @use "../pages/main" as *;
+
+.movie-detail {
+  &__container {
+    display: flex;
+    gap: 110px;
+  }
+
+  &__poster {
+    width: 100%;
+    height: 520px;
+    border-radius: 26px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &-container {
+      max-width: 400px;
+      width: 100%;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    .btn-back {
+      padding-top: 16px;
+
+      & > i {
+        font-size: 24px;
+      }
+    }
+  }
+
+  &__title {
+    margin-bottom: 48px;
+    font-size: 40px;
+    font-weight: bold;
+  }
+
+  &__storyline {
+    margin-bottom: 66px;
+
+    & > dt {
+      margin-bottom: 22px;
+      font-weight: bold;
+    }
+  }
+
+  &__info {
+    &-list {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    &-item {
+      display: flex;
+      align-items: center;
+      gap: 68px;
+
+      & > dt {
+        min-width: 94px;
+      }
+
+      & > dd {
+        flex: 1;
+      }
+    }
+  }
+
+  &__genre {
+    &-list {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    &-item {
+      padding: 0 20px;
+      height: 30px;
+      line-height: 28px;
+      border: 1px solid var(--primary-border-color);
+      border-radius: 15px;
+    }
+  }
+}
+
+.btn-favorite--lg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+  width: 100%;
+  height: 54px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 16px;
+  color: var(--primary-text-color);
+  background-color: var(--favorite-darken-bg-color);
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  & > i {
+    color: var(--favorite-icon-color);
+  }
+
+  &.--active {
+    background-color: var(--favorite-bg-color);
+    color: var(--favorite-active-text-color);
+  }
+}

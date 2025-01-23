@@ -156,6 +156,7 @@ select {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 40px;
     height: 150px;
     font-size: 32px;
     font-weight: bold;
@@ -188,7 +189,8 @@ select {
 }
 
 /* 노데이터 */
-.no-data {
+.no-data,
+.no-search-data {
   display: none;
   justify-content: center;
   align-items: center;
@@ -215,6 +217,20 @@ select {
 }
 
 /* 찜 버튼 */
+@keyframes heart {
+  0% {
+    transform: scale(1.07);
+  }
+
+  80% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0.8);
+  }
+}
+
 .btn-favorite {
   position: absolute;
   top: 20px;
@@ -226,8 +242,19 @@ select {
   aspect-ratio: 1 / 1;
   border-radius: 8px;
   background-color: var(--favorite-bg-color);
+  border: 1px solid var(--favorite-bg-color);
   cursor: pointer;
   z-index: 1;
+  transition: border-color 0.6s ease, box-shadow 0.6s ease;
+
+  &:hover {
+    border-color: var(--favorite-icon-color);
+    box-shadow: 0 0 8px var(--favorite-icon-color);
+
+    & > i {
+      animation: heart 0.6s linear infinite;
+    }
+  }
 
   & > i {
     color: var(--favorite-icon-color);
