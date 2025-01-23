@@ -5,7 +5,7 @@ import {
   removeLoader,
   addLoaderEle,
  } from "../common/loader.js";
- 
+
 import {
   initCurrentPage,
   handleScroll,
@@ -24,6 +24,9 @@ const addMovieList = (modalBody) => {
     addList(modalBody);
   }
 };
+
+// 초기 검색 애니메이션 할당 로직
+let isMovieListExist = false;
 
 // 영화 검색 로직
 let debounceTimer;
@@ -56,6 +59,20 @@ export const setupSearchHandler = async (searchTarget) => {
   // 키 입력 이벤트 리스너 추가
   searchTarget.addEventListener("keyup", async (e) => {
     initCurrentPage();
+
+// 초기 검색시에만 로딩 애니메이션이 적용됨.
+// 검색어를 변경할경우 애니메이션 미적용.
+    if(!modalBody.querySelector('movie__list') && !isMovieListExist ){
+      isMovieListExist = true;
+      let listEle = document.createElement('div');
+      listEle.classList.add('movie__list');
+      listEle.classList.add('scroll');
+      modalBody.appendChild(listEle);
+      listEle.addEventListener("scroll" , handleScroll );
+      addLoaderEle(listEle);
+    }
+  
+
     const searchValue = searchTarget.value.trim(); // 입력값의 공백을 제거한 값
 
     // 입력값이 비어있으면 데이터 없음 메시지 처리
@@ -84,6 +101,7 @@ export const setupSearchHandler = async (searchTarget) => {
     const list = modalBody.querySelector(".movie__list");
     const searchResult = await setupMovieContents(result);
     list.innerHTML = searchResult;
+    removeLoader(list);
   });
 };
 
