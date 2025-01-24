@@ -30,7 +30,8 @@
 }
 
 // 버튼 사이즈
-@mixin button-size($height: 34px, $font-size: 1rem) {
+@mixin button-size($height: 34px, $width: 100%, $font-size: 1rem) {
+  width: $width;
   height: $height;
   line-height: $height - 2;
   font-size: $font-size;

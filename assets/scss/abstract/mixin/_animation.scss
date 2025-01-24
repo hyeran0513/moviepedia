@@ -86,3 +86,43 @@
     opacity: 0;
   }
 }
+
+// 타이틀 애니메이션
+@mixin titleMove($duration: 0.8s) {
+  animation: titleMove $duration ease-out;
+}
+
+@keyframes titleMove {
+  0% {
+    opacity: 0;
+    transform: translate(20%);
+  }
+  60% {
+    opacity: 0;
+    transform: translate(12%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+// 서브 타이틀 애니메이션
+@mixin subtitleMove($duration: 0.8s) {
+  animation: subtitleMove $duration ease-out;
+}
+
+@keyframes subtitleMove {
+  0% {
+    opacity: 0;
+    transform: translate(-10%);
+  }
+  60% {
+    opacity: 0;
+    transform: translate(-6%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}

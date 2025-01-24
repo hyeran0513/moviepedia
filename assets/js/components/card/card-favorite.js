@@ -48,6 +48,16 @@ export const displayCards = async (data, type) => {
   favoriteButtons.forEach((button) => {
     handleFavoriteButton(button, "favorite");
   });
+
+  // 더보기 버튼 상태 업데이트
+  const moreButton = document.querySelector(".more-button");
+  if (moreButton) {
+    if (favorites.length > pageState.currentIndex + pageState.itemsPerPage) {
+      moreButton.style.display = "block";
+    } else {
+      moreButton.style.display = "none";
+    }
+  }
 };
 
 export const createCard = (data, type, noDataType) => {

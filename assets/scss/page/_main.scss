@@ -1,5 +1,6 @@
 @use "../abstract/var" as *;
-@use "../layout/form" as * ;
+@use "../layout/form" as *;
+@use "../abstract/mixin" as *;
 
 // 메인 세션
 .main-section {
@@ -21,6 +22,7 @@
 
     .subtitle {
       font-size: 28px;
+      @include subtitleMove();
     }
 
     .title {
@@ -33,6 +35,7 @@
       );
       -webkit-background-clip: text;
       color: transparent;
+      @include titleMove();
     }
   }
 }

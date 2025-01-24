@@ -37,9 +37,6 @@ export const deleteTitle = () => {
   const titleInput = document.getElementById("movieTitle");
   titleInput.value = "";
   toggleDeleteButton();
-
-  // 삭제 후 초기 상태 노데이터를 표시
-  createCard([], "filter", "search");
 };
 
 export const toggleDeleteButton = () => {

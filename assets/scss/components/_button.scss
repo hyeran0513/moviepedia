@@ -1,12 +1,14 @@
 @use "../abstract/mixin" as *;
 @use "../abstract/var" as *;
 
-.btn-small {
-  @include button-size(0.25rem, 0.875rem);
+.btn-primary-fill {
+  @include button-base();
+  @include button-size(50px);
 }
 
-.btn-large {
-  @include button-size(50px);
+.btn-primary-lg {
+  @include button-base();
+  @include button-size(50px, 400px);
 }
 
 .btn-primary {
