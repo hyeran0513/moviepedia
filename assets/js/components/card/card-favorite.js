@@ -4,11 +4,18 @@ import { getMoviesByImdbIDs } from "../../api/movie.js";
 import { handleMoreButton } from "../button/more-favorite.js";
 import { handleNoData } from "../common/no-data.js";
 
-export let itemsPerPage = 10;
-export let currentIndex = 0;
+const pageState = {
+  itemsPerPage: 10,
+  currentIndex: 0,
+};
 
+// 상태 업데이트
 export const setCurrentIndex = (newIndex) => {
-  currentIndex = newIndex;
+  pageState.currentIndex = newIndex;
+};
+
+export const getPageState = () => {
+  return pageState;
 };
 
 export const displayCards = async (data, type) => {
@@ -24,18 +31,18 @@ export const displayCards = async (data, type) => {
 
   // 현재 인덱스에 따라 표시할 데이터 조정
   const visibleData = favorites.slice(
-    currentIndex,
-    currentIndex + itemsPerPage
+    pageState.currentIndex,
+    pageState.currentIndex + pageState.itemsPerPage
   );
 
-  // 영화 데이터를 기반으로 카드 HTML 생성
+  // 영화 데이터를 기존 목록에 추가
   let cardHTML = visibleData
     .map((item) => createCardHTML(item.details))
     .join("");
 
-  cardContainer.innerHTML += cardHTML; // 기존 카드 유지하며 추가
+  cardContainer.innerHTML += cardHTML;
 
-  // 즐겨찾기 버튼
+  // 찜 버튼
   const favoriteButtons = document.querySelectorAll(".favorite-button");
 
   favoriteButtons.forEach((button) => {
@@ -51,14 +58,16 @@ export const createCard = (data, type) => {
   cardContainer.innerHTML = "";
 
   // 현재 인덱스 초기화
-  currentIndex = 0;
+  pageState.currentIndex = 0;
 
   // 데이터가 없을 경우 처리
-  handleNoData(data, noDataContainer);
+  if (!data || data.length === 0) {
+    handleNoData(data, noDataContainer);
+  } else {
+    // 데이터가 있는 경우 카드 생성 및 표시
+    displayCards(data, type);
 
-  // 데이터가 있는 경우 카드 생성 및 표시
-  displayCards(data, type);
-
-  // 더보기 버튼 처리
-  handleMoreButton(data);
+    // 더보기 버튼 처리
+    handleMoreButton(data);
+  }
 };

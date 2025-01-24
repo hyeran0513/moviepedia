@@ -1,6 +1,5 @@
 @use "../var" as *;
 
-
 // 메인 검색 form
 @mixin formBase {
   position: relative;
@@ -9,7 +8,7 @@
   gap: 10px;
   padding: 20px;
   width: 400px;
-  border-radius: 10px;
+  border-radius: 4px;
   overflow: hidden;
 
   &::before {
@@ -40,14 +39,14 @@
 }
 
 @mixin formItem(
-  $bgColor : $primary-bg-color,
-  $borderColor : $primary-border-color
+  $bgColor: $primary-bg-color,
+  $borderColor: $primary-border-color
 ) {
   display: flex;
   align-items: center;
   background-color: $bgColor;
   border: 1px solid $borderColor;
-  border-radius: 8px;
+  border-radius: 4px;
 
   input,
   select {
@@ -75,7 +74,7 @@
   }
 }
 
-@mixin formInfo{
+@mixin formInfo {
   display: none;
   align-items: center;
   gap: 4px;
@@ -90,7 +89,7 @@
   padding-left: 30px;
   height: 50px;
   background-color: $form-bg-color;
-  border-radius: 10px;
+  border-radius: 4px;
   border: 1px solid $primary-border-color;
 }
 

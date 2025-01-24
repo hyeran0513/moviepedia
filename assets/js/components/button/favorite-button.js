@@ -36,6 +36,8 @@ export const handleFavoriteButton = (button, type) => {
   button.addEventListener("click", () => {
     const imdbId = button.dataset.imdbId;
 
+    console.log("???????");
+
     // 찜 상태를 토글하고, 해당 상태를 반환
     const isFavorite = toggleFavorite(imdbId);
 
