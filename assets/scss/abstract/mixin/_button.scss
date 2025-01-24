@@ -86,6 +86,17 @@
     font-weight: bold;
     font-size: 16px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    // 활성화 상태
+    &.--active {
+      background-color: $favorite-bg-color;
+      color: $favorite-active-text-color;
+    }
+    // 비활성화 상태
+    &:not(.--active) {
+      background-color: $favorite-darken-bg-color;
+      color: $favorite-text-color;
+    }
   }
 
   // Hover 상태
@@ -103,11 +114,5 @@
     color: $favorite-icon-color;
   }
 
-  // 사이즈가 large일 경우, 활성화 상태
-  @if $size == lg {
-    &.--active {
-      background-color: $favorite-bg-color;
-      color: $favorite-active-text-color;
-    }
-  }
+  
 }

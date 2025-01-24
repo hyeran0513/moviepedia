@@ -1,0 +1,64 @@
+@use "../abstract/mixin" as *;
+@use "../abstract/var" as *;
+
+
+// 홈메인 검색
+.form {
+  @include formBase();
+
+  &-field {
+    @include formField();
+  }
+
+  &-item {
+    @include formItem();
+  }
+
+  &-info {
+    @include formInfo();
+  }
+}
+
+// header 검색창
+.search {
+  &-container {
+    @include searchContainer();
+
+    .btn-delete {
+      @include searchDelBtn();
+    }
+  }
+
+  &-label {
+    @include searchLabel();
+  }
+
+  &-input {
+    @include searchInput();
+  }
+
+  &-icon {
+    @include searchIcon();
+  }
+}
+
+// 찜 사이트 검색창
+.filter {
+  @include filterContainer();
+
+  &-field {
+    @include filterField();
+  }
+
+  &-item {
+    @include filterItem();
+  }
+
+  &-info {
+    @include filterInfo();
+  }
+
+  &-button {
+    @include filterBtn();
+  }
+}
