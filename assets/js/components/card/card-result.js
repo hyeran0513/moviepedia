@@ -75,14 +75,12 @@ export const createCard = async () => {
   cardContainer.innerHTML = "";
 
   if (data === "Movie not found!") {
-    // 데이터가 없을 경우
     handleNoData(data, noDataContainer);
   } else {
-    // 데이터가 있을 경우
     // 카드 생성
     displayCards(data.movies);
-
-    // 더보기 버튼
-    handleMoreButton(movieTitle, movieYear);
   }
+
+  // 더보기 버튼
+  handleMoreButton(movieTitle, movieYear);
 };

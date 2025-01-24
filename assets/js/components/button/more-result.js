@@ -18,7 +18,10 @@ export const handleMoreButton = async (movieTitle, movieYear) => {
   const totalResults = initialData.totalResults;
 
   // 버튼의 초기 상태를 판단
-  if (currentPage * limit >= totalResults) {
+  if (
+    currentPage * limit >= totalResults ||
+    initialData === "Movie not found!"
+  ) {
     // 데이터 끝에 도달하면 버튼 숨김
     btnMore.style.display = "none";
   } else {

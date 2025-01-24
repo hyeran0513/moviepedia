@@ -79,7 +79,7 @@ export const createCard = (data, type, noDataType) => {
     }
   }
 
-  // 데이터가 있는 경우 카드 생성 및 표시
+  // 카드 생성
   displayCards(data, type);
 
   // 더보기 버튼 처리

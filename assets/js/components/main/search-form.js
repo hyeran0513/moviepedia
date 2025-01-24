@@ -1,4 +1,3 @@
-// 폼 제출 처리
 export const submitForm = (e) => {
   e.preventDefault();
 
@@ -9,7 +8,7 @@ export const submitForm = (e) => {
   const year = yearSelect.value;
 
   let url = "result.html?";
-  let isValid = true;
+  let isValid = false;
 
   // 필드 유효성 검사
   const validateField = (field, isValid) => {
@@ -22,16 +21,30 @@ export const submitForm = (e) => {
     } else {
       formField.classList.add("warning");
       formInfo.style.display = "flex";
-      isValid = false;
     }
+
+    return isValid;
   };
 
-  validateField(titleInput, title !== "");
-  validateField(yearSelect, year !== "");
+  // 타이틀 필드 유효성 검사
+  if (title !== "") {
+    isValid = true;
+    validateField(titleInput, true);
+  } else {
+    validateField(titleInput, false);
+  }
+
+  // 년도 필드 유효성 검사
+  if (year !== "") {
+    isValid = true;
+    validateField(yearSelect, true);
+  } else {
+    validateField(yearSelect, false);
+  }
 
   if (isValid) {
-    if (title) url += `title=${encodeURIComponent(title)}&`;
-    if (year) url += `year=${encodeURIComponent(year)}&`;
+    if (title) url += `title=${title}&`;
+    if (year) url += `year=${year}&`;
 
     // 마지막 '&' 제거 후 결과 페이지로 이동
     window.location.href = url.slice(0, -1);
