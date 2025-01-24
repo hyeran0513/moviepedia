@@ -17,16 +17,25 @@ export const displayCards = async (data, type) => {
 
   if (type === "filter") {
     favorites = data;
-    console.log("test: " + JSON.stringify(favorites));
   } else {
     const imdbIDs = JSON.parse(sessionStorage.getItem("favorites")) || [];
     favorites = await getMoviesByImdbIDs(imdbIDs);
   }
 
-  let cardHTML = favorites.map((item) => createCardHTML(item.details)).join("");
+  // 현재 인덱스에 따라 표시할 데이터 조정
+  const visibleData = favorites.slice(
+    currentIndex,
+    currentIndex + itemsPerPage
+  );
 
-  cardContainer.innerHTML = cardHTML;
+  // 영화 데이터를 기반으로 카드 HTML 생성
+  let cardHTML = visibleData
+    .map((item) => createCardHTML(item.details))
+    .join("");
 
+  cardContainer.innerHTML += cardHTML; // 기존 카드 유지하며 추가
+
+  // 즐겨찾기 버튼
   const favoriteButtons = document.querySelectorAll(".favorite-button");
 
   favoriteButtons.forEach((button) => {
@@ -42,8 +51,12 @@ export const createCard = (data, type) => {
 
   currentIndex = 0;
 
-  // 데이터 처리
+  // 데이터가 없을 경우 처리
   handleNoData(data);
+
+  // 데이터가 있는 경우 카드 생성 및 표시
   displayCards(data, type);
+
+  // 더보기 버튼 처리
   handleMoreButton(data);
 };

@@ -6,10 +6,12 @@ import { handleNoData } from "../common/no-data.js";
 export const displayCards = (data) => {
   const cardContainer = document.querySelector(".card");
 
+  // 영화 데이터를 기반으로 카드 HTML 생성
   let cardHTML = data.movies.map((item) => createCardHTML(item)).join("");
 
   cardContainer.innerHTML = cardHTML;
 
+  // 즐겨찾기 버튼
   const favoriteButtons = document.querySelectorAll(".favorite-button");
 
   favoriteButtons.forEach((button) => {
@@ -23,8 +25,12 @@ export const createCard = (data) => {
   // 카드 컨테이너 초기화
   cardContainer.innerHTML = "";
 
-  // 데이터 처리
+  // 데이터가 없을 경우 처리
   handleNoData(data);
+
+  // 데이터가 있는 경우 카드 생성 및 표시
   displayCards(data);
+
+  // 더보기 버튼 처리
   handleMoreButton(data);
 };

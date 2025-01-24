@@ -92,6 +92,7 @@
       background-color: $favorite-bg-color;
       color: $favorite-active-text-color;
     }
+
     // 비활성화 상태
     &:not(.--active) {
       background-color: $favorite-darken-bg-color;
@@ -113,6 +114,4 @@
   & > i {
     color: $favorite-icon-color;
   }
-
-  
 }
