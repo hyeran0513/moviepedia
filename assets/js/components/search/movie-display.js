@@ -10,7 +10,7 @@ export const setupMovieContents = async (jsonData) => {
       element += `
         <a href="detail.html?imdbID=${movie.imdbID}">
           <div class="movie__item">
-          <div class="movie__poster">
+            <div class="movie__poster">
               ${movie.Poster.indexOf('N/A') > -1 
                 ? "<i class='bx bxs-image-alt'></i>"
                 // ? "<box-icon name='image-alt' ></box-icon>"
