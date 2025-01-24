@@ -86,17 +86,13 @@
     font-weight: bold;
     font-size: 16px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: $favorite-darken-bg-color;
+    color: $favorite-text-color;
 
     // 활성화 상태
     &.--active {
       background-color: $favorite-bg-color;
       color: $favorite-active-text-color;
-    }
-
-    // 비활성화 상태
-    &:not(.--active) {
-      background-color: $favorite-darken-bg-color;
-      color: $favorite-text-color;
     }
   }
 

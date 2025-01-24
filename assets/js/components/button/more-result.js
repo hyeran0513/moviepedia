@@ -28,7 +28,7 @@ export const handleMoreButton = async (movieTitle, movieYear) => {
 
   // 더보기 버튼 클릭 시 처리
   btnMore.addEventListener("click", async () => {
-    // 페이지 상태 가져오기 (이제 클릭할 때마다 가져옵니다)
+    // 페이지 상태 가져오기
     const { currentPage, limit } = getPageState();
 
     // 더 많은 데이터를 가져오기

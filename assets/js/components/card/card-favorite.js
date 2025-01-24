@@ -50,9 +50,10 @@ export const displayCards = async (data, type) => {
   });
 };
 
-export const createCard = (data, type) => {
+export const createCard = (data, type, noDataType) => {
   const cardContainer = document.querySelector(".card");
   const noDataContainer = document.getElementById("favoriteNoData");
+  const noDataInitContainer = document.getElementById("favoriteInitNoData");
 
   // 카드 컨테이너 초기화
   cardContainer.innerHTML = "";
@@ -60,14 +61,27 @@ export const createCard = (data, type) => {
   // 현재 인덱스 초기화
   pageState.currentIndex = 0;
 
-  // 데이터가 없을 경우 처리
-  if (!data || data.length === 0) {
-    handleNoData(data, noDataContainer);
-  } else {
-    // 데이터가 있는 경우 카드 생성 및 표시
-    displayCards(data, type);
+  // 검색 전 초기 노데이터
+  if (!noDataType) {
+    handleNoData(data, noDataInitContainer);
 
-    // 더보기 버튼 처리
-    handleMoreButton(data);
+    if (noDataContainer) {
+      noDataContainer.style.display = "none";
+    }
   }
+
+  // 검색 후 데이터가 없을 시 노데이터
+  if (noDataType === "search") {
+    handleNoData(data, noDataContainer);
+
+    if (noDataInitContainer) {
+      noDataInitContainer.style.display = "none";
+    }
+  }
+
+  // 데이터가 있는 경우 카드 생성 및 표시
+  displayCards(data, type);
+
+  // 더보기 버튼 처리
+  handleMoreButton(data);
 };

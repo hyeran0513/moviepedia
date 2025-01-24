@@ -1,7 +1,7 @@
 import { createCard } from "../card/card-favorite.js";
 import { getMoviesByImdbIDs } from "../../api/movie.js";
 
-export const submitForm = async (data, e) => {
+export const submitForm = async (e) => {
   e.preventDefault();
 
   const titleInput = document.getElementById("movieTitle");
@@ -12,6 +12,7 @@ export const submitForm = async (data, e) => {
     titleInput
       .closest(".filter-field")
       .querySelector(".filter-info").style.display = "flex"; // 메시지 표시
+    return;
   } else {
     titleInput.closest(".filter-field").classList.remove("warning");
     titleInput
@@ -29,13 +30,16 @@ export const submitForm = async (data, e) => {
   });
 
   // 필터링된 결과를 createCard에 전달
-  createCard(filteredData, "filter");
+  createCard(filteredData, "filter", "search");
 };
 
 export const deleteTitle = () => {
   const titleInput = document.getElementById("movieTitle");
   titleInput.value = "";
   toggleDeleteButton();
+
+  // 삭제 후 초기 상태 노데이터를 표시
+  createCard([], "filter", "search");
 };
 
 export const toggleDeleteButton = () => {
@@ -49,6 +53,7 @@ export const toggleDeleteButton = () => {
   }
 };
 
+// 입력 시, 삭제 버튼 상태를 업데이트
 document
   .getElementById("movieTitle")
   .addEventListener("input", toggleDeleteButton);

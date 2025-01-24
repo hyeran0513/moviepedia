@@ -334,14 +334,12 @@ summary {
   font-weight: bold;
   font-size: 16px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: light-dark(#e8e8e8, #333742);
+  color: light-dark(#333, #fbffff);
 }
 .favorite-button--lg.--active {
   background-color: light-dark(#fff, #fff);
   color: light-dark(#191919, #191919);
-}
-.favorite-button--lg:not(.--active) {
-  background-color: light-dark(#e8e8e8, #333742);
-  color: light-dark(#FBFFFF, #FBFFFF);
 }
 .favorite-button--lg:hover {
   border-color: light-dark(#ff4a29, #ff4a29);
@@ -762,7 +760,67 @@ summary {
   max-width: 500px;
 }
 
-/* 검색 영역 */
+/* 영화 목록 */
+.movie__list {
+  display: flex;
+  flex-direction: column;
+  background-color: light-dark(#fefefe, #333742);
+  border-radius: 10px;
+  overflow: hidden;
+  overflow-y: auto;
+  height: 347.01px;
+  border: 1px solid light-dark(#dfdfdf, #3f424b);
+}
+.movie__item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 30px;
+  cursor: pointer;
+}
+.movie__item:not(:last-of-type) {
+  border-bottom: 1px solid light-dark(#dfdfdf, #3f424b);
+}
+.movie__poster {
+  width: 50px;
+  min-width: 50px;
+  height: 75px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.movie__poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.movie__poster i {
+  font-size: 3rem;
+  text-align: center;
+  line-height: 75px;
+}
+.movie__info {
+  flex: 1;
+  overflow: hidden;
+}
+.movie__info-title {
+  margin-bottom: 4px;
+}
+.movie__info-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: light-dark(#70737a, #9fa1a6);
+}
+.movie__info-year {
+  font-size: 14px;
+}
+.movie__info-runtime {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
 .section-title {
   position: relative;
   display: flex;

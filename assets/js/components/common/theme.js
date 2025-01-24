@@ -27,7 +27,6 @@ export const handleTheme = () => {
   // 테마 변경 시 radio 버튼의 상태에 따라 테마 설정
   document.querySelectorAll('input[name="color-scheme"]').forEach((input) => {
     input.addEventListener("change", () => {
-      console.log("?????");
       setTheme(input.value);
     });
   });

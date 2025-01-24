@@ -74,9 +74,9 @@ export const createCard = async () => {
   // 카드 컨테이너 초기화
   cardContainer.innerHTML = "";
 
-  if (!data || data.movies.length === 0) {
+  if (data === "Movie not found!") {
     // 데이터가 없을 경우
-    handleNoData("Movie not found!", noDataContainer);
+    handleNoData(data, noDataContainer);
   } else {
     // 데이터가 있을 경우
     // 카드 생성

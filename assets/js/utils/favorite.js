@@ -11,9 +11,7 @@ initializeWeb();
 const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
 
 // searchForm의 제출 버튼 클릭 시 이벤트
-document.getElementById("searchForm").addEventListener("click", (e) => {
-  submitForm(favorites, e);
-});
+document.getElementById("searchForm").addEventListener("click", submitForm);
 
 createCard(favorites);
 
