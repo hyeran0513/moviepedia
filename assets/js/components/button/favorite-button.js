@@ -44,12 +44,5 @@ export const handleFavoriteButton = (button, type) => {
 
     // 하트 아이콘을 찜 여부에 맞게 업데이트
     updateHeartIcon(button, isFavorite);
-
-    // 찜 목록 페이지에서만 카드 재생성
-    if (type === "favorite") {
-      const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
-
-      createCard(favorites);
-    }
   });
 };

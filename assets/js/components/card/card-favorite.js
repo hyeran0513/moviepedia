@@ -7,11 +7,18 @@ import { handleNoData } from "../common/no-data.js";
 const pageState = {
   itemsPerPage: 10,
   currentIndex: 0,
+  isFiltered: false,
+  filteredData: [],
 };
 
 // 상태 업데이트
 export const setCurrentIndex = (newIndex) => {
   pageState.currentIndex = newIndex;
+};
+
+export const setFilteredState = (isFiltered, filteredData = []) => {
+  pageState.isFiltered = isFiltered;
+  pageState.filteredData = filteredData;
 };
 
 export const getPageState = () => {
@@ -22,7 +29,9 @@ export const displayCards = async (data, type) => {
   const cardContainer = document.querySelector(".card");
   let favorites;
 
-  if (type === "filter") {
+  if (pageState.isFiltered) {
+    favorites = pageState.filteredData;
+  } else if (type === "filter") {
     favorites = data;
   } else {
     const imdbIDs = JSON.parse(sessionStorage.getItem("favorites")) || [];
@@ -70,6 +79,13 @@ export const createCard = (data, type, noDataType) => {
 
   // 현재 인덱스 초기화
   pageState.currentIndex = 0;
+
+  // 검색 상태 업데이트
+  if (type === "filter") {
+    setFilteredState(true, data); // 검색된 데이터 저장
+  } else {
+    setFilteredState(false); // 검색 상태 초기화
+  }
 
   // 검색 전 초기 노데이터
   if (!noDataType) {

@@ -10,20 +10,22 @@ export const handleMoreButton = (data) => {
   if (!btnMore) return;
 
   // 페이지 상태 가져오기
-  let { currentIndex, itemsPerPage } = getPageState();
+  let { currentIndex, itemsPerPage, isFiltered, filteredData } = getPageState();
 
   // 더보기 버튼 초기 상태 처리
+  const targetData = isFiltered ? filteredData : data;
+
   btnMore.style.display =
-    currentIndex + itemsPerPage >= data.length ? "none" : "block";
+    currentIndex + itemsPerPage >= targetData.length ? "none" : "block";
 
   btnMore.addEventListener("click", () => {
     currentIndex += itemsPerPage;
     setCurrentIndex(currentIndex);
 
-    displayCards(data, "favorite");
+    displayCards(targetData, isFiltered ? "filter" : "favorite");
 
     // 더보기 버튼 숨기기
-    if (currentIndex + itemsPerPage >= data.length) {
+    if (currentIndex + itemsPerPage >= targetData.length) {
       btnMore.style.display = "none";
     }
   });
