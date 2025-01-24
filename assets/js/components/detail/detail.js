@@ -85,7 +85,19 @@ export const createDetail = async () => {
 
     // 영화 상세 정보 출력
     renderMovieInfo(movieData);
+
+    // 뒤로가기 버튼
+    const backButton = document.querySelector('.btn-back');
+    backButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      if(history.length > 1) {
+        history.go(-1);
+      }
+    })
+
   } catch (error) {
     console.error("영화 상세 정보 가져오기 오류", error);
   }
+
+
 };

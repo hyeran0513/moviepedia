@@ -1,4 +1,5 @@
 @use "../abstract/var" as *;
+@use "../layout/form" as * ;
 
 // 메인 세션
 .main-section {
@@ -153,80 +154,80 @@
 }
 
 /* 폼 요소 */
-.form {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 20px;
-  width: 400px;
-  border-radius: 10px;
-  overflow: hidden;
+// .form {
+//   position: relative;
+//   display: flex;
+//   flex-direction: column;
+//   gap: 10px;
+//   padding: 20px;
+//   width: 400px;
+//   border-radius: 10px;
+//   overflow: hidden;
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-    background-color: $form-main-bg-color;
-    z-index: -1;
-  }
+//   &::before {
+//     content: "";
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     display: inline-block;
+//     width: 100%;
+//     height: 100%;
+//     background-color: $form-main-bg-color;
+//     z-index: -1;
+//   }
 
-  &-field {
-    &.warning {
-      .form {
-        &-item {
-          border-color: $warning-text-color;
-        }
+//   &-field {
+//     &.warning {
+//       .form {
+//         &-item {
+//           border-color: $warning-text-color;
+//         }
 
-        &-info {
-          color: $warning-text-color;
-          font-size: 14px;
-        }
-      }
-    }
-  }
+//         &-info {
+//           color: $warning-text-color;
+//           font-size: 14px;
+//         }
+//       }
+//     }
+//   }
 
-  &-item {
-    display: flex;
-    align-items: center;
-    background-color: $primary-bg-color;
-    border: 1px solid $primary-border-color;
-    border-radius: 8px;
+//   &-item {
+//     display: flex;
+//     align-items: center;
+//     background-color: $primary-bg-color;
+//     border: 1px solid $primary-border-color;
+//     border-radius: 8px;
 
-    input,
-    select {
-      flex: 1;
-      padding: 0 20px;
-      height: 50px;
-    }
+//     input,
+//     select {
+//       flex: 1;
+//       padding: 0 20px;
+//       height: 50px;
+//     }
 
-    option {
-      background-color: $primary-bg-color;
-    }
+//     option {
+//       background-color: $primary-bg-color;
+//     }
 
-    .btn-del {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 50px;
-      height: 50px;
-      transition: opacity 0.3s ease;
-      cursor: pointer;
+//     .btn-del {
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//       width: 50px;
+//       height: 50px;
+//       transition: opacity 0.3s ease;
+//       cursor: pointer;
 
-      & > i {
-        color: $form-placeholder-color;
-      }
-    }
-  }
+//       & > i {
+//         color: $form-placeholder-color;
+//       }
+//     }
+//   }
 
-  &-info {
-    display: none;
-    align-items: center;
-    gap: 4px;
-    margin-top: 6px;
-  }
-}
+//   &-info {
+//     display: none;
+//     align-items: center;
+//     gap: 4px;
+//     margin-top: 6px;
+//   }
+// }
