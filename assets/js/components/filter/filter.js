@@ -1,56 +1,54 @@
-import { createCard } from "../card/cardFavorite.js";
-import { getMoviesByImdbIDs } from "../../api/movie.js";
+import { createFavoriteCards } from "../card/cardFavorite.js";
+import { fetchMoviesByIds } from "../../api/movie.js";
 
-export const submitForm = async (e) => {
-  e.preventDefault();
-
-  const titleInput = document.getElementById("movieTitle");
-  const title = titleInput.value.trim().toLowerCase();
-
-  if (!title) {
-    titleInput.closest(".filter-field").classList.add("warning");
-    titleInput
-      .closest(".filter-field")
-      .querySelector(".filter-info").style.display = "flex"; // 메시지 표시
-    return;
-  } else {
-    titleInput.closest(".filter-field").classList.remove("warning");
-    titleInput
-      .closest(".filter-field")
-      .querySelector(".filter-info").style.display = "none"; // 메시지 숨기기
-  }
-
-  const imdbIDs = JSON.parse(sessionStorage.getItem("favorites")) || [];
-
-  const favorites = await getMoviesByImdbIDs(imdbIDs);
-
-  // 입력된 제목을 포함하는 항목 필터링
-  const filteredData = favorites.filter((item) => {
-    return item.details.Title.toLowerCase().includes(title);
-  });
-
-  // 필터링된 결과를 createCard에 전달
-  createCard(filteredData, "filter", "search");
-};
-
-export const deleteTitle = () => {
-  const titleInput = document.getElementById("movieTitle");
-  titleInput.value = "";
-  toggleDeleteButton();
-};
-
-export const toggleDeleteButton = () => {
+// 필터 폼 제출 시 실행
+export const setupFilterHandlers = () => {
+  const searchForm = document.getElementById("searchForm");
   const titleInput = document.getElementById("movieTitle");
   const deleteButton = document.querySelector(".btn-del");
 
-  if (titleInput.value.trim() !== "") {
-    deleteButton.style.opacity = "1"; // 삭제 버튼 표시
-  } else {
-    deleteButton.style.opacity = "0"; // 삭제 버튼 숨기기
-  }
+  // 폼 제출 처리
+  searchForm.addEventListener("click", async (e) => {
+    e.preventDefault();
+
+    const title = titleInput.value.trim().toLowerCase();
+
+    if (!title) {
+      displayWarning(true);
+      return;
+    }
+
+    displayWarning(false);
+
+    const imdbIDs = JSON.parse(sessionStorage.getItem("favorites")) || [];
+    const movies = await fetchMoviesByIds(imdbIDs);
+
+    // 제목 필터링
+    const filteredMovies = movies.filter((movie) =>
+      movie.Title.toLowerCase().includes(title)
+    );
+
+    createFavoriteCards(filteredMovies, { isFiltered: true });
+  });
+
+  // 제목 입력 필드 변화에 따른 삭제 버튼 상태 업데이트
+  titleInput.addEventListener("input", () => {
+    deleteButton.style.opacity = titleInput.value.trim() ? "1" : "0";
+  });
+
+  // 제목 삭제 버튼 클릭 시 처리
+  deleteButton.addEventListener("click", () => {
+    titleInput.value = "";
+    deleteButton.style.opacity = "0";
+  });
 };
 
-// 입력 시, 삭제 버튼 상태를 업데이트
-document
-  .getElementById("movieTitle")
-  .addEventListener("input", toggleDeleteButton);
+// 경고 메시지 표시/숨기기
+const displayWarning = (show) => {
+  const filterField = document
+    .getElementById("movieTitle")
+    .closest(".filter-field");
+  const warningMessage = filterField.querySelector(".filter-info");
+  filterField.classList.toggle("warning", show);
+  warningMessage.style.display = show ? "flex" : "none";
+};

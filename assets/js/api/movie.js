@@ -71,19 +71,19 @@ export const getMovies = async (title, year = "", page = 1, limit = 0) => {
   }
 };
 
-// 여러 IMDb ID에 대해 상세 정보 조회
-export const getMoviesByImdbIDs = async (imdbIDs) => {
-  try {
-    // IMDb ID 배열을 돌면서 상세 정보를 가져오기
-    const moviesWithDetails = await Promise.all(
-      imdbIDs.map(async (id) => {
-        const movieDetails = await getMovieDetails(id);
-        return { imdbID: id, details: movieDetails };
-      })
+// ID 리스트로 영화 정보 조회
+export const fetchMoviesByIds = async (ids) => {
+  const movies = [];
+
+  for (const id of ids) {
+    const response = await fetch(
+      `https://www.omdbapi.com/?i=${id}&apikey=${config.API_KEY}`
     );
-    return moviesWithDetails;
-  } catch (error) {
-    console.error("영화 상세정보 fetch 오류", error);
-    throw error;
+    const data = await response.json();
+    if (data.Response === "True") {
+      movies.push(data);
+    }
   }
+
+  return movies;
 };
