@@ -45,14 +45,16 @@ export const displayCards = async (data, type) => {
 
 export const createCard = (data, type) => {
   const cardContainer = document.querySelector(".card");
+  const noDataContainer = document.getElementById("favoriteNoData");
 
   // 카드 컨테이너 초기화
   cardContainer.innerHTML = "";
 
+  // 현재 인덱스 초기화
   currentIndex = 0;
 
   // 데이터가 없을 경우 처리
-  handleNoData(data);
+  handleNoData(data, noDataContainer);
 
   // 데이터가 있는 경우 카드 생성 및 표시
   displayCards(data, type);

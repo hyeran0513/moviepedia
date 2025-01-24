@@ -21,16 +21,19 @@ export const displayCards = (data) => {
 
 export const createCard = (data) => {
   const cardContainer = document.querySelector(".card");
+  const noDataContainer = document.getElementById("resultNoData");
 
   // 카드 컨테이너 초기화
   cardContainer.innerHTML = "";
 
-  // 데이터가 없을 경우 처리
-  handleNoData(data);
+  if (!data || data.length === 0 || data === "Movie not found!") {
+    // 데이터가 없을 경우 처리
+    handleNoData(data, noDataContainer);
+  } else {
+    // 데이터가 있는 경우 카드 생성 및 표시
+    displayCards(data);
 
-  // 데이터가 있는 경우 카드 생성 및 표시
-  displayCards(data);
-
-  // 더보기 버튼 처리
-  handleMoreButton(data);
+    // 더보기 버튼 처리
+    handleMoreButton(data);
+  }
 };
