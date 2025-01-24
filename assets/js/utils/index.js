@@ -5,7 +5,7 @@ import {
   submitForm,
   deleteTitle,
   toggleDeleteButton,
-} from "../components/main/search-form.js";
+} from "../components/main/searchForm.js";
 
 // 웹 초기화 설정
 initializeWeb();

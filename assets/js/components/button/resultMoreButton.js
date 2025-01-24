@@ -2,9 +2,9 @@ import {
   fetchMoviesData,
   getPageState,
   setPageState,
-} from "../card/card-result.js";
-import { createCardHTML } from "../card/card-html.js";
-import { handleFavoriteButton } from "../button/favorite-button.js";
+} from "../card/cardResult.js";
+import { createCardHTML } from "../card/cardHtml.js";
+import { handleFavoriteButton } from "./favoriteButton.js";
 
 export const handleMoreButton = async (movieTitle, movieYear) => {
   const btnMore = document.querySelector(".btn-more");

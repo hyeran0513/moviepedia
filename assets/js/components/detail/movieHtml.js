@@ -1,4 +1,4 @@
-export const renderMovieInfo = (movieData) => {
+export const createMovieHTML = (movieData) => {
   const movieDetailInfoList = document.querySelector(
     ".movie-detail__info-list"
   );

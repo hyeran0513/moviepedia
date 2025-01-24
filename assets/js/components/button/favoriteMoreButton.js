@@ -2,7 +2,7 @@ import {
   displayCards,
   getPageState,
   setCurrentIndex,
-} from "../card/card-favorite.js";
+} from "../card/cardFavorite.js";
 
 export const handleMoreButton = (data) => {
   const btnMore = document.querySelector(".btn-more");

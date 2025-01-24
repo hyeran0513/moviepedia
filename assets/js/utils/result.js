@@ -1,5 +1,5 @@
 import { initializeWeb } from "./main.js";
-import { createCard } from "../components/card/card-result.js";
+import { createCard } from "../components/card/cardResult.js";
 
 initializeWeb();
 createCard();

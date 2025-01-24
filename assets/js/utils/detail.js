@@ -1,5 +1,5 @@
 import { initializeWeb } from "./main.js";
-import { createDetail } from "../components/detail/movie-detail.js";
+import { createDetail } from "../components/detail/movieDetail.js";
 
 initializeWeb();
 createDetail();

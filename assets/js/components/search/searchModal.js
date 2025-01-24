@@ -2,7 +2,7 @@ import {
   setupSearchHandler,
   setFocus,
   searchTitleInit,
-} from "./search-handler.js";
+} from "./searchHandler.js";
 
 // 로딩시 동작하는 부분 (모달 로딩 및 초기화)
 export const loadSearchModal = () => {

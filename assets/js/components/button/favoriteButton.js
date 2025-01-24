@@ -1,5 +1,3 @@
-import { createCard } from "../card/card-favorite.js";
-
 // 영화 데이터를 찜 목록에 추가하거나 제거
 export const toggleFavorite = (movieId) => {
   const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];

@@ -1,4 +1,4 @@
-import { createCard } from "../card/card-favorite.js";
+import { createCard } from "../card/cardFavorite.js";
 import { getMoviesByImdbIDs } from "../../api/movie.js";
 
 export const submitForm = async (e) => {

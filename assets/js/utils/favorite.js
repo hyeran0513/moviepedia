@@ -1,5 +1,5 @@
 import { initializeWeb } from "./main.js";
-import { createCard } from "../components/card/card-favorite.js";
+import { createCard } from "../components/card/cardFavorite.js";
 import {
   submitForm,
   deleteTitle,

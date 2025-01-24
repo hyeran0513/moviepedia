@@ -1,5 +1,5 @@
 import { getMovies } from "../../api/movie.js";
-import { handleFavoriteButton } from "../button/favorite-button.js";
+import { handleFavoriteButton } from "../button/favoriteButton.js";
 
 export const initializeSwiper = (containerSelector) => {
   return new Swiper(containerSelector, {

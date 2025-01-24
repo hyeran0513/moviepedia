@@ -257,7 +257,9 @@ summary {
 }
 
 .btn-primary-fill {
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   padding: 0 1rem;
   font-size: 1rem;
   text-align: center;
@@ -283,7 +285,9 @@ summary {
 }
 
 .btn-primary-lg {
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   padding: 0 1rem;
   font-size: 1rem;
   text-align: center;
@@ -309,7 +313,9 @@ summary {
 }
 
 .btn-primary {
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   padding: 0 1rem;
   font-size: 1rem;
   text-align: center;
@@ -331,7 +337,9 @@ summary {
 }
 
 .btn-warning {
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   padding: 0 1rem;
   font-size: 1rem;
   text-align: center;

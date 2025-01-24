@@ -1,6 +1,6 @@
 import { getMovieDetails } from "../../api/movie.js";
-import { renderMovieInfo } from "./movie-info.js";
-import { handleFavoriteButton } from "../../components/button/favorite-button.js";
+import { createMovieHTML } from "./movieHtml.js";
+import { handleFavoriteButton } from "../button/favoriteButton.js";
 
 export const createDetail = async () => {
   const url = new URL(window.location.href);
@@ -41,7 +41,7 @@ export const createDetail = async () => {
     handleFavoriteButton(favoriteButton);
 
     // 영화 상세 정보 출력
-    renderMovieInfo(movieData);
+    createMovieHTML(movieData);
 
     // 뒤로가기 버튼
     const backButton = document.querySelector(".btn-back");

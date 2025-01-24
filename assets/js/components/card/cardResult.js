@@ -1,8 +1,8 @@
-import { createCardHTML } from "./card-html.js";
-import { handleFavoriteButton } from "../button/favorite-button.js";
-import { handleNoData } from "../common/no-data.js";
+import { createCardHTML } from "./cardHtml.js";
+import { handleFavoriteButton } from "../button/favoriteButton.js";
+import { handleNoData } from "../common/noData.js";
 import { getMovies } from "../../api/movie.js";
-import { handleMoreButton } from "../button/more-result.js";
+import { handleMoreButton } from "../button/resultMoreButton.js";
 
 let pageState = {
   currentPage: 1,

@@ -1,4 +1,4 @@
-import { setBaseUrl } from "./url-utils.js";
+import { setBaseUrl } from "./urlUtils.js";
 import { loadHeader } from "../components/common/header.js";
 import { loadFooter } from "../components/common/footer.js";
 

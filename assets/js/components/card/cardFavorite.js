@@ -1,8 +1,8 @@
-import { createCardHTML } from "./card-html.js";
-import { handleFavoriteButton } from "../button/favorite-button.js";
+import { createCardHTML } from "./cardHtml.js";
+import { handleFavoriteButton } from "../button/favoriteButton.js";
 import { getMoviesByImdbIDs } from "../../api/movie.js";
-import { handleMoreButton } from "../button/more-favorite.js";
-import { handleNoData } from "../common/no-data.js";
+import { handleMoreButton } from "../button/favoriteMoreButton.js";
+import { handleNoData } from "../common/noData.js";
 
 const pageState = {
   itemsPerPage: 10,

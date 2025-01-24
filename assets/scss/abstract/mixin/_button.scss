@@ -3,11 +3,15 @@
 // 버튼 베이스
 @mixin button-base(
   $bg-color: $primary-color,
+  $hover-color: $primary-hover-color,
+  $btn-padding: 0 1rem,
   $text-color: #fff,
   $border-radius: 4px
 ) {
-  display: inline-block;
-  padding: 0 1rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: $btn-padding;
   font-size: 1rem;
   text-align: center;
   text-decoration: none;
@@ -19,7 +23,7 @@
   transition: background-color 0.2s ease-in-out;
 
   &:hover {
-    background-color: $primary-hover-color;
+    background-color: $hover-color;
   }
 
   &:disabled {
@@ -38,12 +42,13 @@
 }
 
 // 버튼 아이콘
-@mixin button-icon($icon-size: 1.25rem) {
+@mixin button-icon($icon-size: 1.25rem, $icon-color: $primary-text-color) {
   & > i {
     display: inline-block;
     width: $icon-size;
     height: $icon-size;
     font-size: $icon-size;
+    color: $icon-color;
   }
 }
 
