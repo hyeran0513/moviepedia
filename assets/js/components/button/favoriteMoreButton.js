@@ -1,33 +1,25 @@
-import {
-  displayCards,
-  getPageState,
-  setCurrentIndex,
-} from "../card/cardFavorite.js";
+import { getPageState, loadMoreCards } from "../card/cardFavorite.js";
+import { fetchMoviesByIds } from "../../api/movie.js";
 
 export const handleMoreButton = () => {
   const btnMore = document.querySelector(".btn-more");
 
   if (!btnMore) return;
 
-  btnMore.addEventListener("click", () => {
-    const { currentIndex, itemsPerPage, isFiltered, filteredData } =
-      getPageState();
-
-    // 현재 인덱스 업데이트
-    const newIndex = currentIndex + itemsPerPage;
-    setCurrentIndex(newIndex);
+  btnMore.addEventListener("click", async () => {
+    const { isFiltered, filteredData } = getPageState();
 
     // 필터링된 데이터 여부에 따라 대상 데이터 결정
-    const targetData = isFiltered
+    let targetData = isFiltered
       ? filteredData
       : JSON.parse(sessionStorage.getItem("favorites")) || [];
 
-    // 카드 추가 표시
-    displayCards(targetData);
-
-    // 더보기 버튼 상태 업데이트
-    if (newIndex + itemsPerPage >= targetData.length) {
-      btnMore.style.display = "none";
+    if (!isFiltered) {
+      const allMovies = await fetchMoviesByIds(targetData);
+      targetData = allMovies;
     }
+
+    // 카드 추가 표시
+    loadMoreCards(targetData);
   });
 };
