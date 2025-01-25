@@ -1,45 +1,58 @@
 import { createFavoriteCards } from "../card/cardFavorite.js";
-import { fetchMoviesByIds } from "../../api/movie.js";
+import {
+  getFavoriteMovies,
+  filterMoviesByTitle,
+} from "../../services/favorites.js";
 
-// 필터 폼 제출 시 실행
 export const setupFilterHandlers = () => {
   const searchForm = document.getElementById("searchForm");
   const titleInput = document.getElementById("movieTitle");
   const deleteButton = document.querySelector(".btn-del");
 
-  // 폼 제출 처리
+  // 검색 폼 제출
   searchForm.addEventListener("click", async (e) => {
     e.preventDefault();
 
-    const title = titleInput.value.trim().toLowerCase();
-
+    // 입력값 가져오기
+    const title = titleInput.value.trim();
     if (!title) {
-      displayWarning(true);
+      displayWarning(true); // 경고 메시지 표시
       return;
     }
 
+    // 경고 메시지 숨기기
     displayWarning(false);
 
-    const imdbIDs = JSON.parse(sessionStorage.getItem("favorites")) || [];
-    const movies = await fetchMoviesByIds(imdbIDs);
-
-    // 제목 필터링
-    const filteredMovies = movies.filter((movie) =>
-      movie.Title.toLowerCase().includes(title)
-    );
-
-    createFavoriteCards(filteredMovies, { isFiltered: true });
+    try {
+      // 찜한 영화 목록 조회
+      const movies = await getFavoriteMovies();
+      // 제목으로 영화 필터링
+      const filteredMovies = filterMoviesByTitle(movies, title);
+      // 필터링된 카드 생성
+      createFavoriteCards(filteredMovies, { isFiltered: true });
+    } catch (error) {
+      console.error(error);
+    }
   });
 
-  // 제목 입력 필드 변화에 따른 삭제 버튼 상태 업데이트
+  // 제목 입력값에 따라 버튼 투명도 조정
   titleInput.addEventListener("input", () => {
     deleteButton.style.opacity = titleInput.value.trim() ? "1" : "0";
   });
 
-  // 제목 삭제 버튼 클릭 시 처리
-  deleteButton.addEventListener("click", () => {
+  // 삭제 버튼 클릭
+  deleteButton.addEventListener("click", async () => {
     titleInput.value = "";
     deleteButton.style.opacity = "0";
+
+    try {
+      // 찜한 영화 목록 조회
+      const movies = await getFavoriteMovies();
+      // 필터링되지 않은 카드 생성
+      createFavoriteCards(movies, { isFiltered: false });
+    } catch (error) {
+      console.error(error);
+    }
   });
 };
 

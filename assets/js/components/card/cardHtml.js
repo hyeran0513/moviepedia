@@ -1,6 +1,5 @@
 export const createCardHTML = (movie) => {
   const { Title, Year, imdbID, Poster, Runtime } = movie;
-
   const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
   const isFavorite = favorites.includes(imdbID);
 
@@ -9,7 +8,6 @@ export const createCardHTML = (movie) => {
       <button type="button" class="favorite-button" data-imdb-id="${imdbID}">
         <i class='bx ${isFavorite ? "bxs-heart" : "bx-heart"}'></i>
       </button>
-
       <a href="detail.html?imdbID=${imdbID}">
         <div class="card__poster">
           ${
