@@ -7,7 +7,7 @@ export const toggleFavorite = (movieId) => {
     const updatedFavorites = favorites.filter((id) => id !== movieId);
     sessionStorage.setItem("favorites", JSON.stringify(updatedFavorites));
   } else {
-    favorites.push(movieId);
+    favorites.unshift(movieId);
     sessionStorage.setItem("favorites", JSON.stringify(favorites));
   }
 
