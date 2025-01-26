@@ -114,8 +114,6 @@ export const loadMoreCards = (movies) => {
 export const updateFavoriteCards = async () => {
   const { isFiltered, storeIndex } = getPageState();
 
-  console.log("storeIndex" + storeIndex);
-
   try {
     const allMovies = await getFavoriteMovies();
     let moviesToDisplay = allMovies;
