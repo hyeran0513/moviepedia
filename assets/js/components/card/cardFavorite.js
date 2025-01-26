@@ -73,10 +73,18 @@ const displayCards = (movies) => {
   // 찜 해제 후 storeIndex 값 반영
   const startIndex = storeIndex || currentIndex;
 
-  const visibleData = dataToDisplay.slice(
-    startIndex,
-    startIndex + itemsPerPage
-  );
+  let visibleData = [];
+
+  if (storeIndex) {
+    visibleData = dataToDisplay.slice(0, startIndex + itemsPerPage);
+
+    updatePageState({
+      currentIndex: storeIndex,
+      storeIndex: 0,
+    });
+  } else {
+    visibleData = dataToDisplay.slice(startIndex, startIndex + itemsPerPage);
+  }
 
   // 카드 HTML 생성 및 추가
   const cardHTML = visibleData.map(createCardHTML).join("");
@@ -105,6 +113,8 @@ export const loadMoreCards = (movies) => {
 // 찜 목록 업데이트
 export const updateFavoriteCards = async () => {
   const { isFiltered, storeIndex } = getPageState();
+
+  console.log("storeIndex" + storeIndex);
 
   try {
     const allMovies = await getFavoriteMovies();

@@ -1,4 +1,8 @@
-import { updateFavoriteCards } from "../card/cardFavorite.js";
+import {
+  updateFavoriteCards,
+  updatePageState,
+  getPageState,
+} from "../card/cardFavorite.js";
 
 // 찜 목록 상태를 토글
 export const toggleFavorite = (movieId, page) => {
@@ -11,6 +15,12 @@ export const toggleFavorite = (movieId, page) => {
 
     if (page === "favorite") {
       // 찜 목록 업데이트 호출
+      const { currentIndex } = getPageState();
+
+      updatePageState({
+        storeIndex: currentIndex,
+      });
+
       updateFavoriteCards();
     }
   } else {
