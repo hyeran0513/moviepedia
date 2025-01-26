@@ -23,7 +23,7 @@ export const createCardHTML = (movie) => {
           <span>${
             Runtime && Runtime !== "N/A"
               ? Runtime
-              : details.Runtime && details.Runtime !== "N/A"
+              : details?.Runtime && details.Runtime !== "N/A"
               ? details.Runtime
               : "0 min"
           }</span>
