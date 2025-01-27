@@ -1,23 +1,50 @@
 @use "../abstract/var" as *;
-@use "../abstract/mixin/" as *;
+@use "../abstract/mixin" as *;
+
+@include respond-to(tablet) {
+  .movie-detail {
+    &__container {
+    margin: 0 50px;
+    width: auto;
+    height: auto;
+    }
+  }
+}
+
+@include respond-to(mobile) {
+  .movie-detail {
+    &__container {
+      flex-direction: column;
+    }
+    
+    &__poster {
+      &-container {
+        margin: 0px auto;
+        height: 500px;
+      }
+    }
+    
+    &__top {
+      margin: 0 50px;
+    }
+    
+    &__storyline {
+      margin: 0 50px;
+    }
+
+    &__info {
+      
+      &-list {
+        margin: 0px 50px;
+      }
+    }
+  }
+}
 
 .movie-detail {
   &__container {
     display: flex;
     gap: 110px;
-
-    @include respond-to(mobile) {
-      flex-direction: column;
-      gap: 15px;
-      margin: 0 30px;
-    }
-
-    @include respond-to(tablet) {
-      gap: 50px;
-      margin: 0 30px;
-      width: auto;
-      height: auto;
-    }
   }
 
   &__poster {
@@ -26,19 +53,21 @@
     border-radius: 26px;
     overflow: hidden;
 
+    
+
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      
+    
     }
 
     &-container {
       max-width: 400px;
       width: 100%;
 
-      @include respond-to(mobile) {
-        margin: 0 auto;
-      }
+      
     }
   }
 
@@ -55,9 +84,9 @@
       }
     }
 
-    @include respond-to(mobile) {
-      margin: 0 150px;
-    }
+    
+
+    
   }
 
   &__title {
@@ -73,10 +102,7 @@
       margin-bottom: 22px;
       font-weight: bold;
     }
-
-    @include respond-to(mobile) {
-      margin: 0 150px;
-    }
+    
   }
 
   &__info {
@@ -84,10 +110,7 @@
       display: flex;
       flex-direction: column;
       gap: 22px;
-
-      @include respond-to(mobile) {
-        margin: 30px 150px;
-      }
+      
     }
 
     &-item {
@@ -103,6 +126,7 @@
         flex: 1;
       }
     }
+    
   }
 
   &__genre {
@@ -121,4 +145,7 @@
       border-radius: 15px;
     }
   }
+
+  
 }
+
