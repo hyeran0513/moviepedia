@@ -87,6 +87,14 @@
   }
 }
 
+@include respond-to(tablet) {
+  .card {
+    &__poster {
+      height: 240px;
+    }
+  }
+}
+
 @include respond-to(mobile) {
   .card {
     &__poster {

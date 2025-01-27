@@ -562,6 +562,11 @@ summary {
   transition: transform 0.6s ease;
 }
 
+@media (max-width: 1024px) {
+  .card__poster {
+    height: 240px;
+  }
+}
 @media (max-width: 768px) {
   .card__poster {
     margin-bottom: 8px;
@@ -926,6 +931,10 @@ summary {
   background-color: light-dark(#fefefe, #333742);
   border-radius: 4px;
   border: 1px solid light-dark(#dfdfdf, #3f424b);
+}
+.search-container:has(input:focus, select:focus) {
+  border-color: light-dark(#5254fd, #5254fd);
+  box-shadow: 0 0 8px light-dark(#5254fd, #5254fd);
 }
 @media (max-width: 768px) {
   .search-container {
