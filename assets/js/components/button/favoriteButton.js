@@ -68,19 +68,15 @@ export const toggleFavorite = (movieId, page) => {
 
 // 버튼 상태 업데이트
 export const handleFavoriteButton = (button, page) => {
-  button.addEventListener(
-    "click",
-    () => {
-      const imdbId = button.dataset.imdbId;
-      const isFavorite = toggleFavorite(imdbId, page);
+  button.addEventListener("click", () => {
+    const imdbId = button.dataset.imdbId;
+    const isFavorite = toggleFavorite(imdbId, page);
 
-      button.classList.toggle("--active", isFavorite);
-      const icon = button.querySelector("i");
-      icon.classList.toggle("bxs-heart", isFavorite);
-      icon.classList.toggle("bx-heart", !isFavorite);
+    button.classList.toggle("--active", isFavorite);
+    const icon = button.querySelector("i");
+    icon.classList.toggle("bxs-heart", isFavorite);
+    icon.classList.toggle("bx-heart", !isFavorite);
 
-      if (page === "favorite") icon.classList.replace("bx-heart", "bxs-heart");
-    },
-    { once: true }
-  );
+    if (page === "favorite") icon.classList.replace("bx-heart", "bxs-heart");
+  });
 };
