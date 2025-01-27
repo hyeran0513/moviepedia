@@ -25,8 +25,32 @@
 
 .favorite-button {
   @include favorite-button(sm, false); // 기본 모서리
+
+  &-wrap {
+    margin-top: 30px;
+  }
 }
 
 .favorite-button--lg {
   @include favorite-button(lg, true); // 둥근 버튼
+}
+
+@include respond-to(mobile) {
+  .btn-primary-fill {
+    @include button-size(40px);
+  }
+
+  .btn-primary-lg {
+    @include button-size(40px);
+  }
+
+  .favorite-button {
+    &-wrap {
+      margin-top: 20px;
+    }
+  }
+
+  .btn-wrap {
+    @include btn-wrap(30px);
+  }
 }

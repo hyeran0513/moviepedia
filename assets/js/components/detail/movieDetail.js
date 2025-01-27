@@ -24,7 +24,7 @@ export const createDetail = async () => {
 
     // 찜 버튼
     const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
-    const favoriteBtnWrap = document.querySelector(".favorite-btn-wrap");
+    const favoriteBtnWrap = document.querySelector(".favorite-button-wrap");
     const isFavorite = favorites.some((id) => id === imdbID);
 
     favoriteBtnWrap.innerHTML = `

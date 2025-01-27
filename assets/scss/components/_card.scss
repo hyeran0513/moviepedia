@@ -1,9 +1,8 @@
 @use "../abstract/var" as *;
+@use "../abstract/mixin" as *;
 
 .card {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  @include responsive-grid(5, 20px);
 
   &__item {
     position: relative;
@@ -98,4 +97,20 @@
 .favorite-button {
   opacity: 0;
   transition: opacity 0.3s ease;
+}
+
+@include respond-to(mobile) {
+  .card {
+    &__poster {
+      margin-bottom: 8px;
+      height: 200px;
+      border-radius: 6px;
+    }
+
+    &__item {
+      &-title {
+        margin-bottom: 4px;
+      }
+    }
+  }
 }

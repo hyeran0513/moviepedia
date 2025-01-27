@@ -46,4 +46,8 @@
   .dot {
     @include loading-dot(1rem, $primary-color);
   }
+
+  @include respond-to(mobile) {
+    gap: 1.5rem;
+  }
 }

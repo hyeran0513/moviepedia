@@ -1,4 +1,5 @@
 @use "../var" as *;
+@use "../mixin/responsive" as *;
 
 @mixin section-title(
   $bg-color-left: $gradation-left-color,
@@ -24,5 +25,15 @@
     opacity: 0.13;
     border-radius: 20px;
     z-index: -1;
+  }
+
+  @include respond-to(mobile) {
+    margin-bottom: 20px;
+    height: 80px;
+    font-size: 20px;
+
+    &::before {
+      border-radius: 4px;
+    }
   }
 }
