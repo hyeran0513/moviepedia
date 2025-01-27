@@ -20,12 +20,11 @@
     <!-- Swiper CSS -->
     <link
       rel="stylesheet"
-      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
     />
 
     <!-- Swiper JS -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <!-- index.js -->
     <script type="module" src="./assets/js/utils/index.js"></script>
 
@@ -38,6 +37,13 @@
 
     <header id="header" class="header"></header>
 
+    <!-- 로딩 -->
+    <div class="loading-overlay">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
     <!-- 메인 -->
     <main>
       <h2 class="a11y-hidden">영화 슬라이드</h2>
@@ -49,10 +55,9 @@
         </h2>
 
         <div class="swiper-container">
-          <div class="swiper-wrapper"></div>
-
-          <!-- 페이지네이션 -->
-          <div class="swiper-pagination"></div>
+          <div class="swiper">
+            <div class="swiper-wrapper"></div>
+          </div>
         </div>
 
         <!-- 폼 요소 -->

@@ -1,13 +1,12 @@
 import { getMovies } from "../../api/movie.js";
 import { handleFavoriteButton } from "../button/favoriteButton.js";
+import { showLoading, hideLoading } from "../common/loader.js";
 
 export const initializeSwiper = (containerSelector) => {
   return new Swiper(containerSelector, {
     effect: "coverflow",
-    autoplay: {
-      delay: 3000,
-    },
     centeredSlides: true,
+    loop: true,
     slidesPerView: "auto",
     coverflowEffect: {
       rotate: 15,
@@ -16,15 +15,20 @@ export const initializeSwiper = (containerSelector) => {
       modifier: 1,
       slideShadows: true,
     },
-    loop: true,
+    autoplay: {
+      delay: 3000,
+    },
+    grabCursor: true,
   });
 };
 
 export const renderSwiperMovies = async () => {
   const swiperWrapper = document.querySelector(".swiper-wrapper");
-  const data = await getMovies("mini", "", 1, 6);
+  const data = await getMovies("mini", "", 1, 9);
 
   if (data.movies) {
+    showLoading();
+
     swiperWrapper.innerHTML = data.movies
       .map((movie) => {
         const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
@@ -39,7 +43,7 @@ export const renderSwiperMovies = async () => {
               <i class='bx ${isFavorite ? "bxs-heart" : "bx-heart"}'></i>
             </button>
 
-            <div class="movie-poster">
+           <div class="movie-poster">
               ${
                 movie.details.Poster === "N/A"
                   ? `
@@ -96,7 +100,7 @@ export const renderSwiperMovies = async () => {
       })
       .join("");
 
-    initializeSwiper(".swiper-container");
+    initializeSwiper(".swiper");
 
     // 좋아요 버튼
     const favoriteButtons = document.querySelectorAll(".favorite-button");
@@ -104,6 +108,8 @@ export const renderSwiperMovies = async () => {
     favoriteButtons.forEach((button) => {
       handleFavoriteButton(button);
     });
+
+    hideLoading();
   } else {
     console.error("movies fetch 에러", data);
   }

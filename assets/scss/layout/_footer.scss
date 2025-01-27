@@ -1,4 +1,5 @@
 @use "../abstract/var" as *;
+@use "../abstract//mixin/" as *;
 
 .footer {
   height: $footer-height;
@@ -12,5 +13,15 @@
     height: $footer-height;
     width: 100%;
     height: 100%;
+  }
+}
+
+@include respond-to(mobile) {
+  .footer {
+    height: 50px;
+
+    &-inner {
+      font-size: 12px;
+    }
   }
 }

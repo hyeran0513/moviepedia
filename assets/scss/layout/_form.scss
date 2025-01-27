@@ -1,7 +1,6 @@
 @use "../abstract/mixin" as *;
 @use "../abstract/var" as *;
 
-
 // 홈메인 검색
 .form {
   @include formBase();

@@ -21,3 +21,16 @@ main {
 }
 
 @include theme-switcher();
+
+@include respond-to(tablet) {
+  main {
+    padding: 40px;
+  }
+}
+
+@include respond-to(mobile) {
+  main {
+    margin-top: 50px;
+    padding: 20px;
+  }
+}

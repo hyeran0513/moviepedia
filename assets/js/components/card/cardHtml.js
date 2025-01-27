@@ -1,5 +1,5 @@
 export const createCardHTML = (movie) => {
-  const { Title, Year, imdbID, Poster, Runtime } = movie;
+  const { Title, Year, imdbID, Poster, Runtime, details } = movie;
   const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
   const isFavorite = favorites.includes(imdbID);
 
@@ -20,7 +20,13 @@ export const createCardHTML = (movie) => {
         <div class="card__item-details">
           <span>${Year}</span>
           <i class="bx bx-time"></i>
-          <span>${Runtime}</span>
+          <span>${
+            Runtime && Runtime !== "N/A"
+              ? Runtime
+              : details?.Runtime && details.Runtime !== "N/A"
+              ? details.Runtime
+              : "0 min"
+          }</span>
         </div>
       </a>
     </div>

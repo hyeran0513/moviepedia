@@ -1,4 +1,5 @@
 @use "../var" as *;
+@use "../mixin//responsive" as *;
 
 // 메인 검색 form
 @mixin formBase {
@@ -7,7 +8,8 @@
   flex-direction: column;
   gap: 10px;
   padding: 20px;
-  width: 400px;
+  max-width: 400px;
+  width: 100%;
   border-radius: 4px;
   overflow: hidden;
 
@@ -21,6 +23,11 @@
     height: 100%;
     background-color: $form-main-bg-color;
     z-index: -1;
+  }
+
+  @include respond-to(mobile) {
+    gap: 8px;
+    padding: 16px;
   }
 }
 
@@ -83,6 +90,20 @@
       color: $form-placeholder-color;
     }
   }
+
+  @include respond-to(mobile) {
+    input,
+    select {
+      padding: 0 14px;
+    }
+
+    &.--large {
+      input,
+      select {
+        height: 40px;
+      }
+    }
+  }
 }
 
 @mixin formInfo {
@@ -102,6 +123,11 @@
   background-color: $form-bg-color;
   border-radius: 4px;
   border: 1px solid $primary-border-color;
+
+  @include respond-to(mobile) {
+    padding-left: 14px;
+    height: 40px;
+  }
 }
 
 @mixin searchDelBtn {
@@ -114,6 +140,10 @@
 
   & > i {
     color: $form-placeholder-color;
+  }
+
+  @include respond-to(mobile) {
+    padding: 0 14px;
   }
 }
 
@@ -143,6 +173,15 @@
   align-items: center;
   gap: 10px;
   margin-bottom: 40px;
+
+  @include respond-to(mobile) {
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    .btn-primary {
+      width: 100%;
+    }
+  }
 }
 
 @mixin filterField {
@@ -160,6 +199,10 @@
         font-size: 14px;
       }
     }
+  }
+
+  @include respond-to(mobile) {
+    width: 100%;
   }
 }
 
@@ -190,6 +233,7 @@
     height: 34px;
     transition: opacity 0.3s ease;
     cursor: pointer;
+    opacity: 0;
 
     & > i {
       color: $form-placeholder-color;

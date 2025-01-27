@@ -1,6 +1,10 @@
 import { createCardHTML } from "./cardHtml.js";
 import { handleFavoriteButton } from "../button/favoriteButton.js";
 import { handleNoData } from "../common/noData.js";
+import {
+  getFavoriteMovies,
+  filterMoviesByTitle,
+} from "../../services/favorites.js";
 
 // 페이지 상태 관리 객체
 let pageState = {
@@ -8,6 +12,7 @@ let pageState = {
   currentIndex: 0,
   isFiltered: false,
   filteredData: [],
+  storeIndex: 0,
 };
 
 // 페이지 상태 조회
@@ -59,14 +64,27 @@ export const createFavoriteCards = (movies, options = {}) => {
 // 카드 데이터를 화면에 표시
 const displayCards = (movies) => {
   const cardContainer = document.querySelector(".card");
-  const { itemsPerPage, currentIndex, isFiltered, filteredData } = pageState;
+  const { itemsPerPage, currentIndex, isFiltered, filteredData, storeIndex } =
+    pageState;
 
   // 필터링 여부에 따라 표시할 데이터 결정
   const dataToDisplay = isFiltered ? filteredData : movies;
-  const visibleData = dataToDisplay.slice(
-    currentIndex,
-    currentIndex + itemsPerPage
-  );
+
+  // 찜 해제 후 storeIndex 값 반영
+  const startIndex = storeIndex || currentIndex;
+
+  let visibleData = [];
+
+  if (storeIndex) {
+    visibleData = dataToDisplay.slice(0, startIndex + itemsPerPage);
+
+    updatePageState({
+      currentIndex: storeIndex,
+      storeIndex: 0,
+    });
+  } else {
+    visibleData = dataToDisplay.slice(startIndex, startIndex + itemsPerPage);
+  }
 
   // 카드 HTML 생성 및 추가
   const cardHTML = visibleData.map(createCardHTML).join("");
@@ -74,12 +92,12 @@ const displayCards = (movies) => {
 
   // 찜 버튼 이벤트 처리
   const favoriteButtons = cardContainer.querySelectorAll(".favorite-button");
-  favoriteButtons.forEach((button) => handleFavoriteButton(button));
+  favoriteButtons.forEach((button) => handleFavoriteButton(button, "favorite"));
 
   // 더보기 버튼 표시 여부 결정
   const moreButton = document.querySelector(".btn-more");
   moreButton.style.display =
-    currentIndex + itemsPerPage >= dataToDisplay.length ? "none" : "block";
+    startIndex + itemsPerPage >= dataToDisplay.length ? "none" : "block";
 };
 
 // 더보기 버튼 표시 여부 결정
@@ -90,4 +108,30 @@ export const loadMoreCards = (movies) => {
   updatePageState({ currentIndex: currentIndex + itemsPerPage });
   // 추가 카드 표시
   displayCards(movies);
+};
+
+// 찜 목록 업데이트
+export const updateFavoriteCards = async () => {
+  const { isFiltered, storeIndex } = getPageState();
+
+  try {
+    const allMovies = await getFavoriteMovies();
+    let moviesToDisplay = allMovies;
+
+    // 검색 상태에 따라 필터링된 데이터 유지
+    if (isFiltered) {
+      const title = document.getElementById("movieTitle").value.trim();
+      moviesToDisplay = filterMoviesByTitle(allMovies, title);
+    }
+
+    // 페이지 상태 업데이트
+    updatePageState({
+      currentIndex: storeIndex || 0,
+    });
+
+    // 카드 다시 생성
+    createFavoriteCards(moviesToDisplay, { isFiltered });
+  } catch (error) {
+    console.error(error);
+  }
 };

@@ -44,15 +44,6 @@ export const setupFilterHandlers = () => {
   deleteButton.addEventListener("click", async () => {
     titleInput.value = "";
     deleteButton.style.opacity = "0";
-
-    try {
-      // 찜한 영화 목록 조회
-      const movies = await getFavoriteMovies();
-      // 필터링되지 않은 카드 생성
-      createFavoriteCards(movies, { isFiltered: false });
-    } catch (error) {
-      console.error(error);
-    }
   });
 };
 
