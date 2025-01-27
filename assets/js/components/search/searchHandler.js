@@ -50,7 +50,7 @@ const searchMovies = async (query) => {
     return new Promise((resolve, reject) => {
       debounceTimer = setTimeout(async () => {
         try {
-          const result = await getMovies(query);
+          const result = await getMovies(query, "", 1, 0, true);
           resolve(result);
         } catch (error) {
           reject(error);

@@ -3,6 +3,7 @@ import { handleFavoriteButton } from "../button/favoriteButton.js";
 import { handleNoData } from "../common/noData.js";
 import { getMovies } from "../../api/movie.js";
 import { handleMoreButton } from "../button/resultMoreButton.js";
+import { showLoading, hideLoading } from "../common/loader.js";
 
 let pageState = {
   currentPage: 1,
@@ -26,6 +27,8 @@ export const fetchMoviesData = async (
   currentPage
 ) => {
   try {
+    showLoading();
+
     // 현재 페이지를 업데이트
     setPageState({ currentPage });
 
@@ -39,11 +42,15 @@ export const fetchMoviesData = async (
     return result;
   } catch (error) {
     console.error(error);
+  } finally {
+    hideLoading();
   }
 };
 
 export const displayCards = (movies) => {
   const cardContainer = document.querySelector(".card");
+
+  showLoading();
 
   // 영화 데이터를 기반으로 카드 HTML 생성
   let cardHTML = movies.map((item) => createCardHTML(item)).join("");
@@ -55,6 +62,8 @@ export const displayCards = (movies) => {
   favoriteButtons.forEach((button) => {
     handleFavoriteButton(button);
   });
+
+  hideLoading();
 };
 
 export const createCard = async () => {

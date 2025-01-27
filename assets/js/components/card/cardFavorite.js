@@ -96,8 +96,10 @@ const displayCards = (movies) => {
 
   // 더보기 버튼 표시 여부 결정
   const moreButton = document.querySelector(".btn-more");
-  moreButton.style.display =
-    startIndex + itemsPerPage >= dataToDisplay.length ? "none" : "block";
+  const totalMovies = dataToDisplay.length;
+  const remainingItems = totalMovies - (startIndex + itemsPerPage);
+
+  moreButton.style.display = remainingItems > 0 ? "block" : "none";
 };
 
 // 더보기 버튼 표시 여부 결정

@@ -43,6 +43,9 @@ export const submitForm = (e) => {
   }
 
   if (isValid) {
+    validateField(titleInput, true);
+    validateField(yearSelect, true);
+
     if (title) url += `title=${title}&`;
     if (year) url += `year=${year}&`;
 
