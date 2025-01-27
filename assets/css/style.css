@@ -774,7 +774,7 @@ summary {
   flex-direction: column;
   text-align: center;
   gap: 4px;
-  padding: 40px;
+  padding: 100px 40px;
   width: 100%;
   border: 1px solid light-dark(#dfdfdf, #3f424b);
   border-radius: 20px;
@@ -1174,6 +1174,52 @@ select {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.popup.--active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.popup-container {
+  margin: 0 20px;
+  max-width: 400px;
+  width: 100%;
+  background-color: light-dark(#fff, #232429);
+  border-radius: 10px;
+}
+.popup-content {
+  padding: 30px;
+}
+.popup-btns {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid light-dark(#dfdfdf, #3f424b);
+}
+.popup-btns button {
+  padding: 14px;
+  flex: 1;
+  cursor: pointer;
+}
+.popup-btns button:last-child {
+  border-left: 1px solid light-dark(#dfdfdf, #3f424b);
+}
+.popup-btns button.btn-ok {
+  color: light-dark(#5254fd, #5254fd);
 }
 
 .footer {
