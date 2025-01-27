@@ -1,4 +1,5 @@
 import config from "../config/config.js";
+import { showLoading, hideLoading } from "../components/common/loader.js";
 
 // 고해상도 이미지 URL로 변경
 const getHighResImageUrl = (posterUrl) => {
@@ -9,6 +10,8 @@ const getHighResImageUrl = (posterUrl) => {
 // 영화 상세 정보 조회
 export const getMovieDetails = async (imdbID) => {
   try {
+    showLoading();
+
     const res = await fetch(
       `https://omdbapi.com/?apikey=${config.API_KEY}&i=${imdbID}`
     );
@@ -28,6 +31,8 @@ export const getMovieDetails = async (imdbID) => {
   } catch (error) {
     console.error("영화 상세정보 fetch 오류", error);
     throw error;
+  } finally {
+    hideLoading();
   }
 };
 
@@ -38,6 +43,8 @@ export const getMovies = async (title, year = "", page = 1, limit = 0) => {
   const p = `&page=${page}`;
 
   try {
+    showLoading();
+
     const res = await fetch(
       `https://omdbapi.com/?apikey=${config.API_KEY}${s}${y}${p}`
     );
@@ -68,22 +75,32 @@ export const getMovies = async (title, year = "", page = 1, limit = 0) => {
     return json.Error;
   } catch (error) {
     console.log(error);
+  } finally {
+    hideLoading();
   }
 };
 
 // ID 리스트로 영화 정보 조회
 export const fetchMoviesByIds = async (ids) => {
-  const movies = [];
+  try {
+    showLoading();
 
-  for (const id of ids) {
-    const response = await fetch(
-      `https://www.omdbapi.com/?i=${id}&apikey=${config.API_KEY}`
-    );
-    const data = await response.json();
-    if (data.Response === "True") {
-      movies.push(data);
+    const movies = [];
+
+    for (const id of ids) {
+      const response = await fetch(
+        `https://www.omdbapi.com/?i=${id}&apikey=${config.API_KEY}`
+      );
+      const data = await response.json();
+      if (data.Response === "True") {
+        movies.push(data);
+      }
     }
-  }
 
-  return movies;
+    return movies;
+  } catch (error) {
+    console.log(error);
+  } finally {
+    hideLoading();
+  }
 };

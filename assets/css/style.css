@@ -588,6 +588,36 @@ summary {
   animation: loadingBubble 3s 1s infinite;
 }
 
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: light-dark(#fff, #232429);
+  z-index: 9999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.loading-overlay .dot {
+  width: 1rem;
+  aspect-ratio: 1;
+  background-color: light-dark(#5254fd, #5254fd);
+  border-radius: 50%;
+  z-index: 200;
+}
+.loading-overlay .dot:nth-child(1) {
+  animation: loadingBubble 3s 0s infinite;
+}
+.loading-overlay .dot:nth-child(2) {
+  animation: loadingBubble 3s 0.5s infinite;
+}
+.loading-overlay .dot:nth-child(3) {
+  animation: loadingBubble 3s 1s infinite;
+}
+
 .modal {
   position: fixed;
   top: 0;

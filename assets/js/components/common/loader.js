@@ -20,16 +20,29 @@ export const removeLoader = (HTMLElement) => {
 };
 
 export const addLoaderEle = (HTMLElement) => {
-
-  if( !HTMLElement.querySelector('.loading__ele') == null
-    || !HTMLElement.querySelector('.loading__ele')  ){
-  let context = `
+  if (
+    !HTMLElement.querySelector(".loading__ele") == null ||
+    !HTMLElement.querySelector(".loading__ele")
+  ) {
+    let context = `
       <div class='loading__ele'>
         <div class='dot'></div>
         <div class='dot'></div>
         <div class='dot'></div>
       </div>
     `;
-  HTMLElement.innerHTML += context;
+    HTMLElement.innerHTML += context;
   }
+};
+
+// 전체 로딩 애니메이션 표시
+export const showLoading = () => {
+  const loadingOverlay = document.querySelector(".loading-overlay");
+  loadingOverlay.style.display = "flex";
+};
+
+// 전체 로딩 애니메이션 숨김
+export const hideLoading = () => {
+  const loadingOverlay = document.querySelector(".loading-overlay");
+  loadingOverlay.style.display = "none";
 };

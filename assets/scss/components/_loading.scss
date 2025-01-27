@@ -29,3 +29,21 @@
     @include loading-dot(1rem, $primary-color);
   }
 }
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $primary-bg-color;
+  z-index: 9999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  .dot {
+    @include loading-dot(1rem, $primary-color);
+  }
+}
