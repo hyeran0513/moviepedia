@@ -1,9 +1,26 @@
 @use "../abstract/var" as *;
+@use "../abstract/mixin" as *;
 
 .movie-detail {
   &__container {
     display: flex;
     gap: 110px;
+
+    
+
+    @include respond-to(mobile) {
+      flex-direction: column;
+      gap: 15px;
+      margin: 0 30px;
+    }
+
+    @include respond-to(tablet) {
+      gap: 50px;
+      margin: 0 30px;
+      width: auto;
+      height: auto;
+    }
+    
   }
 
   &__poster {
@@ -12,15 +29,23 @@
     border-radius: 26px;
     overflow: hidden;
 
+    
+
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      
+    
     }
 
     &-container {
       max-width: 400px;
       width: 100%;
+
+      @include respond-to(mobile) {
+        margin: 0 auto;
+      }
     }
   }
 
@@ -36,6 +61,13 @@
         font-size: 24px;
       }
     }
+
+    @include respond-to(mobile) {
+      // justify-content: center;
+      margin: 0 150px;
+    }
+
+    
   }
 
   &__title {
@@ -51,6 +83,10 @@
       margin-bottom: 22px;
       font-weight: bold;
     }
+    @include respond-to(mobile) {
+      // justify-content: center;
+      margin: 0 150px;
+    }
   }
 
   &__info {
@@ -58,6 +94,10 @@
       display: flex;
       flex-direction: column;
       gap: 22px;
+      @include respond-to(mobile) {
+        // justify-content: center;
+        margin: 30px 150px;
+      }
     }
 
     &-item {
@@ -73,6 +113,7 @@
         flex: 1;
       }
     }
+    
   }
 
   &__genre {
@@ -91,4 +132,7 @@
       border-radius: 15px;
     }
   }
+
+  
 }
+
