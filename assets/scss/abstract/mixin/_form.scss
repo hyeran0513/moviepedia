@@ -92,6 +92,11 @@
   }
 
   @include respond-to(mobile) {
+    input,
+    select {
+      padding: 0 14px;
+    }
+
     &.--large {
       input,
       select {
@@ -118,6 +123,11 @@
   background-color: $form-bg-color;
   border-radius: 4px;
   border: 1px solid $primary-border-color;
+
+  @include respond-to(mobile) {
+    padding-left: 14px;
+    height: 40px;
+  }
 }
 
 @mixin searchDelBtn {
@@ -130,6 +140,10 @@
 
   & > i {
     color: $form-placeholder-color;
+  }
+
+  @include respond-to(mobile) {
+    padding: 0 14px;
   }
 }
 
@@ -219,6 +233,7 @@
     height: 34px;
     transition: opacity 0.3s ease;
     cursor: pointer;
+    opacity: 0;
 
     & > i {
       color: $form-placeholder-color;

@@ -1,6 +1,7 @@
 @use "./loading.scss" as *;
 @use "../abstract/var" as *;
 @use "../layout/form" as *;
+@use "../abstract/mixin/" as *;
 
 #searchModal {
   .modal {
@@ -29,10 +30,7 @@
     gap: 20px;
     padding: 20px 30px;
     cursor: pointer;
-
-    &:not(:last-of-type) {
-      border-bottom: 1px solid $primary-border-color;
-    }
+    border-bottom: 1px solid $primary-border-color;
   }
 
   &__poster {
@@ -79,6 +77,15 @@
       align-items: center;
       gap: 10px;
       font-size: 14px;
+    }
+  }
+}
+
+@include respond-to(mobile) {
+  .movie {
+    &__item {
+      gap: 14px;
+      padding: 14px;
     }
   }
 }
