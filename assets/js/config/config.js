@@ -9,7 +9,7 @@ const config = {
   // API_KEY: "3b9d589c",
 
   /* 주희님 */
-  // API_KEY: "7e3fdbf1",
+  API_KEY: "7e3fdbf1",
 };
 
 export default config;
