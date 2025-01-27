@@ -1,41 +1,5 @@
-@use 'abstract' as *;
-@use 'base' as *;
-@use 'components' as *;
-@use 'layout' as *;
-@use 'page' as *;
-
-$tablet: 768px;
-$desktop: 1024px;
-
-@mixin responsive($screen) {
-	@if ($screen == 'desktop') {
-		@media screen and (max-width: $desktop) {
-			@content;
-		}
-	}
-	@if ($screen == 'tablet') {
-		@media screen and (max-width: $tablet) {
-			@content;
-		}
-	}
-}
-
-@include responsive(desktop) {
-	.header {
-		padding: 0 20px;
-	}
-
-	main {
-		padding: 40px 20px;
-	}
-
-	.card {
-		grid-template-columns: repeat(3, 1fr);
-	}
-}
-
-@include responsive(tablet) {
-	.card {
-		grid-template-columns: repeat(2, 1fr);
-	}
-}
+@use "abstract" as *;
+@use "base" as *;
+@use "components" as *;
+@use "layout" as *;
+@use "page" as *;
