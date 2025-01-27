@@ -8,9 +8,11 @@ const getHighResImageUrl = (posterUrl) => {
 };
 
 // 영화 상세 정보 조회
-export const getMovieDetails = async (imdbID) => {
+export const getMovieDetails = async (imdbID, skipLoading = false) => {
   try {
-    showLoading();
+    if (!skipLoading) {
+      showLoading();
+    }
 
     const res = await fetch(
       `https://omdbapi.com/?apikey=${config.API_KEY}&i=${imdbID}`
@@ -32,18 +34,28 @@ export const getMovieDetails = async (imdbID) => {
     console.error("영화 상세정보 fetch 오류", error);
     throw error;
   } finally {
-    hideLoading();
+    if (!skipLoading) {
+      hideLoading();
+    }
   }
 };
 
 // 영화 검색 결과 조회
-export const getMovies = async (title, year = "", page = 1, limit = 0) => {
+export const getMovies = async (
+  title,
+  year = "",
+  page = 1,
+  limit = 0,
+  skipLoading = false
+) => {
   const s = `&s=${encodeURIComponent(title)}`;
   const y = `&y=${year}`;
   const p = `&page=${page}`;
 
   try {
-    showLoading();
+    if (!skipLoading) {
+      showLoading();
+    }
 
     const res = await fetch(
       `https://omdbapi.com/?apikey=${config.API_KEY}${s}${y}${p}`
@@ -58,7 +70,7 @@ export const getMovies = async (title, year = "", page = 1, limit = 0) => {
 
       const moviesWithDetails = await Promise.all(
         limitedMovies.map(async (movie) => {
-          const movieDetails = await getMovieDetails(movie.imdbID);
+          const movieDetails = await getMovieDetails(movie.imdbID, skipLoading);
           return {
             ...movie,
             details: movieDetails,
@@ -76,14 +88,18 @@ export const getMovies = async (title, year = "", page = 1, limit = 0) => {
   } catch (error) {
     console.log(error);
   } finally {
-    hideLoading();
+    if (!skipLoading) {
+      hideLoading();
+    }
   }
 };
 
 // ID 리스트로 영화 정보 조회
-export const fetchMoviesByIds = async (ids) => {
+export const fetchMoviesByIds = async (ids, skipLoading = false) => {
   try {
-    showLoading();
+    if (!skipLoading) {
+      showLoading();
+    }
 
     const movies = [];
 
@@ -101,6 +117,8 @@ export const fetchMoviesByIds = async (ids) => {
   } catch (error) {
     console.log(error);
   } finally {
-    hideLoading();
+    if (!skipLoading) {
+      hideLoading();
+    }
   }
 };

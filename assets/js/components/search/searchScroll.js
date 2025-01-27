@@ -33,7 +33,13 @@ export async function loadPosts() {
     isLoding = true;
     const searchTarget = document.querySelector(".search-input");
     const list = document.querySelector(".movie__list");
-    let result = await getMovies(searchTarget.value, "", currentPage, limit);
+    let result = await getMovies(
+      searchTarget.value,
+      "",
+      currentPage,
+      limit,
+      true
+    );
     let searchResult = await setupMovieContents(result);
 
     list.innerHTML += searchResult;

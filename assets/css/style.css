@@ -661,6 +661,7 @@ summary {
 @media (max-width: 768px) {
   .loading__ele {
     gap: 1.5rem;
+    margin: 1.5rem 0;
   }
 }
 
@@ -710,6 +711,7 @@ summary {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 40px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -719,7 +721,6 @@ summary {
   pointer-events: auto;
 }
 .modal-content {
-  margin: 0 40px;
   max-width: 800px;
   width: 100%;
   background-color: light-dark(#fff, #232429);
@@ -749,9 +750,6 @@ summary {
   margin: 0 auto;
 }
 @media (max-width: 1024px) {
-  .modal-content {
-    margin: 0 20px;
-  }
   .modal-head {
     padding: 20px 30px;
   }
@@ -760,6 +758,9 @@ summary {
   }
 }
 @media (max-width: 768px) {
+  .modal {
+    padding: 0 20px;
+  }
   .modal-head {
     padding: 20px;
   }
@@ -1188,6 +1189,7 @@ select {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 20px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -1197,7 +1199,6 @@ select {
   pointer-events: auto;
 }
 .popup-container {
-  margin: 0 20px;
   max-width: 400px;
   width: 100%;
   background-color: light-dark(#fff, #232429);
