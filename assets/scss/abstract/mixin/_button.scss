@@ -113,6 +113,10 @@
     } @else if $size == lg {
       height: 40px;
     }
+
+    @if $size == lg {
+      max-width: 350px;
+    }
   }
 
   // Hover 상태

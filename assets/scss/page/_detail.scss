@@ -1,23 +1,12 @@
 @use "../abstract/var" as *;
-@use "../abstract/mixin/" as *;
+@use "../abstract/mixin" as *;
+
+
 
 .movie-detail {
   &__container {
     display: flex;
     gap: 110px;
-
-    @include respond-to(mobile) {
-      flex-direction: column;
-      gap: 15px;
-      margin: 0 30px;
-    }
-
-    @include respond-to(tablet) {
-      gap: 50px;
-      margin: 0 30px;
-      width: auto;
-      height: auto;
-    }
   }
 
   &__poster {
@@ -26,19 +15,21 @@
     border-radius: 26px;
     overflow: hidden;
 
+    
+
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      
+    
     }
 
     &-container {
       max-width: 400px;
       width: 100%;
 
-      @include respond-to(mobile) {
-        margin: 0 auto;
-      }
+      
     }
   }
 
@@ -55,9 +46,9 @@
       }
     }
 
-    @include respond-to(mobile) {
-      margin: 0 150px;
-    }
+    
+
+    
   }
 
   &__title {
@@ -73,10 +64,7 @@
       margin-bottom: 22px;
       font-weight: bold;
     }
-
-    @include respond-to(mobile) {
-      margin: 0 150px;
-    }
+    
   }
 
   &__info {
@@ -84,10 +72,7 @@
       display: flex;
       flex-direction: column;
       gap: 22px;
-
-      @include respond-to(mobile) {
-        margin: 30px 150px;
-      }
+      
     }
 
     &-item {
@@ -103,6 +88,7 @@
         flex: 1;
       }
     }
+    
   }
 
   &__genre {
@@ -120,5 +106,78 @@
       border: 1px solid $primary-border-color;
       border-radius: 15px;
     }
+  }
+}
+
+@include respond-to(tablet) {
+  .movie-detail {
+    &__container {
+    margin: 0 ;
+    width: auto;
+    height: auto;
+    gap: 50px;
+    }
+
+    &__poster {
+      width: 100%;
+      height: auto;
+    }
+
+  }
+}
+
+@include respond-to(mobile) {
+  .movie-detail {
+    &__container {
+      flex-direction: column;
+      gap: 0 120px;
+      // padding: 0;
+      margin: 0 ;
+    }
+    
+    &__poster {
+      border-radius: 10px;
+
+      &-container {
+        margin: 20px auto;
+      }
+      height: 420px;
+      max-width: 350px ;
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &__info {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      &-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 22px;
+        
+      padding: 0;
+      }
+      &-list {
+        
+      padding: 0;
+      }
+    }
+    
+    &__top {
+      margin-bottom: 20px;
+      // gap: 0 400px;
+    }
+    &__title {
+      font-size: 26px;
+      margin-bottom: 0;
+    }
+    &__storyline {
+      margin-bottom: 20px;
+    }
+
+    
   }
 }

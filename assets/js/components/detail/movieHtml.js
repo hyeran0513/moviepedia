@@ -27,6 +27,8 @@ export const createMovieHTML = (movieData) => {
           <div class="movie-detail__definition">${
             item.term === "Genres"
               ? `<ul class="movie-detail__genre-list">${item.definition}</ul>`
+              : item.definition === "N/A"
+              ? "no infomation"
               : item.definition
           }</div>
         </div>
