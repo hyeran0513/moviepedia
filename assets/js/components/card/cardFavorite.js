@@ -5,6 +5,7 @@ import {
   getFavoriteMovies,
   filterMoviesByTitle,
 } from "../../services/favorites.js";
+import { showLoading, hideLoading } from "../common/loader.js";
 
 // 페이지 상태 관리 객체
 let pageState = {
@@ -66,6 +67,9 @@ export const createFavoriteCards = (movies, options = {}) => {
 
   // 업데이트된 카드 개수 반영
   updateCardItemCount();
+
+  // 로딩 숨기기
+  hideLoading();
 };
 
 // 카드 데이터를 화면에 표시
@@ -73,6 +77,9 @@ const displayCards = (movies) => {
   const cardContainer = document.querySelector(".card");
   const { itemsPerPage, currentIndex, isFiltered, filteredData, storeIndex } =
     pageState;
+
+  // 로딩 표시
+  showLoading();
 
   // 필터링 여부에 따라 표시할 데이터 결정
   const dataToDisplay = isFiltered ? filteredData : movies;
@@ -107,6 +114,9 @@ const displayCards = (movies) => {
   const remainingItems = totalMovies - (startIndex + itemsPerPage);
 
   moreButton.style.display = remainingItems > 0 ? "flex" : "none";
+
+  // 로딩 숨기기
+  hideLoading();
 };
 
 // 카드 개수 업데이트

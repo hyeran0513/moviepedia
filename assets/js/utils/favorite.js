@@ -3,6 +3,10 @@ import { createFavoriteCards } from "../components/card/cardFavorite.js";
 import { setupFilterHandlers } from "../components/form/favoriteForm.js";
 import { handleMoreButton } from "../components/button/favoriteMoreButton.js";
 import { getFavoriteMovies } from "../services/favorites.js";
+import { showLoading } from "../components/common/loader.js";
+
+// 로딩 표시
+showLoading();
 
 // 웹 초기화
 initializeWeb();

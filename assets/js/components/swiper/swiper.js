@@ -8,8 +8,7 @@ export const renderSwiperMovies = async () => {
   const swiperWrapper = document.querySelector(".swiper-wrapper");
 
   try {
-    const data = await getMovies("mini", "", 1, 9, true);
-
+    const data = await getMovies("mini", "", 1, 11, true);
     showLoading();
 
     if (data.movies) {
@@ -27,8 +26,6 @@ export const renderSwiperMovies = async () => {
   } catch (error) {
     console.error(error);
   } finally {
-    requestAnimationFrame(() => {
-      hideLoading();
-    });
+    hideLoading();
   }
 };
