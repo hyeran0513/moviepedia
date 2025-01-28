@@ -133,7 +133,7 @@ const updateCardItemCount = () => {
 
 // 더보기 버튼 표시 여부 결정
 export const loadMoreCards = async (movieTitle, movieYear) => {
-  const { currentPage, limit } = getPageState();
+  const { currentPage } = getPageState();
 
   // 새로운 함수로 영화 데이터 가져오기
   const data = await fetchMoviesData(movieTitle, movieYear, currentPage + 1);
