@@ -46,7 +46,8 @@ export const getMovies = async (
   year = "",
   page = 1,
   limit = 0,
-  skipLoading = false
+  skipLoading = false,
+  fetchDetails = true
 ) => {
   const s = `&s=${encodeURIComponent(title)}`;
   const y = `&y=${year}`;
@@ -69,13 +70,12 @@ export const getMovies = async (
       const limitedMovies = limit > 0 ? movies.slice(0, limit) : movies;
 
       const moviesWithDetails = await Promise.all(
-        limitedMovies.map(async (movie) => {
-          const movieDetails = await getMovieDetails(movie.imdbID, skipLoading);
-          return {
-            ...movie,
-            details: movieDetails,
-          };
-        })
+        limitedMovies.map(async (movie) => ({
+          ...movie,
+          ...(fetchDetails
+            ? { details: await getMovieDetails(movie.imdbID, skipLoading) }
+            : {}),
+        }))
       );
 
       return {

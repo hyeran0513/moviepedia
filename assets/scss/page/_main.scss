@@ -124,6 +124,17 @@
     gap: 1rem;
   }
 
+  &-type {
+    flex-shrink: 0;
+    align-self: flex-start;
+    padding: 4px 10px;
+    width: auto;
+    border: 1px solid $swiper-text-color;
+    font-size: 12px;
+    border-radius: 4px;
+    background-color: rgba($color: #fbffff, $alpha: 0.2);
+  }
+
   &-title {
     line-height: 1.2;
     font-size: 20px;

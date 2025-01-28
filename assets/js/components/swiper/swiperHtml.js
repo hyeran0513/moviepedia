@@ -26,6 +26,8 @@ export const createSwiperHtml = (movie) => {
 
       <div class="movie-container">
         <div class="movie-info">
+            <div class="movie-type">${movie.Type}</div>
+
           <h3 class="movie-title">${movie.Title}</h3>
           <div class="movie-details">
             <p class="movie-runtime">

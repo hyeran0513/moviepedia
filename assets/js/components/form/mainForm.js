@@ -1,4 +1,5 @@
 import { createYearOptions } from "../common/select.js";
+import { showLoading } from "../common/loader.js";
 
 export const initializeFormHandler = () => {
   const searchForm = document.getElementById("searchForm");
@@ -90,5 +91,7 @@ export const submitForm = (e) => {
 
     // 마지막 '&' 제거 후 결과 페이지로 이동
     window.location.href = url.slice(0, -1);
+
+    showLoading();
   }
 };

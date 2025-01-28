@@ -38,8 +38,12 @@ export const fetchMoviesData = async (
       movieTitle,
       movieYear,
       currentPage,
-      pageState.limit
+      pageState.limit,
+      true,
+      false
     );
+
+    console.log(JSON.stringify(result));
 
     setPageState({
       totalResults: result.totalResults,
@@ -48,8 +52,6 @@ export const fetchMoviesData = async (
     return result;
   } catch (error) {
     console.error(error);
-  } finally {
-    hideLoading();
   }
 };
 
@@ -81,6 +83,7 @@ export const createCard = async () => {
     data.movies.length === 0
   ) {
     handleNoData(data, noDataContainer);
+    hideLoading();
     return;
   }
 
@@ -118,6 +121,12 @@ export const displayCards = (movies) => {
       btnMore.style.display = "flex";
     }
   }
+
+  // 카드 개수 업데이트
+  updateCardItemCount();
+
+  // 데이터 렌더링이 끝난 후에 로딩 숨기기
+  hideLoading();
 };
 
 // 카드 개수 업데이트
@@ -134,6 +143,8 @@ const updateCardItemCount = () => {
 // 더보기 버튼 표시 여부 결정
 export const loadMoreCards = async (movieTitle, movieYear) => {
   const { currentPage } = getPageState();
+
+  showLoading();
 
   // 새로운 함수로 영화 데이터 가져오기
   const data = await fetchMoviesData(movieTitle, movieYear, currentPage + 1);
