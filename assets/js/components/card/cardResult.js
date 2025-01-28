@@ -41,8 +41,6 @@ export const fetchMoviesData = async (
       pageState.limit
     );
 
-    console.log("????" + result.totalResults);
-
     setPageState({
       totalResults: result.totalResults,
     });
@@ -139,9 +137,6 @@ export const loadMoreCards = async (movieTitle, movieYear) => {
 
   // 새로운 함수로 영화 데이터 가져오기
   const data = await fetchMoviesData(movieTitle, movieYear, currentPage + 1);
-
-  // 현재 페이지 업데이트
-  setPageState({ currentPage: currentPage + 1 });
 
   // 추가 카드 표시
   displayCards(data.movies);
