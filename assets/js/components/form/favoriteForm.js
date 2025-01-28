@@ -10,7 +10,7 @@ export const setupFilterHandlers = () => {
   const deleteButton = document.querySelector(".btn-del");
 
   // 검색 폼 제출
-  searchForm.addEventListener("click", async (e) => {
+  searchForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     // 입력값 가져오기

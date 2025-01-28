@@ -1,3 +1,42 @@
+import { createYearOptions } from "../common/select.js";
+
+export const initializeFormHandler = () => {
+  const searchForm = document.getElementById("searchForm");
+  const titleInput = document.getElementById("movieTitle");
+  const deleteButton = document.querySelector(".btn-del");
+
+  // searchForm 제출 이벤트
+  searchForm.addEventListener("submit", submitForm);
+
+  // 셀렉트 박스 옵션 설정 (1900년 ~ 현재 연도)
+  createYearOptions("selectYear", 1900);
+
+  // 타이틀 입력 필드에 따른 삭제 버튼 표시/숨기기
+  titleInput.addEventListener("input", toggleDeleteButton);
+
+  // 타이틀 삭제 버튼 클릭 이벤트
+  deleteButton.addEventListener("click", deleteTitle);
+
+  // 초기 삭제 버튼 상태 설정
+  toggleDeleteButton();
+};
+
+// 영화 제목 입력 필드 초기화
+export const deleteTitle = () => {
+  const titleInput = document.getElementById("movieTitle");
+  titleInput.value = "";
+  toggleDeleteButton();
+};
+
+// 영화 제목 입력 필드에 따른 삭제 버튼 표시/숨기기
+export const toggleDeleteButton = () => {
+  const titleInput = document.getElementById("movieTitle");
+  const deleteButton = document.querySelector(".btn-del");
+
+  deleteButton.style.opacity = titleInput.value.trim() ? "1" : "0";
+};
+
+// searchForm 제출 이벤트 핸들러
 export const submitForm = (e) => {
   e.preventDefault();
 
@@ -53,22 +92,3 @@ export const submitForm = (e) => {
     window.location.href = url.slice(0, -1);
   }
 };
-
-// 영화 제목 입력 필드 초기화
-export const deleteTitle = () => {
-  const titleInput = document.getElementById("movieTitle");
-  titleInput.value = "";
-  toggleDeleteButton();
-};
-
-// 영화 제목 입력 필드에 따른 삭제 버튼 표시/숨기기
-export const toggleDeleteButton = () => {
-  const titleInput = document.getElementById("movieTitle");
-  const deleteButton = document.querySelector(".btn-del");
-
-  deleteButton.style.opacity = titleInput.value.trim() ? "1" : "0";
-};
-
-document
-  .getElementById("movieTitle")
-  .addEventListener("input", toggleDeleteButton);

@@ -1,6 +1,6 @@
 import { initializeWeb } from "./main.js";
 import { createFavoriteCards } from "../components/card/cardFavorite.js";
-import { setupFilterHandlers } from "../components/filter/filter.js";
+import { setupFilterHandlers } from "../components/form/favoriteForm.js";
 import { handleMoreButton } from "../components/button/favoriteMoreButton.js";
 import { getFavoriteMovies } from "../services/favorites.js";
 

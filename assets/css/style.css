@@ -99,7 +99,8 @@ main {
   margin: 0 auto;
   margin-top: 80px;
   padding: 40px 0;
-  max-width: 1200px;
+  max-width: 1280px;
+  padding: 40px;
   width: 100%;
 }
 
@@ -116,11 +117,6 @@ main {
   display: none;
 }
 
-@media (max-width: 1024px) {
-  main {
-    padding: 40px;
-  }
-}
 @media (max-width: 768px) {
   main {
     margin-top: 50px;
@@ -488,11 +484,6 @@ summary {
   grid-template-columns: repeat(5, 1fr);
   gap: 20px;
 }
-@media (max-width: 1024px) {
-  .card {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
 @media (max-width: 768px) {
   .card {
     grid-template-columns: repeat(2, 1fr);
@@ -564,14 +555,14 @@ summary {
 
 @media (max-width: 1024px) {
   .card__poster {
-    height: 240px;
+    margin-bottom: 8px;
+    height: 220px;
+    border-radius: 6px;
   }
 }
 @media (max-width: 768px) {
   .card__poster {
-    margin-bottom: 8px;
     height: 200px;
-    border-radius: 6px;
   }
   .card__item-title {
     margin-bottom: 4px;

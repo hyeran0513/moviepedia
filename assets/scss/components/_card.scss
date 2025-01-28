@@ -90,7 +90,9 @@
 @include respond-to(tablet) {
   .card {
     &__poster {
-      height: 240px;
+      margin-bottom: 8px;
+      height: 220px;
+      border-radius: 6px;
     }
   }
 }
@@ -98,9 +100,7 @@
 @include respond-to(mobile) {
   .card {
     &__poster {
-      margin-bottom: 8px;
       height: 200px;
-      border-radius: 6px;
     }
 
     &__item {
