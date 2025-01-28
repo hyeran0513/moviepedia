@@ -23,6 +23,15 @@
   @include btn-wrap(50px);
 }
 
+.btn-more {
+  @include button-base();
+  @include button-size(50px, 400px);
+
+  .page-info {
+    font-size: 14px;
+  }
+}
+
 .favorite-button {
   @include favorite-button(sm, false); // 기본 모서리
 

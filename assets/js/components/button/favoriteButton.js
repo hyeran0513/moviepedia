@@ -1,6 +1,6 @@
 import {
   updateFavoriteCards,
-  updatePageState,
+  setPageState,
   getPageState,
 } from "../card/cardFavorite.js";
 
@@ -31,7 +31,7 @@ const showFavoritePopup = (movieId, favorites) => {
 
       const { currentIndex } = getPageState();
 
-      updatePageState({
+      setPageState({
         storeIndex: currentIndex,
       });
 
