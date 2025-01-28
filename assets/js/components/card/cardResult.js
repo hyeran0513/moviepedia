@@ -62,6 +62,7 @@ export const createCard = async () => {
   const cardContainer = document.querySelector(".card");
   const noDataContainer = document.getElementById("resultNoData");
   const totalPage = document.querySelector(".total-page");
+  const btnMore = document.querySelector(".btn-more");
 
   // 페이지 상태 가져오기
   const { currentPage } = getPageState();
@@ -83,6 +84,7 @@ export const createCard = async () => {
     data.movies.length === 0
   ) {
     handleNoData(data, noDataContainer);
+    btnMore.style.display = "none";
     hideLoading();
     return;
   }
