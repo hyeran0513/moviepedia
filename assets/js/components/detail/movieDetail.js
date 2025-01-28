@@ -11,8 +11,14 @@ export const createDetail = async () => {
     const movieData = await getMovieDetails(imdbID);
 
     // 포스터 이미지
-    const poster = document.querySelector(".movie-detail__poster img");
-    poster.src = movieData.Poster;
+    const poster = document.querySelector(".movie-detail__poster");
+    poster.innerHTML = `
+      ${
+        movieData.Poster === "N/A" || !movieData.Poster
+          ? `<div class="movie-detail__poster--default"><i class="bx bx-image-alt"></i></div>`
+          : `<img src="${movieData.Poster}" alt="${movieData.Title}" />`
+      }
+    `;
 
     // 영화 제목과 줄거리
     const movieTitle = document.querySelector(".movie-detail__title");
