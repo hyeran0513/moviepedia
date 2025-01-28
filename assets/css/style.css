@@ -410,6 +410,44 @@ summary {
   font-size: 14px;
 }
 
+.btn-top {
+  position: fixed;
+  right: 80px;
+  bottom: 50px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 56px;
+  font-size: 30px;
+  border: none;
+  border-radius: 50%;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  box-shadow: 5px 0 12px rgba(0, 0, 0, 0.1215686275);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
+}
+@media (max-width: 1024px) {
+  .btn-top {
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+}
+@media (max-width: 768px) {
+  .btn-top {
+    bottom: 25px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+}
+
 .favorite-button {
   display: flex;
   justify-content: center;
@@ -594,7 +632,7 @@ summary {
 }
 @media (max-width: 768px) {
   .card__poster {
-    height: 200px;
+    height: 210px;
   }
   .card__item-title {
     margin-bottom: 4px;
