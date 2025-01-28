@@ -38,7 +38,8 @@ export async function loadPosts() {
       "",
       currentPage,
       limit,
-      true
+      true,
+      false
     );
     let searchResult = await setupMovieContents(result);
 

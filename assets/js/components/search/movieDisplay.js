@@ -29,13 +29,9 @@ export const setupMovieContents = async (jsonData) => {
                   ${movie.Year}
                 </p>
 
-                <p class="movie__info-runtime">
-                  <i class='bx bx-time'></i>
-                  ${
-                    movie.details.Runtime.indexOf("N/A") > -1
-                      ? "no infomation"
-                      : movie.details.Runtime
-                  }
+                <p class="movie__info-type">
+                  <i class='bx bx-movie' ></i>
+                  ${movie.Type}
                 </p>
               </div>
             </div>

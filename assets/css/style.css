@@ -1164,7 +1164,7 @@ summary {
 .movie__info-year {
   font-size: 14px;
 }
-.movie__info-runtime {
+.movie__info-type {
   display: flex;
   align-items: center;
   gap: 10px;
