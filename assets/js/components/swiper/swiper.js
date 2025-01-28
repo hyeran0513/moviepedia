@@ -27,6 +27,8 @@ export const renderSwiperMovies = async () => {
   } catch (error) {
     console.error(error);
   } finally {
-    hideLoading();
+    requestAnimationFrame(() => {
+      hideLoading();
+    });
   }
 };

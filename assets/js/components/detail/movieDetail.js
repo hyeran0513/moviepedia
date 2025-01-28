@@ -1,6 +1,7 @@
 import { getMovieDetails } from "../../api/movie.js";
 import { createMovieHTML } from "./movieHtml.js";
 import { handleFavoriteButton } from "../button/favoriteButton.js";
+import { showLoading } from "../common/loader.js";
 
 export const createDetail = async () => {
   const url = new URL(window.location.href);
@@ -48,8 +49,10 @@ export const createDetail = async () => {
 
     backButton.addEventListener("click", (e) => {
       e.preventDefault();
+
       if (history.length > 1) {
         history.go(-1);
+        showLoading();
       }
     });
   } catch (error) {
