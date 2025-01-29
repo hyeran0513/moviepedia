@@ -1,7 +1,7 @@
 import { getMovieDetails } from "../../api/movie.js";
 import { createMovieHTML } from "./movieHtml.js";
 import { handleFavoriteButton } from "../button/favoriteButton.js";
-import { showLoading } from "../common/loader.js";
+import { showLoading, hideLoading } from "../common/loader.js";
 
 export const createDetail = async () => {
   const url = new URL(window.location.href);
@@ -63,5 +63,7 @@ export const createDetail = async () => {
     });
   } catch (error) {
     console.error("영화 상세 정보 가져오기 오류", error);
+  } finally {
+    hideLoading();
   }
 };
