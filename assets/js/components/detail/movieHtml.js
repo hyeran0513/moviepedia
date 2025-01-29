@@ -11,12 +11,12 @@ export const createMovieHTML = (movieData) => {
       definition:
         movieData.Genre === "N/A"
           ? "no information"
-          : movieData.Genre.split(",")
+          : `<ul class="movie-detail__genre-list">${movieData.Genre.split(",")
               .map(
                 (genre) =>
                   `<li class="movie-detail__genre-item">${genre.trim()}</li>`
               )
-              .join(""),
+              .join("")}</ul>`,
     },
     { term: "Duration", definition: movieData.Runtime },
     { term: "Cast", definition: movieData.Actors },
