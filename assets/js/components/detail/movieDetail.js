@@ -27,7 +27,8 @@ export const createDetail = async () => {
     );
 
     movieTitle.textContent = movieData.Title;
-    storyline.textContent = movieData.Plot;
+    storyline.textContent =
+      movieData.Plot === "N/A" ? "no infomation" : movieData.Plot;
 
     // 찜 버튼
     const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
