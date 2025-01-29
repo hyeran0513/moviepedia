@@ -25,8 +25,6 @@ export const getMovieDetails = async (imdbID) => {
       movieDetails.Poster = getHighResImageUrl(movieDetails.Poster);
     }
 
-    console.log("?????" + JSON.stringify(movieDetails));
-
     return movieDetails;
   } catch (error) {
     console.error("영화 상세정보 fetch 오류", error);

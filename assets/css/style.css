@@ -849,7 +849,6 @@ summary {
 }
 .no-data .icon {
   font-size: 60px;
-  font-weight: bold;
   color: light-dark(#333, #fbffff);
 }
 .no-data .title {
@@ -1147,6 +1146,20 @@ summary {
   font-size: 3rem;
   text-align: center;
   line-height: 75px;
+}
+.movie__poster--default {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: light-dark(#fff, #232429);
+  border: 1px solid light-dark(#dfdfdf, #3f424b);
+  border-radius: 4px;
+}
+.movie__poster--default > i {
+  color: light-dark(#bcbcbc, #525867);
+  font-size: 20px;
 }
 .movie__info {
   flex: 1;

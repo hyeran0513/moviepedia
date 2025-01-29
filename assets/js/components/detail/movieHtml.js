@@ -29,7 +29,7 @@ export const createMovieHTML = (movieData) => {
         <div class="movie-detail__info-item">
           <h4 class="movie-detail__term">${item.term}</h4>
           <div class="movie-detail__definition">${
-            item.term === "Genres" && !item.definition
+            item.term === "Genres"
               ? ""
               : item.definition === "N/A"
               ? "no information"

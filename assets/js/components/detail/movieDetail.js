@@ -14,9 +14,12 @@ export const createDetail = async () => {
     const poster = document.querySelector(".movie-detail__poster");
     poster.innerHTML = `
       ${
-        movieData.Poster === "N/A" || !movieData.Poster
-          ? `<div class="movie-detail__poster--default"><i class="bx bx-image-alt"></i></div>`
-          : `<img src="${movieData.Poster}" alt="${movieData.Title}" />`
+        movieData.Poster === "N/A"
+          ? `<div class="card__poster--default"><i class='bx bx-image-alt'></i></div>`
+          : `
+            <img src="${movieData.Poster}" 
+            alt="${movieData.Title}" 
+            onerror="this.outerHTML='<div class=\\'card__poster--default\\'><i class=\\'bx bx-image-alt\\'></i></div>'">`
       }
     `;
 
