@@ -14,8 +14,7 @@ export const setupMovieContents = async (jsonData) => {
               ${
                 movie.Poster.indexOf("N/A") > -1
                   ? "<i class='bx bxs-image-alt'></i>"
-                  : // ? "<box-icon name='image-alt' ></box-icon>"
-                    '<img src="' + movie.Poster + '" alt=""> '
+                  : `<img src="${movie.Poster}" onerror="this.outerHTML='<i class=\\'bx bxs-image-alt\\'></i>'">`
               }
             </div>
 

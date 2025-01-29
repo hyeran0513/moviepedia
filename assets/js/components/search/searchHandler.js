@@ -167,3 +167,36 @@ const removeList = (modalBody) => {
     modalBody.removeChild(list);
   }
 };
+
+// 검색 정보가 있을때 내용 삭제 버튼을 추가하는 함수
+export const deleteButtonVisibleHandler = () =>{
+  const input = document.querySelector('.search-input');
+  const deleteButton = document.querySelector('.btn-delete');
+  displayNone(deleteButton);
+
+  input.addEventListener('keyup', ()=>{
+    if( input.value.length >0 ) {
+      // deleteButton.style.display
+      displayFlex(deleteButton);
+    }else{
+      // container.removeChild( container.querySelector('.searchForSomething') );
+      displayNone(deleteButton);
+    }
+  })
+}
+
+// 검색 모달을 닫을때 입력값 초기화
+export const closeSearchModal = () =>{
+  const input = document.querySelector('.search-input');
+  const modalBody = document.querySelector(".modal-container"); // 모달 컨테이너 선택
+  const noSearch = document.getElementById("searchForSomething"); // 검색값이 없을때
+  const closeBtn = document.querySelector('.modal-content')
+                            .querySelector('.close-button');
+
+  closeBtn.addEventListener('click', ()=>{
+    input.value = '';
+
+    displayFlex(noSearch);
+    removeList(modalBody);
+  })
+}
