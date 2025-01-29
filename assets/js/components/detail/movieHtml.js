@@ -8,11 +8,15 @@ export const createMovieHTML = (movieData) => {
     { term: "Release Date", definition: movieData.Released },
     {
       term: "Genres",
-      definition: movieData.Genre.split(",")
-        .map(
-          (genre) => `<li class="movie-detail__genre-item">${genre.trim()}</li>`
-        )
-        .join(""),
+      definition:
+        movieData.Genre === "N/A"
+          ? "no information"
+          : movieData.Genre.split(",")
+              .map(
+                (genre) =>
+                  `<li class="movie-detail__genre-item">${genre.trim()}</li>`
+              )
+              .join(""),
     },
     { term: "Duration", definition: movieData.Runtime },
     { term: "Cast", definition: movieData.Actors },
@@ -25,10 +29,10 @@ export const createMovieHTML = (movieData) => {
         <div class="movie-detail__info-item">
           <h4 class="movie-detail__term">${item.term}</h4>
           <div class="movie-detail__definition">${
-            item.term === "Genres"
-              ? `<ul class="movie-detail__genre-list">${item.definition}</ul>`
+            item.term === "Genres" && !item.definition
+              ? ""
               : item.definition === "N/A"
-              ? "no infomation"
+              ? "no information"
               : item.definition
           }</div>
         </div>
