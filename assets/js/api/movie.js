@@ -8,12 +8,8 @@ const getHighResImageUrl = (posterUrl) => {
 };
 
 // 영화 상세 정보 조회
-export const getMovieDetails = async (imdbID, skipLoading = false) => {
+export const getMovieDetails = async (imdbID) => {
   try {
-    if (!skipLoading) {
-      showLoading();
-    }
-
     const res = await fetch(
       `https://omdbapi.com/?apikey=${config.API_KEY}&i=${imdbID}`
     );
@@ -29,14 +25,12 @@ export const getMovieDetails = async (imdbID, skipLoading = false) => {
       movieDetails.Poster = getHighResImageUrl(movieDetails.Poster);
     }
 
+    console.log("?????" + JSON.stringify(movieDetails));
+
     return movieDetails;
   } catch (error) {
     console.error("영화 상세정보 fetch 오류", error);
     throw error;
-  } finally {
-    if (!skipLoading) {
-      hideLoading();
-    }
   }
 };
 
@@ -46,7 +40,6 @@ export const getMovies = async (
   year = "",
   page = 1,
   limit = 0,
-  skipLoading = false,
   fetchDetails = true
 ) => {
   const s = `&s=${encodeURIComponent(title)}`;
@@ -54,10 +47,6 @@ export const getMovies = async (
   const p = `&page=${page}`;
 
   try {
-    if (!skipLoading) {
-      showLoading();
-    }
-
     const res = await fetch(
       `https://omdbapi.com/?apikey=${config.API_KEY}${s}${y}${p}`
     );
@@ -73,7 +62,7 @@ export const getMovies = async (
         limitedMovies.map(async (movie) => ({
           ...movie,
           ...(fetchDetails
-            ? { details: await getMovieDetails(movie.imdbID, skipLoading) }
+            ? { details: await getMovieDetails(movie.imdbID) }
             : {}),
         }))
       );
@@ -87,38 +76,28 @@ export const getMovies = async (
     return json.Error;
   } catch (error) {
     console.log(error);
-  } finally {
-    if (!skipLoading) {
-      hideLoading();
-    }
   }
 };
 
 // ID 리스트로 영화 정보 조회
-export const fetchMoviesByIds = async (ids, skipLoading = false) => {
+export const fetchMoviesByIds = async (ids) => {
   try {
-    if (!skipLoading) {
-      showLoading();
-    }
+    const moviePromises = ids.map((id) =>
+      fetch(`https://www.omdbapi.com/?i=${id}&apikey=${config.API_KEY}`)
+        .then((response) => response.json())
+        .catch((error) => {
+          console.error(error);
+        })
+    );
 
-    const movies = [];
+    const movieResponses = await Promise.all(moviePromises);
 
-    for (const id of ids) {
-      const response = await fetch(
-        `https://www.omdbapi.com/?i=${id}&apikey=${config.API_KEY}`
-      );
-      const data = await response.json();
-      if (data.Response === "True") {
-        movies.push(data);
-      }
-    }
+    const movies = movieResponses.filter(
+      (data) => data && data.Response === "True"
+    );
 
     return movies;
   } catch (error) {
-    console.log(error);
-  } finally {
-    if (!skipLoading) {
-      hideLoading();
-    }
+    console.error(error);
   }
 };

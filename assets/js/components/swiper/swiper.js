@@ -8,7 +8,7 @@ export const renderSwiperMovies = async () => {
   const swiperWrapper = document.querySelector(".swiper-wrapper");
 
   try {
-    const data = await getMovies("mini", "", 1, 11, true);
+    const data = await getMovies("mini", "", 1, 7);
     showLoading();
 
     if (data.movies) {

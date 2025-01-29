@@ -78,9 +78,6 @@ const displayCards = (movies) => {
   const { itemsPerPage, currentIndex, isFiltered, filteredData, storeIndex } =
     pageState;
 
-  // 로딩 표시
-  showLoading();
-
   // 필터링 여부에 따라 표시할 데이터 결정
   const dataToDisplay = isFiltered ? filteredData : movies;
 
@@ -134,6 +131,8 @@ const updateCardItemCount = () => {
 export const loadMoreCards = (movies) => {
   const { itemsPerPage, currentIndex } = pageState;
 
+  showLoading();
+
   // 현재 인덱스 업데이트
   setPageState({ currentIndex: currentIndex + itemsPerPage });
 
@@ -147,6 +146,8 @@ export const loadMoreCards = (movies) => {
 // 찜 목록 업데이트
 export const updateFavoriteCards = async () => {
   const { isFiltered, storeIndex } = getPageState();
+
+  showLoading();
 
   try {
     const allMovies = await getFavoriteMovies();
@@ -167,5 +168,7 @@ export const updateFavoriteCards = async () => {
     createFavoriteCards(moviesToDisplay, { isFiltered });
   } catch (error) {
     console.error(error);
+  } finally {
+    hideLoading();
   }
 };

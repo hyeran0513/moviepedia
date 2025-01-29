@@ -29,8 +29,6 @@ export const fetchMoviesData = async (
   currentPage
 ) => {
   try {
-    showLoading();
-
     // 현재 페이지를 업데이트
     setPageState({ currentPage });
 
@@ -39,7 +37,6 @@ export const fetchMoviesData = async (
       movieYear,
       currentPage,
       pageState.limit,
-      true,
       false
     );
 

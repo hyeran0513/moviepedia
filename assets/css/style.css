@@ -1589,7 +1589,7 @@ select {
 /* 스와이퍼 */
 .swiper-container {
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 1026px;
   width: 100%;
 }
 .swiper-slide {

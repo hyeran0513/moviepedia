@@ -4,7 +4,7 @@ export const getFavoriteMovies = async () => {
   // sessionStorage에서 IMDb ID 목록 조회
   const imdbIDs = JSON.parse(sessionStorage.getItem("favorites")) || [];
   // imdbID 리스트를 기반으로 영화를 조회
-  return await fetchMoviesByIds(imdbIDs, true);
+  return await fetchMoviesByIds(imdbIDs);
 };
 
 export const filterMoviesByTitle = (movies, title) => {
