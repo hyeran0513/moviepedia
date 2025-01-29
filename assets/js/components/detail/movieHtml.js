@@ -1,42 +1,36 @@
 export const createMovieHTML = (movieData) => {
-  const movieDetailInfoList = document.querySelector(
-    ".movie-detail__info-list"
-  );
-
-  const movieInfoItems = [
-    { term: "Rating", definition: movieData.imdbRating },
-    { term: "Release Date", definition: movieData.Released },
+  document.querySelector(".movie-detail__info-list").innerHTML = [
+    { term: "Rating", value: movieData.imdbRating },
+    { term: "Release Date", value: movieData.Released },
     {
       term: "Genres",
-      definition:
+      value:
         movieData.Genre === "N/A"
           ? "no information"
-          : `<ul class="movie-detail__genre-list">${movieData.Genre.split(",")
+          : movieData.Genre.split(",")
               .map(
                 (genre) =>
                   `<li class="movie-detail__genre-item">${genre.trim()}</li>`
               )
-              .join("")}</ul>`,
+              .join(""),
     },
-    { term: "Duration", definition: movieData.Runtime },
-    { term: "Cast", definition: movieData.Actors },
-    { term: "Director", definition: movieData.Director },
-  ];
-
-  movieDetailInfoList.innerHTML = movieInfoItems
+    { term: "Duration", value: movieData.Runtime },
+    { term: "Cast", value: movieData.Actors },
+    { term: "Director", value: movieData.Director },
+  ]
     .map(
-      (item) => `
-        <div class="movie-detail__info-item">
-          <h4 class="movie-detail__term">${item.term}</h4>
-          <div class="movie-detail__definition">${
-            item.term === "Genres"
-              ? ""
-              : item.definition === "N/A"
-              ? "no information"
-              : item.definition
-          }</div>
-        </div>
-      `
+      ({ term, value }) => `
+    <div class="movie-detail__info-item">
+      <h4 class="movie-detail__term">${term}</h4>
+      <div class="movie-detail__definition">${
+        term === "Genres"
+          ? `<ul class="movie-detail__genre-list">${value}</ul>`
+          : value === "N/A"
+          ? "no information"
+          : value
+      }</div>
+    </div>
+  `
     )
     .join("");
 };
