@@ -3,6 +3,7 @@ import {
   setFocus,
   searchTitleInit,
   deleteButtonVisibleHandler,
+  closeSearchModal,
 } from "./searchHandler.js";
 
 // 로딩시 동작하는 부분 (모달 로딩 및 초기화)
@@ -43,6 +44,7 @@ export const loadSearchModal = () => {
       if (deleteButton) {
         deleteButtonVisibleHandler();
         searchTitleInit();
+        closeSearchModal();
       }
     })
     .catch((error) => console.error("모달 fetch 오류:", error));

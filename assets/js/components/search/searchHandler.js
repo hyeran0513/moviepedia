@@ -183,5 +183,20 @@ export const deleteButtonVisibleHandler = () =>{
       displayNone(deleteButton);
     }
   })
-  
+}
+
+// 검색 모달을 닫을때 입력값 초기화
+export const closeSearchModal = () =>{
+  const input = document.querySelector('.search-input');
+  const modalBody = document.querySelector(".modal-container"); // 모달 컨테이너 선택
+  const noSearch = document.getElementById("searchForSomething"); // 검색값이 없을때
+  const closeBtn = document.querySelector('.modal-content')
+                            .querySelector('.close-button');
+
+  closeBtn.addEventListener('click', ()=>{
+    input.value = '';
+
+    displayFlex(noSearch);
+    removeList(modalBody);
+  })
 }
