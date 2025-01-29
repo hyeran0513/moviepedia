@@ -1459,6 +1459,9 @@ select {
   margin-bottom: 22px;
   font-weight: bold;
 }
+.movie-detail__info {
+  width: 100%;
+}
 .movie-detail__info-list {
   display: flex;
   flex-direction: column;
