@@ -2,6 +2,7 @@ import {
   setupSearchHandler,
   setFocus,
   searchTitleInit,
+  deleteButtonVisibleHandler,
 } from "./searchHandler.js";
 
 // 로딩시 동작하는 부분 (모달 로딩 및 초기화)
@@ -40,6 +41,7 @@ export const loadSearchModal = () => {
       // 삭제버튼 초기화
       const deleteButton = document.querySelector(".btn-delete");
       if (deleteButton) {
+        deleteButtonVisibleHandler();
         searchTitleInit();
       }
     })

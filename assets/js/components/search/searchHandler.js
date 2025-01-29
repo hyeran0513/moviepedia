@@ -167,3 +167,21 @@ const removeList = (modalBody) => {
     modalBody.removeChild(list);
   }
 };
+
+// 검색 정보가 있을때 내용 삭제 버튼을 추가하는 함수
+export const deleteButtonVisibleHandler = () =>{
+  const input = document.querySelector('.search-input');
+  const deleteButton = document.querySelector('.btn-delete');
+  displayNone(deleteButton);
+
+  input.addEventListener('keyup', ()=>{
+    if( input.value.length >0 ) {
+      // deleteButton.style.display
+      displayFlex(deleteButton);
+    }else{
+      // container.removeChild( container.querySelector('.searchForSomething') );
+      displayNone(deleteButton);
+    }
+  })
+  
+}
