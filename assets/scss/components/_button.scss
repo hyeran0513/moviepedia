@@ -77,7 +77,7 @@
 }
 
 .favorite-button--lg {
-  @include favorite-button(lg, true); // 둥근 버튼
+  @include favorite-button(lg, true);
 }
 
 @include respond-to(mobile) {

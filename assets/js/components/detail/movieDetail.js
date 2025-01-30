@@ -43,7 +43,7 @@ export const createDetail = async () => {
         isFavorite ? "--active" : ""
       }" 
         data-imdb-id="${imdbID}">
-        <i class='bx ${isFavorite ? "bxs-heart" : "bx-heart"}'></i>
+        <i class='bx bxs-heart'></i>
         <span>favorite</span>
       </button>
     `;

@@ -1,4 +1,4 @@
-import { toggleFavoriteIcon } from "../button/favoriteButton.js";
+import { toggleFavoriteActive } from "../button/favoriteButton.js";
 
 export const initializeSwiper = (containerSelector) => {
   const swiper = new Swiper(containerSelector, {
@@ -28,7 +28,7 @@ export const initializeSwiper = (containerSelector) => {
       const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
       const isFavorite = favorites.includes(imdbId);
 
-      toggleFavoriteIcon(button, isFavorite);
+      toggleFavoriteActive(button, isFavorite);
     });
   });
 

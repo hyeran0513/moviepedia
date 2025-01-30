@@ -5,8 +5,11 @@ export const createCardHTML = (movie) => {
 
   return `
     <div class="card__item">
-      <button type="button" class="favorite-button" data-imdb-id="${imdbID}">
-        <i class='bx ${isFavorite ? "bxs-heart" : "bx-heart"}'></i>
+       <button type="button" class="favorite-button ${
+         isFavorite ? "--active" : ""
+       }" 
+      data-imdb-id="${movie.imdbID}">
+        <i class='bx bxs-heart'></i>
       </button>
       <a href="detail.html?imdbID=${imdbID}">
         <div class="card__poster">

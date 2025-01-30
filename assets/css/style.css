@@ -90,8 +90,10 @@ body {
   min-height: 100vh;
   background-color: light-dark(#fff, #232429);
   color: light-dark(#333, #fbffff);
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   font-family: "Pretendard", sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 main {
@@ -454,9 +456,9 @@ summary {
   align-items: center;
   cursor: pointer;
   transition: border-color 0.6s ease, box-shadow 0.6s ease;
-  border-radius: 8px;
-  background-color: light-dark(#fff, #fff);
-  color: #333;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
   position: absolute;
   top: 20px;
   right: 20px;
@@ -464,24 +466,26 @@ summary {
   aspect-ratio: 1/1;
   z-index: 1;
 }
+.favorite-button.--active {
+  background-color: light-dark(#e54056, #e54056);
+}
 @media (max-width: 768px) {
   .favorite-button {
     top: 10px;
     right: 10px;
     width: 30px;
     height: 30px;
-    border-radius: 4px;
   }
 }
 .favorite-button:hover {
-  border-color: light-dark(#ff4a29, #ff4a29);
-  box-shadow: 0 0 8px light-dark(#ff4a29, #ff4a29);
+  border-color: light-dark(#fff, #fff);
+  box-shadow: 0 0 8px light-dark(#fff, #fff);
 }
 .favorite-button:hover > i {
   animation: heart 0.6s linear infinite;
 }
 .favorite-button > i {
-  color: light-dark(#ff4a29, #ff4a29);
+  color: light-dark(#fff, #fff);
 }
 .favorite-button-wrap {
   margin-top: 30px;
@@ -494,20 +498,18 @@ summary {
   cursor: pointer;
   transition: border-color 0.6s ease, box-shadow 0.6s ease;
   border-radius: 30px;
-  background-color: light-dark(#fff, #fff);
-  color: #333;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
   gap: 10px;
   width: 100%;
   height: 54px;
   font-weight: bold;
   font-size: 16px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  background-color: light-dark(#e8e8e8, #333742);
-  color: light-dark(#333, #fbffff);
+  background-color: light-dark(#c5c5c5, #333742);
 }
 .favorite-button--lg.--active {
-  background-color: light-dark(#fff, #fff);
-  color: light-dark(#191919, #191919);
+  background-color: light-dark(#e54056, #e54056);
 }
 @media (max-width: 768px) {
   .favorite-button--lg {
@@ -516,14 +518,14 @@ summary {
   }
 }
 .favorite-button--lg:hover {
-  border-color: light-dark(#ff4a29, #ff4a29);
-  box-shadow: 0 0 8px light-dark(#ff4a29, #ff4a29);
+  border-color: light-dark(#fff, #fff);
+  box-shadow: 0 0 8px light-dark(#fff, #fff);
 }
 .favorite-button--lg:hover > i {
   animation: heart 0.6s linear infinite;
 }
 .favorite-button--lg > i {
-  color: light-dark(#ff4a29, #ff4a29);
+  color: light-dark(#fff, #fff);
 }
 
 @media (max-width: 768px) {

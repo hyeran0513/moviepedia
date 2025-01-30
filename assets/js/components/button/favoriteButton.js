@@ -72,18 +72,15 @@ export const handleFavoriteButton = (button, page) => {
     const imdbId = button.dataset.imdbId;
     const isFavorite = toggleFavorite(imdbId, page);
 
-    toggleFavoriteIcon(button, isFavorite, page);
+    toggleFavoriteActive(button, isFavorite, page);
   });
 };
 
-// 버튼 아이콘 상태 업데이트
-export const toggleFavoriteIcon = (button, isFavorite, page) => {
+// 버튼 활성화 상태 업데이트
+export const toggleFavoriteActive = (button, isFavorite, page) => {
   button.classList.toggle("--active", isFavorite);
-  const icon = button.querySelector("i");
-  icon.classList.toggle("bxs-heart", isFavorite);
-  icon.classList.toggle("bx-heart", !isFavorite);
 
   if (page === "favorite") {
-    icon.classList.replace("bx-heart", "bxs-heart");
+    button.classList.add("--active");
   }
 };
