@@ -37,6 +37,9 @@ export const addLoaderEle = (HTMLElement) => {
 
 // 전체 로딩 애니메이션 표시
 export const showLoading = () => {
+  document.body.style.visibility = "visible";
+  document.body.style.opacity = "1";
+
   const loadingOverlay = document.querySelector(".loading-overlay");
   loadingOverlay.style.display = "flex";
 };
