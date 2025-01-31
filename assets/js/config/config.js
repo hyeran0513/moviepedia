@@ -1,9 +1,9 @@
 const config = {
   /* 혜란님 */
-  // API_KEY: "788aff61",
+  API_KEY: "788aff61",
 
   /* 세진님 */
-  API_KEY: "4003a262",
+  // API_KEY: "4003a262",
 
   /* 승이님 */
   // API_KEY: "3b9d589c",
