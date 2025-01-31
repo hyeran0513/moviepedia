@@ -1,5 +1,5 @@
 export const createSwiperHtml = (movie) => {
-  const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
   const isFavorite = favorites.some((id) => id === movie.imdbID);
 
   return `

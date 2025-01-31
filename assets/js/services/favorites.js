@@ -1,8 +1,8 @@
 import { fetchMoviesByIds } from "../api/movie.js";
 
 export const getFavoriteMovies = async () => {
-  // sessionStorage에서 IMDb ID 목록 조회
-  const imdbIDs = JSON.parse(sessionStorage.getItem("favorites")) || [];
+  // localStorage IMDb ID 목록 조회
+  const imdbIDs = JSON.parse(localStorage.getItem("favorites")) || [];
   // imdbID 리스트를 기반으로 영화를 조회
   return await fetchMoviesByIds(imdbIDs);
 };

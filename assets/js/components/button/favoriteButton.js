@@ -27,7 +27,7 @@ const showFavoritePopup = (movieId, favorites) => {
     "click",
     () => {
       const updatedFavorites = favorites.filter((id) => id !== movieId);
-      sessionStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
 
       const { currentIndex } = getPageState();
 
@@ -47,7 +47,7 @@ const showFavoritePopup = (movieId, favorites) => {
 
 // 찜 목록 상태를 토글
 export const toggleFavorite = (movieId, page) => {
-  const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
   const isFavorite = favorites.includes(movieId);
 
   if (isFavorite) {
@@ -56,11 +56,11 @@ export const toggleFavorite = (movieId, page) => {
       showFavoritePopup(movieId, favorites);
     } else {
       const updatedFavorites = favorites.filter((id) => id !== movieId);
-      sessionStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
     }
   } else {
     favorites.unshift(movieId);
-    sessionStorage.setItem("favorites", JSON.stringify(favorites));
+    localStorage.setItem("favorites", JSON.stringify(favorites));
   }
 
   return !isFavorite;

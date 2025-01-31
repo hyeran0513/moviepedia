@@ -25,7 +25,7 @@ export const initializeSwiper = (containerSelector) => {
 
     favoriteButtons.forEach((button) => {
       const imdbId = button.dataset.imdbId;
-      const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
+      const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
       const isFavorite = favorites.includes(imdbId);
 
       toggleFavoriteActive(button, isFavorite);

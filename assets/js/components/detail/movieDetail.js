@@ -34,7 +34,7 @@ export const createDetail = async () => {
       movieData.Plot === "N/A" ? "no infomation" : movieData.Plot;
 
     // 찜 버튼
-    const favorites = JSON.parse(sessionStorage.getItem("favorites")) || [];
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
     const favoriteBtnWrap = document.querySelector(".favorite-button-wrap");
     const isFavorite = favorites.some((id) => id === imdbID);
 
