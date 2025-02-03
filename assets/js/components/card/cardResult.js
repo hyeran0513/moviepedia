@@ -40,8 +40,6 @@ export const fetchMoviesData = async (
       false
     );
 
-    console.log(JSON.stringify(result));
-
     setPageState({
       totalResults: result.totalResults,
     });

@@ -38,13 +38,11 @@ export const addLoaderEle = (HTMLElement) => {
 // 전체 로딩 애니메이션 표시
 export const showLoading = () => {
   const loadingOverlay = document.querySelector(".loading-overlay");
-  loadingOverlay.style.display = "flex";
-  document.body.style.visibility = "visible";
-  document.body.style.opacity = "1";
+  loadingOverlay.classList.add("--active");
 };
 
 // 전체 로딩 애니메이션 숨김
 export const hideLoading = () => {
   const loadingOverlay = document.querySelector(".loading-overlay");
-  loadingOverlay.style.display = "none";
+  loadingOverlay.classList.remove("--active");
 };
