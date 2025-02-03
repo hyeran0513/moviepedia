@@ -8,8 +8,15 @@ body {
   background-color: $primary-bg-color;
   color: $primary-text-color;
   font-family: "Pretendard", sans-serif;
+  visibility: hidden;
+  opacity: 0;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out,
     opacity 0.3s ease-in-out;
+
+  &.--active {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 main {

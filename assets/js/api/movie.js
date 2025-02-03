@@ -45,25 +45,28 @@ export const getMovies = async (
   const p = `&page=${page}`;
 
   try {
+    console.log("getMovies 데이터 불러오는 중.. 👾");
+
     const res = await fetch(
       `https://omdbapi.com/?apikey=${config.API_KEY}${s}${y}${p}`
     );
-
     const json = await res.json();
 
     if (json.Response === "True") {
       const { Search: movies, totalResults } = json;
-
       const limitedMovies = limit > 0 ? movies.slice(0, limit) : movies;
 
       const moviesWithDetails = await Promise.all(
-        limitedMovies.map(async (movie) => ({
-          ...movie,
-          ...(fetchDetails
-            ? { details: await getMovieDetails(movie.imdbID) }
-            : {}),
-        }))
+        limitedMovies.map(async (movie) => {
+          if (fetchDetails) {
+            const details = await getMovieDetails(movie.imdbID);
+            return { ...movie, details };
+          }
+          return movie;
+        })
       );
+
+      console.log("getMovies 데이터 불러오기 완료 👾");
 
       return {
         movies: moviesWithDetails,
@@ -80,6 +83,8 @@ export const getMovies = async (
 // ID 리스트로 영화 정보 조회
 export const fetchMoviesByIds = async (ids) => {
   try {
+    console.log("fetchMoviesByIds 데이터 불러오는 중.. 👾");
+
     const moviePromises = ids.map((id) =>
       fetch(`https://www.omdbapi.com/?i=${id}&apikey=${config.API_KEY}`)
         .then((response) => response.json())
@@ -93,6 +98,8 @@ export const fetchMoviesByIds = async (ids) => {
     const movies = movieResponses.filter(
       (data) => data && data.Response === "True"
     );
+
+    console.log("fetchMoviesByIds 데이터 불러오기 완료 👾");
 
     return movies;
   } catch (error) {

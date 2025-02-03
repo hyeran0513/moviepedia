@@ -91,7 +91,13 @@ body {
   background-color: light-dark(#fff, #232429);
   color: light-dark(#333, #fbffff);
   font-family: "Pretendard", sans-serif;
+  visibility: hidden;
+  opacity: 0;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+body.--active {
+  visibility: visible;
+  opacity: 1;
 }
 
 main {

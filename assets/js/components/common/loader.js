@@ -38,6 +38,7 @@ export const addLoaderEle = (HTMLElement) => {
 // 전체 로딩 애니메이션 표시
 export const showLoading = () => {
   const loadingOverlay = document.querySelector(".loading-overlay");
+  document.body.classList.add("--active");
   loadingOverlay.classList.add("--active");
 };
 
@@ -45,4 +46,5 @@ export const showLoading = () => {
 export const hideLoading = () => {
   const loadingOverlay = document.querySelector(".loading-overlay");
   loadingOverlay.classList.remove("--active");
+  document.body.classList.add("--active");
 };
