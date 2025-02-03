@@ -106,3 +106,45 @@ https://hyeran0513.github.io/moviepedia/
 **배포 QR 코드**
 
 ![image](https://github.com/user-attachments/assets/22ab9382-8020-4be7-a20d-55ddeb6c5190)
+
+---
+
+### 📍 폴더 구조
+
+```
+📦moviepedia
+ ┣ 📂assets
+ ┃ ┣ 📂css
+ ┃ ┃ ┣ 📜style.css
+ ┃ ┣ 📂images
+ ┃ ┣ 📂js
+ ┃ ┃ ┣ 📂api
+ ┃ ┃ ┣ 📂components
+ ┃ ┃ ┃ ┣ 📂button
+ ┃ ┃ ┃ ┣ 📂card
+ ┃ ┃ ┃ ┣ 📂common
+ ┃ ┃ ┃ ┣ 📂detail
+ ┃ ┃ ┃ ┣ 📂form
+ ┃ ┃ ┃ ┣ 📂search
+ ┃ ┃ ┃ ┗ 📂swiper
+ ┃ ┃ ┣ 📂config
+ ┃ ┃ ┣ 📂services
+ ┃ ┃ ┗ 📂utils
+ ┃ ┗ 📂scss
+ ┃ ┃ ┣ 📂abstract
+ ┃ ┃ ┣ 📂base
+ ┃ ┃ ┣ 📂components
+ ┃ ┃ ┣ 📂layout
+ ┃ ┃ ┣ 📂page
+ ┃ ┃ ┗ 📜style.scss
+ ┣ 📂components
+ ┃ ┣ 📜footer.html
+ ┃ ┣ 📜header.html
+ ┃ ┗ 📜searchModal.html
+ ┣ 📜detail.html
+ ┣ 📜favicon.ico
+ ┣ 📜favorite.html
+ ┣ 📜index.html
+ ┣ 📜README.md
+ ┗ 📜result.html
+```
